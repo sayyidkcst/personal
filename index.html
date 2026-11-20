@@ -2589,20 +2589,35 @@ async function loadSalaryData() {
 $('salaryMonth').value = new Date().toISOString().slice(0, 7);
 
 /* ---------------- COMPANY INFO (restored) ---------------- */
-let _company = { table: null, row: null };
+let _company = { table: null, row: null, rows: [], kv: false };
 const COMPANY_FIELDS = [
-    ['companyName', ['name','company_name'], 'name'], ['companyReg', ['registration_number','reg_no','registration_no','reg_number','registration'], 'registration_number'],
-    ['companyPhone', ['phone','phone_number','mobile'], 'phone'], ['companyEmail', ['email','email_address'], 'email'],
-    ['companyWebsite', ['website','web'], 'website'], ['companyGstin', ['gstin','gst','gst_number'], 'gstin'],
-    ['companyAddress', ['address','company_address'], 'address']
+    ['companyName', ['name','company_name'], 'name', /name|title/], ['companyReg', ['registration_number','reg_no','registration_no','reg_number','registration'], 'registration_number', /reg/],
+    ['companyPhone', ['phone','phone_number','mobile'], 'phone', /phone|mobile|contact|tel|whatsapp/], ['companyEmail', ['email','email_address'], 'email', /mail/],
+    ['companyWebsite', ['website','web'], 'website', /web|url|site/], ['companyGstin', ['gstin','gst','gst_number'], 'gstin', /gst|tax|vat/],
+    ['companyAddress', ['address','company_address'], 'address', /addr|location/]
 ];
+/* map each form field to a column of the row (exact name first, then fuzzy) */
+function companyMap(row) {
+    const keys = Object.keys(row).filter(k => !['id','created_at','updated_at','uuid','company_id'].includes(k)), used = new Set(), map = {};
+    COMPANY_FIELDS.forEach(([id, cands]) => { const k = cands.find(c => keys.includes(c) && !used.has(c)); if (k) { map[id] = k; used.add(k); } });
+    COMPANY_FIELDS.forEach(([id, , , rx]) => { if (map[id]) return; const k = keys.find(c => !used.has(c) && rx.test(c.toLowerCase())); if (k) { map[id] = k; used.add(k); } });
+    return map;
+}
+/* key/value layout: one row per setting */
+function companyKvMap(rows, kk) {
+    const map = {};
+    COMPANY_FIELDS.forEach(([id, cands, , rx]) => { const r = rows.find(r => cands.includes(String(r[kk]).toLowerCase())) || rows.find(r => rx.test(String(r[kk]).toLowerCase())); if (r) map[id] = r; });
+    return map;
+}
 async function loadCompany() {
     for (const t of ['company_info','company','companies','company_settings','company_details']) {
-        const r = await _supabase.from(t).select('*').limit(1);
+        const r = await _supabase.from(t).select('*');
         if (r.error) continue;
-        _company = { table: t, row: (r.data && r.data[0]) || null };
-        const row = _company.row;
-        if (row) COMPANY_FIELDS.forEach(([id, keys]) => { const k = keys.find(k => k in row); if (k && row[k] != null) $(id).value = row[k]; });
+        const rows = r.data || [], row = rows[0] || null;
+        const kk = row && pickKey(['key','setting_key','field','setting','label'], Object.keys(row)), vk = row && pickKey(['value','setting_value','val'], Object.keys(row));
+        _company = { table: t, row, rows, kv: !!(kk && vk), kk, vk };
+        if (_company.kv) { const m = companyKvMap(rows, kk); Object.keys(m).forEach(id => { if (m[id][vk] != null) $(id).value = m[id][vk]; }); }
+        else if (row) { const m = companyMap(row); Object.keys(m).forEach(id => { if (row[m[id]] != null) $(id).value = row[m[id]]; }); }
         if ($('companyName').value) $('companyLogoName').textContent = $('companyName').value;
         return;
     }
@@ -2617,25 +2632,30 @@ async function saveCompany() {
     try {
         if (!_company.table) await loadCompany();
         if (!_company.table) throw new Error('Company table not found (tried company_info, company, companies, company_settings, company_details).');
-        const row = _company.row, t = _company.table;
-        const rec = {};
-        COMPANY_FIELDS.forEach(([id, keys, def]) => { const k = row ? keys.find(k => k in row) : def; if (k) rec[k] = $(id).value; });
-        const idKey = row ? pickKey(['id', 'company_id', 'uuid'], Object.keys(row)) : null;
-        let data = null, error = null;
-        for (let i = 0; i < 8; i++) {                       // drop columns the table doesn't have, then retry
-            if (!Object.keys(rec).length) { error = { message: 'None of the company fields match a column in table ' + t }; break; }
-            let q;
-            if (row) {
-                q = _supabase.from(t).update(rec);
-                q = idKey ? q.eq(idKey, row[idKey]) : q.not(Object.keys(row)[0], 'is', null);
-            } else q = _supabase.from(t).insert(rec);
-            ({ data, error } = await q.select());
-            const m = error && /Could not find the '([^']+)' column/.exec(error.message);
-            if (m && m[1] in rec) { delete rec[m[1]]; continue; }
-            break;
+        const { table: t, row, rows } = _company, val = id => $(id).value;
+        if (_company.kv) {
+            const m = companyKvMap(rows, _company.kk);
+            for (const [id, , def] of COMPANY_FIELDS) {
+                const r = m[id];
+                const q = r ? _supabase.from(t).update({ [_company.vk]: val(id) }).eq(r.id != null ? 'id' : _company.kk, r.id != null ? r.id : r[_company.kk]).select()
+                            : _supabase.from(t).insert({ [_company.kk]: def, [_company.vk]: val(id) }).select();
+                const { error } = await q; if (error) throw error;
+            }
+        } else if (row) {
+            const map = companyMap(row), rec = {};
+            Object.keys(map).forEach(id => { rec[map[id]] = val(id); });
+            if (!Object.keys(rec).length) throw new Error('No company field matches a column. This table\'s columns are: ' + Object.keys(row).join(', '));
+            const idKey = pickKey(['id', 'company_id', 'uuid'], Object.keys(row));
+            let q = _supabase.from(t).update(rec);
+            q = idKey ? q.eq(idKey, row[idKey]) : q.not(Object.keys(row)[0], 'is', null);
+            const { data, error } = await q.select();
+            if (error) throw error;
+            if (!data || !data.length) throw new Error('Nothing was updated — the database blocked the change (permission / RLS policy on table ' + t + ').');
+        } else {
+            const rec = {}; COMPANY_FIELDS.forEach(([id, , def]) => { rec[def] = val(id); });
+            const { error } = await _supabase.from(t).insert(rec).select();
+            if (error) throw new Error(error.message + ' (the table is empty, so I could only guess column names: ' + Object.keys(rec).join(', ') + ')');
         }
-        if (error) throw error;
-        if (row && (!data || !data.length)) throw new Error('Nothing was updated — the database blocked the change (permission / RLS policy on table ' + t + ').');
         $('companyLogoName').textContent = $('companyName').value;
         await loadCompany();
         say('✅ Company info saved.', true); showGlobalStatus('Company info saved.', 'info');
