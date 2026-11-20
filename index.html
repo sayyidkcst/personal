@@ -3,1024 +3,2991 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f4f7fb">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>KCST Staff Pro · Salary Collection</title>
 
-<title>SAYYID SHEREEF KC</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-    scroll-behavior:smooth;
-}
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Arial, sans-serif; }
+    body { background: #f4f7fb; color: #1e293b; min-height: 100vh; }
 
-body{
-    background:#f5f7fb;
-    color:#172033;
-    line-height:1.6;
-}
-
-/* NAVBAR */
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:rgba(255,255,255,.95);
-    backdrop-filter:blur(12px);
-    box-shadow:0 2px 15px rgba(0,0,0,.08);
-    z-index:1000;
-}
-
-.nav-container{
-    max-width:1100px;
-    margin:auto;
-    padding:14px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.logo{
-    font-size:21px;
-    font-weight:bold;
-    color:#155eef;
-}
-
-.logo span{
-    color:#172033;
-}
-
-.nav-links{
-    display:flex;
-    gap:25px;
-    list-style:none;
-}
-
-.nav-links a{
-    text-decoration:none;
-    color:#172033;
-    font-size:14px;
-    font-weight:600;
-}
-
-.nav-links a:hover{
-    color:#155eef;
-}
-
-.menu-btn{
-    display:none;
-    border:none;
-    background:none;
-    font-size:25px;
-    cursor:pointer;
-}
-
-/* HERO */
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:110px 20px 70px;
-    background:
-        radial-gradient(circle at 10% 20%,rgba(21,94,239,.13),transparent 30%),
-        radial-gradient(circle at 90% 80%,rgba(124,58,237,.13),transparent 30%),
-        #f5f7fb;
-}
-
-.hero-container{
-    max-width:1100px;
-    width:100%;
-    display:grid;
-    grid-template-columns:1.2fr .8fr;
-    gap:50px;
-    align-items:center;
-}
-
-.badge{
-    display:inline-block;
-    padding:7px 14px;
-    border-radius:30px;
-    background:#e8f0ff;
-    color:#155eef;
-    font-size:13px;
-    font-weight:bold;
-    margin-bottom:18px;
-}
-
-.hero h1{
-    font-size:clamp(42px,7vw,72px);
-    line-height:1.05;
-    margin-bottom:18px;
-}
-
-.hero h1 span{
-    color:#155eef;
-}
-
-.hero p{
-    font-size:18px;
-    color:#667085;
-    max-width:620px;
-    margin-bottom:30px;
-}
-
-.buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    display:inline-block;
-    padding:13px 22px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:bold;
-    font-size:14px;
-    transition:.25s;
-}
-
-.btn-primary{
-    background:#155eef;
-    color:white;
-}
-
-.btn-primary:hover{
-    background:#084dcc;
-    transform:translateY(-2px);
-}
-
-.btn-secondary{
-    background:white;
-    color:#172033;
-    border:1px solid #d9dee8;
-}
-
-.btn-secondary:hover{
-    border-color:#155eef;
-    color:#155eef;
-}
-
-/* PROFILE */
-.profile{
-    display:flex;
-    justify-content:center;
-}
-
-.profile-card{
-    width:290px;
-    height:340px;
-    background:white;
-    border-radius:25px;
-    box-shadow:0 20px 60px rgba(0,0,0,.12);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    overflow:hidden;
-}
-
-.profile-circle{
-    width:190px;
-    height:190px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#155eef,#7c3aed);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:55px;
-    font-weight:bold;
-}
-
-.profile-label{
-    position:absolute;
-    bottom:20px;
-    text-align:center;
-    width:100%;
-    font-weight:bold;
-}
-
-/* COMMON */
-section{
-    padding:90px 20px;
-}
-
-.section-container{
-    max-width:1100px;
-    margin:auto;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:45px;
-}
-
-.section-title h2{
-    font-size:35px;
-    margin-bottom:8px;
-}
-
-.section-title p{
-    color:#667085;
-}
-
-/* ABOUT */
-.about-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-}
-
-.about-card{
-    background:white;
-    padding:30px;
-    border-radius:18px;
-    box-shadow:0 8px 30px rgba(0,0,0,.06);
-}
-
-.about-card h3{
-    margin-bottom:15px;
-    color:#155eef;
-}
-
-.about-card p{
-    color:#667085;
-}
-
-/* SKILLS */
-.skills{
-    background:#eef3fb;
-}
-
-.skill-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
-}
-
-.skill{
-    background:white;
-    padding:25px 15px;
-    text-align:center;
-    border-radius:15px;
-    transition:.25s;
-}
-
-.skill:hover{
-    transform:translateY(-5px);
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-
-.skill-icon{
-    font-size:32px;
-    margin-bottom:10px;
-}
-
-.skill h3{
-    font-size:16px;
-}
-
-/* PROJECTS */
-.project-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.project{
-    background:white;
-    border-radius:18px;
-    padding:25px;
-    box-shadow:0 8px 30px rgba(0,0,0,.06);
-    transition:.25s;
-}
-
-.project:hover{
-    transform:translateY(-5px);
-    box-shadow:0 15px 40px rgba(0,0,0,.1);
-}
-
-.project-icon{
-    width:55px;
-    height:55px;
-    border-radius:14px;
-    background:#eaf1ff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:27px;
-    margin-bottom:18px;
-}
-
-.project h3{
-    margin-bottom:8px;
-}
-
-.project p{
-    color:#667085;
-    font-size:14px;
-    margin-bottom:18px;
-}
-
-.project a{
-    color:#155eef;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:bold;
-}
-
-/* JOURNEY */
-.journey{
-    background:#111827;
-    color:white;
-}
-
-.journey .section-title p{
-    color:#aab2c0;
-}
-
-.timeline{
-    max-width:750px;
-    margin:auto;
-}
-
-.timeline-item{
-    border-left:2px solid #3b82f6;
-    padding:0 0 35px 25px;
-    position:relative;
-}
-
-.timeline-item::before{
-    content:"";
-    width:12px;
-    height:12px;
-    background:#3b82f6;
-    border-radius:50%;
-    position:absolute;
-    left:-7px;
-    top:4px;
-}
-
-.timeline-item h3{
-    margin-bottom:5px;
-}
-
-.timeline-item p{
-    color:#aab2c0;
-}
-
-/* CONTACT */
-.contact-box{
-    max-width:750px;
-    margin:auto;
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 10px 40px rgba(0,0,0,.07);
-}
-
-.contact-box p{
-    color:#667085;
-    margin:15px auto 25px;
-}
-
-.contact-buttons{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
-}
-
-/* FOOTER */
-footer{
-    background:#0b1220;
-    color:#98a2b3;
-    text-align:center;
-    padding:25px 15px;
-    font-size:13px;
-}
-
-footer strong{
-    color:white;
-}
-
-/* SCROLL TOP */
-.top-btn{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    width:45px;
-    height:45px;
-    border:none;
-    border-radius:50%;
-    background:#155eef;
-    color:white;
-    font-size:20px;
-    cursor:pointer;
-    display:none;
-    z-index:900;
-    box-shadow:0 5px 20px rgba(21,94,239,.3);
-}
-
-/* MOBILE */
-@media(max-width:800px){
-
-    .nav-links{
-        display:none;
-        position:absolute;
-        top:60px;
-        left:0;
-        width:100%;
-        background:white;
-        flex-direction:column;
-        padding:20px;
-        box-shadow:0 10px 20px rgba(0,0,0,.08);
-        gap:18px;
+    /* ================= LOGIN SCREEN ================= */
+    #loginScreen {
+        position: fixed; inset: 0;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        display: flex; justify-content: center; align-items: center;
+        z-index: 5000; padding: 20px;
     }
 
-    .nav-links.active{
-        display:flex;
+    .login-card {
+        background: white;
+        padding: 40px;
+        border-radius: 18px;
+        width: 100%; max-width: 400px;
+        box-shadow: 0 25px 60px rgba(0,0,0,0.4);
     }
 
-    .menu-btn{
-        display:block;
+    .login-logo {
+        width: 70px; height: 70px; margin: 0 auto 15px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 32px; color: white;
     }
 
-    .hero-container{
-        grid-template-columns:1fr;
-        text-align:center;
+    .login-card h2 { text-align: center; font-size: 20px; color: #111827; }
+    .login-card .subtitle { text-align: center; color: #64748b; font-size: 13px; margin-top: 5px; margin-bottom: 25px; }
+
+    .login-field { margin-bottom: 15px; }
+    .login-field label {
+        display: block; font-size: 11px; color: #64748b;
+        margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .login-field input {
+        width: 100%; padding: 12px;
+        border: 1px solid #e2e8f0; border-radius: 9px;
+        font-size: 14px; background: #f8fafc; outline: none;
+        transition: 0.2s;
+    }
+    .login-field input:focus { border-color: #2563eb; background: white; }
+
+    .login-btn {
+        width: 100%;
+        background: linear-gradient(135deg, #2563eb, #4f46e5);
+        color: white; border: none; border-radius: 10px;
+        padding: 13px; font-size: 14px; font-weight: 600;
+        cursor: pointer; margin-top: 8px;
+        transition: 0.2s;
+    }
+    .login-btn:hover { opacity: 0.92; }
+    .login-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    #loginError {
+        display: none;
+        background: #fee2e2; color: #991b1b;
+        padding: 10px; border-radius: 8px;
+        font-size: 13px; margin-bottom: 15px;
     }
 
-    .hero p{
-        margin-left:auto;
-        margin-right:auto;
+    .login-hint { text-align: center; font-size: 11px; color: #94a3b8; margin-top: 18px; }
+
+    /* ================= SIDEBAR ================= */
+    .sidebar {
+        position: fixed; left: 0; top: 0;
+        width: 250px; height: 100vh;
+        background: linear-gradient(180deg, #111827, #1e293b);
+        color: white; padding: 20px 15px;
+        z-index: 1000; transition: 0.3s;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; padding: 10px; margin-bottom: 30px; }
+    .logo-icon {
+        width: 45px; height: 45px; border-radius: 12px;
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        display: flex; justify-content: center; align-items: center;
+        font-size: 22px;
+    }
+    .logo h2 { font-size: 19px; }
+    .logo span { display: block; color: #94a3b8; font-size: 11px; margin-top: 2px; }
+    .menu-title {
+        font-size: 11px; color: #64748b;
+        padding: 0 12px; margin: 15px 0 8px;
+        text-transform: uppercase; letter-spacing: 1px;
+    }
+    .menu-item {
+        display: flex; align-items: center; gap: 13px;
+        padding: 13px 14px; margin: 5px 0;
+        border-radius: 10px; color: #cbd5e1;
+        text-decoration: none; cursor: pointer; transition: 0.2s;
+    }
+    .menu-item:hover { background: rgba(255,255,255,0.08); color: white; }
+    .menu-item.active {
+        background: linear-gradient(90deg, #2563eb, #4f46e5);
+        color: white; box-shadow: 0 5px 15px rgba(37,99,235,0.25);
+    }
+    .menu-icon { width: 22px; text-align: center; font-size: 18px; }
+
+    /* ================= MAIN ================= */
+    .main { margin-left: 250px; min-height: 100vh; transition: 0.3s; }
+
+    /* ================= TOPBAR ================= */
+    .topbar {
+        height: 75px; background: white;
+        border-bottom: 1px solid #e5e7eb;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 30px; position: sticky; top: 0; z-index: 900;
+    }
+    .top-left { display: flex; align-items: center; gap: 15px; }
+    .mobile-menu {
+        display: none; border: none; background: #f1f5f9;
+        width: 40px; height: 40px; border-radius: 9px;
+        font-size: 20px; cursor: pointer;
+    }
+    .page-title h1 { font-size: 22px; color: #111827; }
+    .page-title p { font-size: 12px; color: #64748b; margin-top: 3px; }
+
+    .top-right { display: flex; align-items: center; gap: 18px; }
+
+    .search { position: relative; }
+    .search input {
+        width: 230px; padding: 11px 15px 11px 38px;
+        border: 1px solid #e2e8f0; border-radius: 10px;
+        outline: none; background: #f8fafc;
+    }
+    .search span { position: absolute; left: 13px; top: 10px; color: #64748b; }
+
+    .notification {
+        width: 40px; height: 40px; border-radius: 10px;
+        background: #f8fafc; display: flex;
+        justify-content: center; align-items: center;
+        cursor: pointer; position: relative; font-size: 18px;
+    }
+    .notification .dot {
+        position: absolute; top: 8px; right: 8px;
+        width: 7px; height: 7px; border-radius: 50%; background: #ef4444;
     }
 
-    .buttons{
-        justify-content:center;
+    /* ================= PROFILE + DROPDOWN ================= */
+    .profile-wrapper { position: relative; }
+
+    .profile {
+        display: flex; align-items: center; gap: 10px;
+        cursor: pointer; padding: 5px 8px 5px 5px;
+        border-radius: 12px; transition: 0.15s;
+    }
+    .profile:hover { background: #f8fafc; }
+
+    .avatar {
+        width: 40px; height: 40px; border-radius: 50%;
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        color: white; display: flex; justify-content: center;
+        align-items: center; font-weight: bold; font-size: 13px;
+    }
+    .profile-info strong { font-size: 13px; display: block; }
+    .profile-info span { font-size: 11px; color: #64748b; }
+    .caret { font-size: 10px; color: #64748b; transition: 0.2s; }
+    .profile.open .caret { transform: rotate(180deg); }
+
+    .profile-dropdown {
+        position: absolute;
+        top: calc(100% + 12px);
+        right: 0;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        min-width: 230px;
+        box-shadow: 0 15px 40px rgba(15, 23, 42, 0.15);
+        padding: 8px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: 0.2s;
+        z-index: 1000;
+    }
+    .profile-dropdown.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    .profile-dropdown-header {
+        padding: 12px 14px;
+        border-bottom: 1px solid #f1f5f9;
+        margin-bottom: 6px;
+    }
+    .profile-dropdown-header strong {
+        display: block; font-size: 13px; color: #1e293b;
+    }
+    .profile-dropdown-header span {
+        font-size: 11px; color: #64748b;
+    }
+    .dropdown-item {
+        display: flex; align-items: center; gap: 10px;
+        padding: 10px 14px; border-radius: 8px;
+        font-size: 13px; color: #334155;
+        cursor: pointer; transition: 0.15s;
+        border: none; background: none;
+        width: 100%; text-align: left;
+        font-family: inherit;
+    }
+    .dropdown-item:hover { background: #f1f5f9; }
+    .dropdown-item.danger { color: #dc2626; }
+    .dropdown-item.danger:hover { background: #fee2e2; }
+    .dropdown-item .icon { font-size: 16px; }
+
+    /* ================= CONTENT ================= */
+    .content { padding: 30px; }
+    .section { display: none; animation: fadeIn 0.25s ease; }
+    .section.active { display: block; }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
-    .profile{
-        order:-1;
+    .welcome {
+        background: linear-gradient(135deg, #2563eb, #4f46e5);
+        color: white; border-radius: 18px;
+        padding: 25px 28px; margin-bottom: 25px;
+        position: relative; overflow: hidden;
+        display: flex; align-items: center;
+        justify-content: space-between; gap: 20px;
+    }
+    .welcome-text { min-width: 0; position: relative; z-index: 1; }
+    .welcome h2 { font-size: 24px; margin-bottom: 7px; }
+    .welcome p { opacity: 0.85; font-size: 14px; }
+
+    /* ================= CARDS ================= */
+    .cards {
+        display: grid; grid-template-columns: repeat(4, 1fr);
+        gap: 18px; margin-bottom: 25px;
+    }
+    .card {
+        background: white; border-radius: 15px;
+        padding: 20px; border: 1px solid #e5e7eb;
+        box-shadow: 0 3px 12px rgba(15,23,42,0.04);
+    }
+    .stat-card { display: flex; justify-content: space-between; align-items: center; }
+    .stat-icon {
+        width: 52px; height: 52px; border-radius: 14px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 24px;
+    }
+    .blue { background: #dbeafe; color: #2563eb; }
+    .green { background: #dcfce7; color: #16a34a; }
+    .orange { background: #ffedd5; color: #ea580c; }
+    .purple { background: #ede9fe; color: #7c3aed; }
+    .stat-info p { color: #64748b; font-size: 12px; margin-bottom: 6px; }
+    .stat-info h2 { font-size: 25px; }
+
+    /* ================= DASHBOARD GRID ================= */
+    .dashboard-grid {
+        display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px;
+    }
+    .card-header {
+        display: flex; justify-content: space-between;
+        align-items: center; margin-bottom: 18px;
+    }
+    .card-header h3 { font-size: 16px; }
+    .card-header button {
+        border: none; background: transparent;
+        color: #2563eb; cursor: pointer; font-size: 12px;
     }
 
-    .profile-card{
-        width:240px;
-        height:280px;
+    /* ================= TABLE ================= */
+    .table-wrapper { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th {
+        text-align: left; background: #f8fafc;
+        color: #64748b; font-size: 11px;
+        padding: 12px; text-transform: uppercase;
+    }
+    td {
+        padding: 13px 12px;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 13px;
+    }
+    .staff-name { display: flex; align-items: center; gap: 10px; }
+    .small-avatar {
+        width: 34px; height: 34px; border-radius: 50%;
+        background: #e0e7ff; color: #4338ca;
+        display: flex; justify-content: center; align-items: center;
+        font-size: 12px; font-weight: bold; flex-shrink: 0;
+    }
+    .badge { padding: 5px 9px; border-radius: 20px; font-size: 10px; font-weight: 600; }
+    .present { background: #dcfce7; color: #15803d; }
+    .absent { background: #fee2e2; color: #dc2626; }
+    .leave { background: #fef3c7; color: #b45309; }
+    .weekoff { background: #e0e7ff; color: #4338ca; }
+
+    /* Working hours badge */
+    .wh-badge {
+        display: inline-flex; align-items: center; gap: 4px;
+        background: #eff6ff; color: #1d4ed8;
+        font-size: 11px; font-weight: 600;
+        padding: 4px 9px; border-radius: 20px;
+        border: 1px solid #bfdbfe;
+    }
+    .wh-badge.overtime { background: #dcfce7; color: #166534; border-color: #86efac; }
+    .wh-badge.low { background: #fef3c7; color: #b45309; border-color: #fcd34d; }
+    .wh-badge.empty { background: #f1f5f9; color: #94a3b8; border-color: #e2e8f0; }
+
+    /* Experience badge */
+    .exp-badge {
+        display: inline-flex; align-items: center; gap: 4px;
+        background: #f3e8ff; color: #6d28d9;
+        font-size: 11px; font-weight: 600;
+        padding: 4px 9px; border-radius: 20px;
+        border: 1px solid #d8b4fe;
+        white-space: nowrap;
+    }
+    .exp-badge.new { background: #f1f5f9; color: #64748b; border-color: #e2e8f0; }
+
+    /* ================= QUICK ACTIONS ================= */
+    .quick-actions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .quick-btn {
+        padding: 18px 10px; background: #f8fafc;
+        border: 1px solid #e2e8f0; border-radius: 12px;
+        cursor: pointer; text-align: center; transition: 0.2s;
+    }
+    .quick-btn:hover {
+        background: #eff6ff; border-color: #bfdbfe;
+        transform: translateY(-2px);
+    }
+    .quick-btn div { font-size: 24px; margin-bottom: 7px; }
+    .quick-btn span { font-size: 12px; color: #475569; }
+
+    /* ================= PAGE HEAD ================= */
+    .page-head {
+        display: flex; justify-content: space-between;
+        align-items: center; margin-bottom: 22px;
+        flex-wrap: wrap; gap: 12px;
+    }
+    .page-head h2 { font-size: 22px; }
+    .page-head p { color: #64748b; font-size: 13px; margin-top: 4px; }
+    .page-head-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .primary-btn {
+        background: #2563eb; color: white; border: none;
+        border-radius: 9px; padding: 11px 17px;
+        cursor: pointer; font-size: 13px;
+    }
+    .primary-btn:hover { background: #1d4ed8; }
+    .primary-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .hr-btn {
+        background: linear-gradient(135deg, #7c3aed, #6d28d9);
+        color: white; border: none;
+        border-radius: 9px; padding: 11px 17px;
+        cursor: pointer; font-size: 13px;
+        font-weight: 600;
+        display: inline-flex; align-items: center; gap: 6px;
+    }
+    .hr-btn:hover { background: linear-gradient(135deg, #6d28d9, #5b21b6); }
+    .hr-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* ================= COMPANY INFO ================= */
+    .company-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+    .company-logo-box { text-align: center; padding: 35px 20px; }
+    .company-logo {
+        width: 100px; height: 100px; margin: auto;
+        border-radius: 25px;
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        display: flex; align-items: center; justify-content: center;
+        color: white; font-size: 45px; font-weight: bold;
+    }
+    .company-logo-box h2 { margin-top: 15px; }
+    .company-logo-box p { color: #64748b; font-size: 13px; margin-top: 5px; }
+
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .info-field label {
+        display: block; color: #64748b;
+        font-size: 11px; margin-bottom: 6px;
+    }
+    .info-field input,
+    .info-field textarea,
+    .settings-input {
+        width: 100%; padding: 11px 12px;
+        border: 1px solid #e2e8f0; border-radius: 8px;
+        outline: none; font-size: 13px; background: #f8fafc;
+    }
+    .info-field textarea { height: 80px; resize: vertical; }
+    .full { grid-column: 1 / -1; }
+
+    /* ================= ATTENDANCE ================= */
+    .attendance-summary {
+        display: grid; grid-template-columns: repeat(3, 1fr);
+        gap: 18px; margin-bottom: 20px;
+    }
+    .attendance-box {
+        padding: 20px; border-radius: 14px;
+        background: white; border: 1px solid #e5e7eb;
+    }
+    .attendance-box h2 { margin-top: 8px; font-size: 28px; }
+    .attendance-box p { color: #64748b; font-size: 12px; }
+
+    /* ================= VIEW TOGGLE ================= */
+    .view-toggle {
+        display: inline-flex; background: #f1f5f9;
+        border-radius: 10px; padding: 4px;
+        margin-bottom: 20px; gap: 4px;
+    }
+    .view-tab {
+        border: none; background: transparent;
+        padding: 8px 18px; border-radius: 7px;
+        cursor: pointer; font-size: 13px;
+        color: #475569; font-weight: 500; transition: 0.15s;
+    }
+    .view-tab:hover { color: #1e293b; }
+    .view-tab.active {
+        background: white; color: #2563eb;
+        box-shadow: 0 2px 6px rgba(15,23,42,0.08);
     }
 
-    .profile-circle{
-        width:150px;
-        height:150px;
-        font-size:42px;
+    /* ================= SETTINGS ================= */
+    .settings-list { max-width: 850px; }
+    .setting-item {
+        display: flex; justify-content: space-between;
+        align-items: center; padding: 18px 0;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    .setting-item h4 { font-size: 14px; margin-bottom: 4px; }
+    .setting-item p { color: #64748b; font-size: 12px; }
+    .toggle {
+        width: 46px; height: 24px; background: #cbd5e1;
+        border-radius: 20px; position: relative; cursor: pointer;
+    }
+    .toggle::after {
+        content: ""; width: 18px; height: 18px;
+        background: white; border-radius: 50%;
+        position: absolute; top: 3px; left: 3px; transition: 0.2s;
+    }
+    .toggle.active { background: #2563eb; }
+    .toggle.active::after { left: 25px; }
+
+    /* ================= FACE ATTENDANCE ================= */
+    .action-btn.face.enrolled { background: #dcfce7; }
+    .action-btn.face:hover { background: #ede9fe; }
+
+    .enroll-cam {
+        width: 100%; aspect-ratio: 4 / 3; max-height: 330px;
+        background: #0f172a; border-radius: 14px; overflow: hidden;
+        margin-bottom: 12px; display: flex; justify-content: center;
+    }
+    .enroll-cam video { height: 100%; width: 100%; object-fit: cover; transform: scaleX(-1); }
+    .enroll-status { font-size: 14px; font-weight: 600; color: #1d4ed8; min-height: 22px; text-align: center; }
+    .enroll-status.error { color: #dc2626; }
+    .enroll-status.ok { color: #16a34a; }
+    .enroll-progress { height: 8px; background: #e2e8f0; border-radius: 99px; margin-top: 10px; overflow: hidden; }
+    .enroll-progress div { height: 100%; width: 0; background: linear-gradient(90deg, #2563eb, #7c3aed); transition: width 0.3s; }
+
+    .kiosk {
+        display: none; position: fixed; inset: 0; z-index: 5000;
+        background: #0b1220; color: white; flex-direction: column;
+        padding: env(safe-area-inset-top, 0px) 16px env(safe-area-inset-bottom, 0px);
+    }
+    .kiosk.show { display: flex; }
+    .kiosk-top { display: flex; justify-content: space-between; align-items: center; padding: 14px 4px; gap: 12px; }
+    .kiosk-title { font-size: 18px; font-weight: 700; }
+    .kiosk-clock { font-size: 13px; opacity: 0.7; margin-top: 2px; }
+    .kiosk-top-actions { display: flex; align-items: center; gap: 12px; }
+    .kiosk-toggle { font-size: 12px; opacity: 0.85; display: flex; align-items: center; gap: 6px; cursor: pointer; }
+    .kiosk-exit {
+        background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 9px; padding: 8px 14px; font-size: 13px; font-weight: 600; cursor: pointer;
+    }
+    .kiosk-stage {
+        flex: 1; display: flex; flex-direction: column; align-items: center;
+        justify-content: center; gap: 18px; min-height: 0; text-align: center;
+    }
+    .kiosk-ring {
+        width: min(72vw, 340px); aspect-ratio: 1; border-radius: 50%;
+        border: 7px solid #475569; overflow: hidden; background: #000;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .kiosk-ring video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+    .kiosk-ring.idle { border-color: #475569; }
+    .kiosk-ring.wait { border-color: #f59e0b; box-shadow: 0 0 40px rgba(245,158,11,0.35); }
+    .kiosk-ring.ok   { border-color: #22c55e; box-shadow: 0 0 50px rgba(34,197,94,0.5); }
+    .kiosk-ring.fail { border-color: #ef4444; box-shadow: 0 0 50px rgba(239,68,68,0.45); }
+    .kiosk-status { font-size: 18px; font-weight: 600; min-height: 26px; padding: 0 10px; }
+    .kiosk-result { min-height: 64px; }
+    .kiosk-result .kr-name { font-size: 26px; font-weight: 800; }
+    .kiosk-result .kr-line { font-size: 16px; opacity: 0.9; margin-top: 4px; }
+    .kiosk-recent { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0 14px; }
+    .kiosk-recent .chip {
+        flex-shrink: 0; background: rgba(255,255,255,0.1); border-radius: 99px;
+        padding: 6px 12px; font-size: 12px; white-space: nowrap;
     }
 
-    .about-grid{
-        grid-template-columns:1fr;
+    /* ================= SALARY COUNTDOWN ================= */
+    .salary-countdown {
+        display: flex; align-items: center; gap: 18px;
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        color: white; border-radius: 16px;
+        padding: 20px 24px; margin-bottom: 22px;
+        box-shadow: 0 10px 25px rgba(37,99,235,0.22);
+    }
+    .salary-countdown .sc-icon {
+        width: 52px; height: 52px; border-radius: 14px;
+        background: rgba(255,255,255,0.18);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 26px; flex-shrink: 0;
+    }
+    .salary-countdown .sc-body { flex: 1; min-width: 0; }
+    .salary-countdown .sc-label {
+        font-size: 11px; text-transform: uppercase;
+        letter-spacing: 0.6px; opacity: 0.85;
+    }
+    .salary-countdown .sc-main { font-size: 26px; font-weight: 700; margin-top: 3px; }
+    .salary-countdown .sc-sub { font-size: 13px; opacity: 0.9; margin-top: 3px; }
+    .salary-countdown .sc-action {
+        background: rgba(255,255,255,0.2); color: white;
+        border: 1px solid rgba(255,255,255,0.35);
+        border-radius: 9px; padding: 9px 16px;
+        font-size: 13px; font-weight: 600; cursor: pointer;
+        white-space: nowrap;
+    }
+    .salary-countdown .sc-action:hover { background: rgba(255,255,255,0.3); }
+    .salary-countdown.today { background: linear-gradient(135deg, #16a34a, #0d9488); box-shadow: 0 10px 25px rgba(22,163,74,0.25); }
+    .salary-countdown.soon { background: linear-gradient(135deg, #f59e0b, #ea580c); box-shadow: 0 10px 25px rgba(234,88,12,0.25); }
+    .salary-countdown.unset { background: linear-gradient(135deg, #475569, #334155); box-shadow: 0 10px 25px rgba(51,65,85,0.25); }
+    /* compact variant inside the welcome banner */
+    .salary-countdown.compact {
+        margin: 0; padding: 12px 16px; gap: 12px;
+        background: rgba(255,255,255,0.16);
+        border: 1px solid rgba(255,255,255,0.28);
+        box-shadow: none; border-radius: 14px;
+        position: relative; z-index: 1; flex-shrink: 0;
+        min-width: 230px;
+    }
+    .salary-countdown.compact .sc-icon { width: 40px; height: 40px; font-size: 20px; border-radius: 11px; }
+    .salary-countdown.compact .sc-main { font-size: 20px; margin-top: 1px; }
+    .salary-countdown.compact .sc-sub { font-size: 12px; margin-top: 1px; }
+    .salary-countdown.compact.today { background: rgba(34,197,94,0.38); box-shadow: none; }
+    .salary-countdown.compact.soon { background: rgba(245,158,11,0.42); box-shadow: none; }
+    .salary-countdown.compact.unset { background: rgba(255,255,255,0.12); box-shadow: none; }
+    .salary-countdown.compact.unset .sc-sub { display: none; }
+    .salary-countdown.compact .sc-action { padding: 7px 12px; font-size: 12px; }
+
+    @media (max-width: 800px) {
+        .welcome { flex-direction: column; align-items: flex-start; }
+        .salary-countdown.compact { width: 100%; min-width: 0; }
+    }
+    @media (max-width: 600px) {
+        .salary-countdown { flex-wrap: wrap; padding: 16px; }
+        .salary-countdown .sc-main { font-size: 22px; }
     }
 
-    .skill-grid{
-        grid-template-columns:repeat(2,1fr);
+    .salary-day-input {
+        width: 90px; padding: 10px 12px;
+        border: 1px solid #e2e8f0; border-radius: 9px;
+        font-size: 14px; background: #f8fafc; outline: none; text-align: center;
+    }
+    .salary-day-input:focus { border-color: #2563eb; background: white; }
+
+    /* ================= STATUS MESSAGES ================= */
+    .db-status {
+        padding: 10px 16px; border-radius: 8px;
+        font-size: 13px; margin-bottom: 15px;
+        display: flex; align-items: center; gap: 8px;
+    }
+    .db-status.success { background: #dcfce7; color: #166534; }
+    .db-status.error { background: #fee2e2; color: #991b1b; }
+    .db-status.info { background: #dbeafe; color: #1e40af; }
+
+    /* ================= MODAL ================= */
+    .modal-backdrop {
+        display: none; position: fixed; inset: 0;
+        background: rgba(15, 23, 42, 0.55);
+        z-index: 2000; justify-content: center;
+        align-items: center; padding: 20px;
+    }
+    .modal-backdrop.show { display: flex; }
+    .modal {
+        background: white; border-radius: 16px;
+        width: 100%; max-width: 520px;
+        padding: 26px 28px;
+        box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+        animation: fadeIn 0.2s ease;
+        max-height: 90vh; overflow-y: auto;
+    }
+    .modal h3 { font-size: 18px; margin-bottom: 6px; }
+    .modal .modal-sub { font-size: 12px; color: #64748b; margin-bottom: 20px; }
+    .modal .form-row {
+        display: grid; grid-template-columns: 1fr 1fr;
+        gap: 14px; margin-bottom: 14px;
+    }
+    .modal .form-row.full { grid-template-columns: 1fr; }
+    .modal label {
+        display: block; font-size: 11px; color: #64748b;
+        margin-bottom: 5px; text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .modal input, .modal select {
+        width: 100%; padding: 10px 12px;
+        border: 1px solid #e2e8f0; border-radius: 8px;
+        font-size: 13px; background: #f8fafc; outline: none;
+    }
+    .modal input:focus, .modal select:focus {
+        border-color: #2563eb; background: white;
+    }
+    .modal-actions {
+        display: flex; justify-content: flex-end;
+        gap: 10px; margin-top: 22px;
+    }
+    .btn-secondary {
+        background: #f1f5f9; color: #334155;
+        border: none; border-radius: 9px;
+        padding: 11px 17px; cursor: pointer; font-size: 13px;
+        font-family: inherit;
+    }
+    .btn-secondary:hover { background: #e2e8f0; }
+    .btn-danger {
+        background: #dc2626; color: white;
+        border: none; border-radius: 9px;
+        padding: 11px 17px; cursor: pointer; font-size: 13px;
+        font-family: inherit;
+    }
+    .btn-danger:hover { background: #b91c1c; }
+    .btn-danger:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-print {
+        background: #7c3aed; color: white;
+        border: none; border-radius: 9px;
+        padding: 11px 17px; cursor: pointer; font-size: 13px;
+        font-family: inherit; font-weight: 600;
+    }
+    .btn-print:hover { background: #6d28d9; }
+
+    .action-btn {
+        border: none; background: #f1f5f9;
+        width: 32px; height: 32px; border-radius: 8px;
+        cursor: pointer; font-size: 14px;
+        margin-right: 5px; transition: 0.15s;
+    }
+    .action-btn:hover { background: #e2e8f0; transform: translateY(-1px); }
+    .action-btn.edit:hover { background: #dbeafe; }
+    .action-btn.delete:hover { background: #fee2e2; }
+    .action-btn.print:hover { background: #ede9fe; }
+
+    /* ================= MOBILE ================= */
+    .overlay {
+        display: none; position: fixed; inset: 0;
+        background: rgba(0,0,0,0.4); z-index: 999;
     }
 
-    .project-grid{
-        grid-template-columns:1fr;
+    @media(max-width: 1100px) {
+        .cards { grid-template-columns: repeat(2, 1fr); }
+        .dashboard-grid { grid-template-columns: 1fr; }
+    }
+    @media(max-width: 800px) {
+        .sidebar { left: -260px; }
+        .sidebar.open { left: 0; }
+        .main { margin-left: 0; }
+        .mobile-menu { display: block; }
+        .overlay.show { display: block; }
+        .topbar { padding: 0 15px; }
+        .search { display: none; }
+        .profile-info { display: none; }
+        .caret { display: none; }
+        .content { padding: 18px; }
+        .company-grid { grid-template-columns: 1fr; }
+    }
+    @media(max-width: 600px) {
+        .cards { grid-template-columns: 1fr; }
+        .attendance-summary { grid-template-columns: 1fr; }
+        .info-grid { grid-template-columns: 1fr; }
+        .welcome { padding: 20px; }
+        .welcome h2 { font-size: 20px; }
+        .page-head { align-items: flex-start; gap: 12px; }
+        .page-head h2 { font-size: 19px; }
+        .primary-btn { white-space: nowrap; }
+        .quick-actions { grid-template-columns: 1fr 1fr; }
     }
 
-    section{
-        padding:70px 18px;
+    /* ================= SALARY SECTION ================= */
+    .salary-toolbar {
+        display: flex; flex-wrap: wrap; align-items: center;
+        gap: 12px; margin-bottom: 18px;
     }
-}
-
-@media(max-width:400px){
-
-    .skill-grid{
-        grid-template-columns:1fr;
+    .salary-toolbar input[type="month"] {
+        padding: 9px 12px; border: 1px solid #e2e8f0;
+        border-radius: 8px; font-size: 13px; background: white;
     }
-
-    .hero h1{
-        font-size:42px;
+    .salary-toolbar .status-pill {
+        padding: 6px 14px; border-radius: 30px; font-size: 12px;
+        font-weight: 600; background: #f1f5f9; color: #334155;
     }
-}
+    .salary-toolbar .status-pill.overdue { background: #fee2e2; color: #991b1b; }
+    .salary-toolbar .status-pill.paid { background: #dcfce7; color: #166534; }
+    .salary-toolbar .status-pill.partial { background: #fef3c7; color: #b45309; }
+
+    .salary-summary {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+        gap: 16px; margin-bottom: 22px;
+    }
+    .salary-summary .box {
+        background: white; border: 1px solid #e5e7eb;
+        border-radius: 14px; padding: 16px 18px;
+    }
+    .salary-summary .box p { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.4px; }
+    .salary-summary .box h2 { font-size: 22px; margin-top: 6px; }
+
+    .salary-amount { font-weight: 700; color: #1e293b; }
+    .salary-amount.paid { color: #16a34a; }
+    .salary-amount.overdue { color: #dc2626; }
+    .salary-amount.partial { color: #d97706; }
+
+    .carry-badge {
+        display: inline-block; background: #fef3c7; color: #b45309;
+        font-size: 10px; font-weight: 700; padding: 3px 9px;
+        border-radius: 20px; margin-left: 6px;
+    }
+    .collect-btn {
+        background: #16a34a; color: white; border: none;
+        border-radius: 8px; padding: 7px 13px; font-size: 12px;
+        font-weight: 600; cursor: pointer; transition: 0.15s;
+        white-space: nowrap;
+    }
+    .collect-btn:hover { background: #15803d; }
+    .collect-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .collect-btn.secondary {
+        background: #f1f5f9; color: #334155;
+    }
+    .collect-btn.secondary:hover { background: #e2e8f0; }
+
+    /* Salary history */
+    .history-summary {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 12px; margin-bottom: 18px;
+    }
+    .history-summary .hbox {
+        background: #f8fafc; border: 1px solid #e5e7eb;
+        border-radius: 10px; padding: 12px;
+        text-align: center;
+    }
+    .history-summary .hbox p { font-size: 10px; color: #64748b; text-transform: uppercase; }
+    .history-summary .hbox h3 { font-size: 18px; margin-top: 5px; }
+    /* ================= DARK MODE ================= */
+    body.dark-mode {background:#0b1220;color:#e2e8f0;color-scheme:dark}
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode h3,
+    body.dark-mode h4 {color:#f1f5f9}
+    body.dark-mode .welcome h2 {color:white}
+    body.dark-mode .topbar {background:#111827;border-bottom-color:#243044}
+    body.dark-mode .mobile-menu {background:#1e293b;color:#e2e8f0}
+    body.dark-mode .page-title h1,
+    body.dark-mode .login-card h2,
+    body.dark-mode .profile-dropdown-header strong {color:#f1f5f9}
+    body.dark-mode .page-title p,
+    body.dark-mode .page-head p,
+    body.dark-mode .login-card .subtitle,
+    body.dark-mode .login-field label,
+    body.dark-mode .search span,
+    body.dark-mode .profile-info span,
+    body.dark-mode .caret,
+    body.dark-mode .profile-dropdown-header span,
+    body.dark-mode .stat-info p,
+    body.dark-mode .company-logo-box p,
+    body.dark-mode .info-field label,
+    body.dark-mode .attendance-box p,
+    body.dark-mode .setting-item p,
+    body.dark-mode .modal .modal-sub,
+    body.dark-mode .modal label,
+    body.dark-mode .salary-summary .box p,
+    body.dark-mode .history-summary .hbox p,
+    body.dark-mode .menu-title {color:#94a3b8}
+    body.dark-mode .login-card,
+    body.dark-mode .card,
+    body.dark-mode .attendance-box,
+    body.dark-mode .salary-summary .box,
+    body.dark-mode .modal,
+    body.dark-mode .profile-dropdown {background:#172033;border-color:#273449}
+    body.dark-mode .login-card {box-shadow:0 25px 60px rgba(0,0,0,.6)}
+    body.dark-mode .card,
+    body.dark-mode .attendance-box,
+    body.dark-mode .salary-summary .box {box-shadow:0 3px 12px rgba(0,0,0,.25)}
+    body.dark-mode .login-field input,
+    body.dark-mode .search input,
+    body.dark-mode .info-field input,
+    body.dark-mode .info-field textarea,
+    body.dark-mode .settings-input,
+    body.dark-mode .salary-day-input,
+    body.dark-mode .modal input,
+    body.dark-mode .modal select,
+    body.dark-mode .modal textarea,
+    body.dark-mode .salary-toolbar input[type="month"] {background:#0f172a;border-color:#334155;color:#e2e8f0}
+    body.dark-mode .login-field input:focus,
+    body.dark-mode .salary-day-input:focus,
+    body.dark-mode .modal input:focus,
+    body.dark-mode .modal select:focus {background:#111c30;border-color:#3b82f6}
+    body.dark-mode .notification,
+    body.dark-mode .profile:hover {background:#1e293b}
+    body.dark-mode .profile-dropdown-header {border-bottom-color:#273449}
+    body.dark-mode .dropdown-item {color:#cbd5e1}
+    body.dark-mode .dropdown-item:hover {background:#273449}
+    body.dark-mode .dropdown-item.danger {color:#f87171}
+    body.dark-mode .dropdown-item.danger:hover {background:rgba(220,38,38,.18)}
+    body.dark-mode .blue {background:rgba(37,99,235,.2);color:#60a5fa}
+    body.dark-mode .green {background:rgba(22,163,74,.2);color:#4ade80}
+    body.dark-mode .orange {background:rgba(234,88,12,.22);color:#fb923c}
+    body.dark-mode .purple {background:rgba(124,58,237,.25);color:#a78bfa}
+    body.dark-mode .card-header button {color:#60a5fa}
+    body.dark-mode th {background:#1e293b;color:#94a3b8}
+    body.dark-mode td {border-bottom-color:#273449}
+    body.dark-mode .small-avatar {background:#312e81;color:#c7d2fe}
+    body.dark-mode .present {background:rgba(34,197,94,.16);color:#4ade80}
+    body.dark-mode .absent {background:rgba(239,68,68,.16);color:#f87171}
+    body.dark-mode .leave {background:rgba(245,158,11,.16);color:#fbbf24}
+    body.dark-mode .weekoff {background:rgba(99,102,241,.2);color:#a5b4fc}
+    body.dark-mode .wh-badge {background:rgba(59,130,246,.15);color:#93c5fd;border-color:rgba(59,130,246,.35)}
+    body.dark-mode .wh-badge.overtime {background:rgba(34,197,94,.16);color:#86efac;border-color:rgba(34,197,94,.35)}
+    body.dark-mode .wh-badge.low {background:rgba(245,158,11,.16);color:#fbbf24;border-color:rgba(245,158,11,.35)}
+    body.dark-mode .wh-badge.empty,
+    body.dark-mode .exp-badge.new {background:#1e293b;color:#94a3b8;border-color:#334155}
+    body.dark-mode .exp-badge {background:rgba(168,85,247,.16);color:#d8b4fe;border-color:rgba(168,85,247,.35)}
+    body.dark-mode .quick-btn {background:#1e293b;border-color:#334155}
+    body.dark-mode .quick-btn:hover {background:#1e3a5f;border-color:#2563eb}
+    body.dark-mode .quick-btn span {color:#cbd5e1}
+    body.dark-mode .view-toggle {background:#1e293b}
+    body.dark-mode .view-tab {color:#94a3b8}
+    body.dark-mode .view-tab:hover {color:#e2e8f0}
+    body.dark-mode .view-tab.active {background:#334155;color:#93c5fd;box-shadow:none}
+    body.dark-mode .setting-item {border-bottom-color:#273449}
+    body.dark-mode .toggle {background:#475569}
+    body.dark-mode .toggle.active {background:#2563eb}
+    body.dark-mode .btn-secondary,
+    body.dark-mode .collect-btn.secondary,
+    body.dark-mode .action-btn {background:#273449;color:#e2e8f0}
+    body.dark-mode .btn-secondary:hover,
+    body.dark-mode .collect-btn.secondary:hover,
+    body.dark-mode .action-btn:hover {background:#334155}
+    body.dark-mode .action-btn.edit:hover {background:rgba(37,99,235,.35)}
+    body.dark-mode .action-btn.delete:hover {background:rgba(220,38,38,.35)}
+    body.dark-mode .action-btn.print:hover,
+    body.dark-mode .action-btn.face:hover {background:rgba(124,58,237,.35)}
+    body.dark-mode .action-btn.face.enrolled {background:rgba(34,197,94,.25)}
+    body.dark-mode .db-status.success {background:rgba(34,197,94,.16);color:#86efac}
+    body.dark-mode .db-status.error {background:rgba(239,68,68,.16);color:#fca5a5}
+    body.dark-mode .db-status.info {background:rgba(59,130,246,.16);color:#93c5fd}
+    body.dark-mode #loginError {background:rgba(239,68,68,.16);color:#fca5a5}
+    body.dark-mode .modal-backdrop {background:rgba(2,6,23,.75)}
+    body.dark-mode .salary-toolbar .status-pill {background:#273449;color:#cbd5e1}
+    body.dark-mode .salary-toolbar .status-pill.overdue {background:rgba(239,68,68,.16);color:#fca5a5}
+    body.dark-mode .salary-toolbar .status-pill.paid {background:rgba(34,197,94,.16);color:#86efac}
+    body.dark-mode .salary-toolbar .status-pill.partial,
+    body.dark-mode .carry-badge {background:rgba(245,158,11,.16);color:#fbbf24}
+    body.dark-mode .salary-amount {color:#e2e8f0}
+    body.dark-mode .salary-amount.paid {color:#4ade80}
+    body.dark-mode .salary-amount.overdue {color:#f87171}
+    body.dark-mode .salary-amount.partial {color:#fbbf24}
+    body.dark-mode .history-summary .hbox {background:#1e293b;border-color:#334155}
+    body.dark-mode .enroll-progress {background:#334155}
+    body.dark-mode .enroll-status {color:#93c5fd}
+    body.dark-mode .enroll-status.error {color:#f87171}
+    body.dark-mode .enroll-status.ok {color:#4ade80}
+    body.dark-mode [style*="background:white"],
+    body.dark-mode [style*="background:#f1f5f9"] {background:#1e293b !important}
+    body.dark-mode [style*="background:#eff6ff"] {background:rgba(59,130,246,.15) !important;border-color:rgba(59,130,246,.35) !important}
+    body.dark-mode [style*="background:#ede9fe"] {background:rgba(124,58,237,.2) !important;border-color:rgba(124,58,237,.4) !important}
+    body.dark-mode [style*="border:1px solid #e5e7eb"],
+    body.dark-mode [style*="border:1px solid #ddd"] {border-color:#334155 !important}
+    body.dark-mode [style*="color:#1e293b"] {color:#e2e8f0 !important}
+    body.dark-mode [style*="color:#64748b"] {color:#94a3b8 !important}
+    body.dark-mode [style*="color:#1d4ed8"] {color:#93c5fd !important}
+    body.dark-mode [style*="color:#15803d"],
+    body.dark-mode [style*="color:#16a34a"] {color:#4ade80 !important}
+    body.dark-mode [style*="color:#dc2626"],
+    body.dark-mode [style*="color:#b91c1c"] {color:#f87171 !important}
+    body.dark-mode [style*="color:#b45309"] {color:#fbbf24 !important}
+    body.dark-mode [style*="color:#6d28d9"] {color:#c4b5fd !important}
+    body.dark-mode { transition: background 0.2s, color 0.2s; }
 </style>
 </head>
 
 <body>
+<script>try{if(localStorage.getItem('staffpro_dark_mode')==='1')document.body.classList.add('dark-mode');}catch(e){}</script>
 
-<!-- NAVIGATION -->
-<nav>
-    <div class="nav-container">
+<!-- ================= ADMIN LOGIN SCREEN ================= -->
+<div id="loginScreen">
+    <div class="login-card">
+        <div class="login-logo">👥</div>
+        <h2>KCST Staff Pro</h2>
+        <p class="subtitle">Administrator Login</p>
 
-        <div class="logo">
-            SAYYID <span>SHEREEF KC</span>
+        <div id="loginError"></div>
+
+        <div class="login-field">
+            <label>Email</label>
+            <input id="loginEmail" type="email" placeholder="info@kcstIndia.com" autocomplete="username">
         </div>
 
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <div class="login-field">
+            <label>Password</label>
+            <input id="loginPassword" type="password" placeholder="••••••••" autocomplete="current-password">
+        </div>
 
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home" onclick="closeMenu()">Home</a></li>
-            <li><a href="#about" onclick="closeMenu()">About</a></li>
-            <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
-            <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
-            <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
-        </ul>
+        <button class="login-btn" id="loginBtn" onclick="doAdminLogin()">🔓 Login</button>
 
+        <p class="login-hint">KCST Media Technology   9633315177</p>
     </div>
-</nav>
-
-
-<!-- HERO -->
-<section class="hero" id="home">
-
-    <div class="hero-container">
-
-        <div>
-
-            <div class="badge">
-                👋 Welcome to my personal website
-            </div>
-
-            <h1>
-                Hi, I'm <span>SAYYID</span><br>
-                SHEREEF KC
-            </h1>
-
-            <p>
-                Developer, creator and technology enthusiast.
-                I build useful software, web applications and
-                digital tools that make everyday work easier.
-            </p>
-
-            <div class="buttons">
-                <a href="#projects" class="btn btn-primary">
-                    🚀 My Projects
-                </a>
-
-                <a href="#contact" class="btn btn-secondary">
-                    📩 Contact Me
-                </a>
-            </div>
-
-        </div>
-
-        <div class="profile">
-
-            <div class="profile-card">
-
-                <div class="profile-circle">
-                    <div class="profile-circle">
-    <img src="https://shorturl.at/CBFHX" alt="SAYYID SHEREEF KC">
 </div>
+
+<!-- ================= SIDEBAR ================= -->
+<div class="sidebar" id="sidebar">
+    <div class="logo">
+        <div class="logo-icon">👥</div>
+        <div>
+            <h2>KCST Staff Pro</h2>
+            <span>Staff Management System</span>
+        </div>
+    </div>
+
+    <div class="menu-title">Main Menu</div>
+    <a class="menu-item active" data-section="dashboard"><span class="menu-icon">🏠</span>Dashboard</a>
+    <a class="menu-item" data-section="company"><span class="menu-icon">🏢</span>Company Info</a>
+    <a class="menu-item" data-section="staff"><span class="menu-icon">👥</span>Staff Details</a>
+    <a class="menu-item" data-section="attendance"><span class="menu-icon">🕒</span>Attendance</a>
+    <a class="menu-item" data-section="salary"><span class="menu-icon">💰</span>Salary Collection</a>
+
+    <div class="menu-title">System</div>
+    <a class="menu-item" data-section="settings"><span class="menu-icon">⚙️</span>Settings</a>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- ================= MAIN ================= -->
+<div class="main" id="mainApp">
+
+    <div class="topbar">
+        <div class="top-left">
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+            <div class="page-title">
+                <h1 id="topTitle">Dashboard</h1>
+                <p id="topSubtitle">Staff Management System</p>
+            </div>
+        </div>
+
+        <div class="top-right">
+            <div class="search">
+                <span>🔍</span>
+                <input type="text" placeholder="Search...">
+            </div>
+
+            <div class="notification">🔔<div class="dot"></div></div>
+
+            <div class="profile-wrapper">
+                <div class="profile" id="profileTrigger" onclick="toggleProfileDropdown(event)">
+                    <div class="avatar" id="adminAvatar">A</div>
+                    <div class="profile-info">
+                        <strong id="adminNameLabel">SAYYID SHEREEF KC</strong>
+                        <span>Administrator</span>
+                    </div>
+                    <span class="caret">▼</span>
                 </div>
 
-                <div class="profile-label">
-                    
+                <div class="profile-dropdown" id="profileDropdown">
+                    <div class="profile-dropdown-header">
+                        <strong id="dropdownAdminName">SAYYID SHEREEF KC</strong>
+                        <span id="dropdownAdminEmail">—</span>
+                    </div>
+
+                    <button class="dropdown-item" onclick="dropdownGoto('settings')">
+                        <span class="icon">⚙️</span>
+                        Settings
+                    </button>
+
+                    <button class="dropdown-item" onclick="dropdownGoto('company')">
+                        <span class="icon">🏢</span>
+                        Company Info
+                    </button>
+
+                    <button class="dropdown-item danger" onclick="dropdownLogout()">
+                        <span class="icon">🚪</span>
+                        Log Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div id="globalStatus" class="db-status info" style="display:none;"></div>
+
+        <!-- ================= DASHBOARD ================= -->
+        <section class="section active" id="dashboard">
+            <div class="welcome">
+                <div class="welcome-text">
+                    <h2>Welcome back, SAYYID SHEREEF KC! 👋</h2>
+                    <p>Here's what's happening with your company today.</p>
+                </div>
+                <div class="salary-countdown compact unset js-salary-countdown" data-compact="1"></div>
+            </div>
+
+            <div class="cards">
+                <div class="card stat-card">
+                    <div class="stat-info"><p>Total Staff</p><h2 id="dashTotalStaff">–</h2></div>
+                    <div class="stat-icon blue">👥</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-info"><p>Present Today</p><h2 id="dashPresentToday">–</h2></div>
+                    <div class="stat-icon green">✓</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-info"><p>On Leave</p><h2 id="dashOnLeave">–</h2></div>
+                    <div class="stat-icon orange">📅</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-info"><p>Absent</p><h2 id="dashAbsent">–</h2></div>
+                    <div class="stat-icon purple">⚠</div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Today's Attendance</h3>
+                        <button onclick="showSection('attendance')">View All →</button>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr><th>Staff</th><th>Time</th><th>Hours</th><th>Status</th></tr>
+                            </thead>
+                            <tbody id="dashboardAttendanceBody">
+                                <tr><td colspan="4" style="text-align:center;color:#94a3b8;">Loading…</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
+                <div class="card">
+                    <div class="card-header"><h3>Quick Actions</h3></div>
+                    <div class="quick-actions">
+                        <div class="quick-btn" onclick="showSection('staff')"><div>➕</div><span>Add Staff</span></div>
+                        <div class="quick-btn" onclick="showSection('attendance')"><div>🕒</div><span>Attendance</span></div>
+                        <div class="quick-btn" onclick="showSection('salary')"><div>💰</div><span>Salary</span></div>
+                        <div class="quick-btn" onclick="showSection('settings')"><div>⚙️</div><span>Settings</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= COMPANY ================= -->
+        <section class="section" id="company">
+            <div class="page-head">
+                <div><h2>Company Information</h2><p>Manage your company details</p></div>
+                <button class="primary-btn" onclick="saveCompany()">💾 Save Changes</button>
             </div>
 
-        </div>
+            <div class="company-grid">
+                <div class="card company-logo-box">
+                    <div class="company-logo">S</div>
+                    <h2 id="companyLogoName">StaffPro</h2>
+                    <p>Staff Management System</p>
+                    <br>
+                    <button class="primary-btn">Change Logo</button>
+                </div>
+
+                <div class="card">
+                    <div class="info-grid">
+                        <div class="info-field">
+                            <label>Company Name</label>
+                            <input id="companyName" value="StaffPro Technologies">
+                        </div>
+                        <div class="info-field">
+                            <label>Registration Number</label>
+                            <input id="companyReg" value="REG-2026-001">
+                        </div>
+                        <div class="info-field">
+                            <label>Phone Number</label>
+                            <input id="companyPhone" value="+91 98765 43210">
+                        </div>
+                        <div class="info-field">
+                            <label>Email Address</label>
+                            <input id="companyEmail" value="info@company.com">
+                        </div>
+                        <div class="info-field">
+                            <label>Website</label>
+                            <input id="companyWebsite" value="www.company.com">
+                        </div>
+                        <div class="info-field">
+                            <label>GSTIN</label>
+                            <input id="companyGstin" value="32ABCDE1234F1Z5">
+                        </div>
+                        <div class="info-field full">
+                            <label>Company Address</label>
+                            <textarea id="companyAddress">Company Road,
+Kerala, India</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= STAFF ================= -->
+        <section class="section" id="staff">
+            <div class="page-head">
+                <div><h2>Staff Details</h2><p>Manage employees and staff information</p></div>
+                <div class="page-head-actions">
+                    <button class="hr-btn" onclick="printHRStaffReport()">📄 Print HR Report</button>
+                    <button class="primary-btn" onclick="addStaff()">➕ Add Staff</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th><th>Staff Name</th><th>Role</th>
+                                <th>Department</th><th>Joined Date</th>
+                                <th>Experience</th>
+                                <th>Daily Rate</th><th style="text-align:right;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staffTableBody">
+                            <tr><td colspan="8" style="text-align:center;color:#94a3b8;">Loading…</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ATTENDANCE ================= -->
+        <section class="section" id="attendance">
+            <div class="page-head">
+                <div><h2>Attendance</h2><p>Track daily and monthly staff attendance</p></div>
+                <div class="page-head-actions">
+                    <button class="hr-btn" onclick="printHRReport()">📄 HR Department Report</button>
+                    <button class="hr-btn" onclick="openFaceKiosk()">🙂 Face Attendance</button>
+                    <button class="primary-btn" onclick="markAttendance()">🕒 Mark Attendance</button>
+                </div>
+            </div>
+
+            <div class="view-toggle">
+                <button class="view-tab active" id="tabDay" onclick="switchAttendanceView('day')">📅 Day</button>
+                <button class="view-tab" id="tabMonth" onclick="switchAttendanceView('month')">📆 Month</button>
+            </div>
+
+            <!-- DAY VIEW -->
+            <div id="attendanceDayView">
+                <div class="attendance-summary">
+                    <div class="attendance-box"><p>Present Today</p><h2 id="attPresentToday">–</h2></div>
+                    <div class="attendance-box"><p>Absent Today</p><h2 id="attAbsentToday">–</h2></div>
+                    <div class="attendance-box"><p>On Leave</p><h2 id="attOnLeave">–</h2></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Daily Attendance</h3>
+                        <input type="date" id="attendanceDate" style="padding:8px;border:1px solid #ddd;border-radius:7px;">
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Staff ID</th><th>Staff Name</th>
+                                    <th>Check In</th><th>Check Out</th>
+                                    <th>Working Hours</th>
+                                    <th>Status</th><th style="text-align:right;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="attendanceTableBody">
+                                <tr><td colspan="7" style="text-align:center;color:#94a3b8;">Loading…</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MONTH VIEW -->
+            <div id="attendanceMonthView" style="display:none;">
+                <div class="card" style="margin-bottom:20px;">
+                    <div class="card-header">
+                        <h3>Month Overview</h3>
+                        <input type="month" id="attendanceMonth" style="padding:8px;border:1px solid #ddd;border-radius:7px;">
+                    </div>
+                </div>
+
+                <div class="attendance-summary">
+                    <div class="attendance-box"><p>Total Present</p><h2 id="monthTotalPresent">–</h2></div>
+                    <div class="attendance-box"><p>Total Absent</p><h2 id="monthTotalAbsent">–</h2></div>
+                    <div class="attendance-box"><p>Total Working Hours</p><h2 id="monthTotalHours" style="color:#1d4ed8;">–</h2></div>
+                </div>
+
+                <div class="card" style="margin-bottom:20px;">
+                    <div class="card-header">
+                        <h3>Per-Staff Summary</h3>
+                        <span style="font-size:12px;color:#64748b;">Click 🔍 to see full monthly detail</span>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Staff ID</th><th>Staff Name</th>
+                                    <th>Present</th><th>Absent</th><th>Leave</th>
+                                    <th>Week Off</th><th>Total Hours</th><th>Total Records</th>
+                                    <th style="text-align:right;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="monthStaffBody">
+                                <tr><td colspan="9" style="text-align:center;color:#94a3b8;">Loading…</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header"><h3>Daily Breakdown</h3></div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th><th>Present</th><th>Absent</th>
+                                    <th>Leave</th><th>Total Hours</th><th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="monthDailyBody">
+                                <tr><td colspan="6" style="text-align:center;color:#94a3b8;">Loading…</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SALARY COLLECTION ================= -->
+        <section class="section" id="salary">
+            <div class="page-head">
+                <div><h2>Salary Collection</h2><p>Record salary payments and carry forward unpaid amounts</p></div>
+                <button class="primary-btn" onclick="loadSalaryData()">🔄 Refresh</button>
+            </div>
+
+            <div class="salary-countdown unset js-salary-countdown"></div>
+
+            <div class="salary-toolbar">
+                <label style="font-size:12px;color:#64748b;">Select Month:</label>
+                <input type="month" id="salaryMonth" onchange="loadSalaryData()">
+                <span class="status-pill" id="salaryStatusPill">—</span>
+                <span style="flex:1;"></span>
+                <button class="btn-secondary" onclick="loadSalaryData()" style="padding:8px 16px;">Apply</button>
+            </div>
+
+            <div class="salary-summary" id="salarySummary">
+                <div class="box"><p>Total Salary</p><h2 id="salaryTotalPayable">–</h2></div>
+                <div class="box"><p>Total Collected</p><h2 id="salaryTotalCollected" style="color:#16a34a;">–</h2></div>
+                <div class="box"><p>Outstanding</p><h2 id="salaryTotalOutstanding" style="color:#dc2626;">–</h2></div>
+                <div class="box"><p>Carried Forward</p><h2 id="salaryCarriedForward" style="color:#b45309;">–</h2></div>
+                <div class="box"><p>Other Income</p><h2 id="salaryTotalIncome" style="color:#16a34a;">–</h2></div>
+                <div class="box"><p>Deductions</p><h2 id="salaryTotalDeduction" style="color:#dc2626;">–</h2></div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Staff Salary Ledger</h3>
+                    <span style="font-size:12px;color:#64748b;">Unpaid amounts are automatically carried to next month</span>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Staff ID</th>
+                                <th>Name</th>
+                                <th>Payable</th>
+                                <th>Previous Due</th>
+                                <th>Collected</th>
+                                <th>Balance</th>
+                                <th style="text-align:right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salaryTableBody">
+                            <tr><td colspan="7" style="text-align:center;color:#94a3b8;">Select a month and click Refresh.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SETTINGS ================= -->
+        <section class="section" id="settings">
+            <div class="page-head">
+                <div><h2>Settings</h2><p>Configure your staff management system</p></div>
+                <button class="primary-btn" onclick="saveSettings()">💾 Save Settings</button>
+            </div>
+
+            <div class="card settings-list">
+                <div class="setting-item">
+                    <div><h4>Automatic Attendance</h4><p>Automatically record attendance based on check-in time.</p></div>
+                    <div class="toggle active" onclick="toggleSetting(this)"></div>
+                </div>
+                <div class="setting-item">
+                    <div><h4>Attendance Notifications</h4><p>Receive notifications for late or absent staff.</p></div>
+                    <div class="toggle active" onclick="toggleSetting(this)"></div>
+                </div>
+                <div class="setting-item">
+                    <div><h4>Dark Mode</h4><p>Use dark theme for the dashboard.</p></div>
+                    <div class="toggle" onclick="toggleDarkMode(this)"></div>
+                </div>
+                <div class="setting-item">
+                    <div>
+                        <h4>Salary Date</h4>
+                        <p>Day of the month salary is paid (1–31). If a month is shorter, the last day is used.</p>
+                    </div>
+                    <input type="number" id="salaryDayInput" class="salary-day-input" min="1" max="31" step="1" placeholder="e.g. 1" oninput="previewSalaryCountdown()">
+                </div>
+                <div class="setting-item">
+                    <div><h4>System Backup</h4><p>Keep regular backups of company and staff data.</p></div>
+                    <button class="primary-btn" onclick="backupData()">Backup</button>
+                </div>
+            </div>
+        </section>
 
     </div>
+</div>
 
-</section>
+<!-- ================= MARK ATTENDANCE MODAL ================= -->
+<div class="modal-backdrop" id="markAttendanceModal">
+    <div class="modal">
+        <h3>Mark Attendance</h3>
+        <p class="modal-sub">Record a staff member's attendance for a specific date.</p>
 
-
-<!-- ABOUT -->
-<section id="about">
-
-    <div class="section-container">
-
-        <div class="section-title">
-            <h2>About Me</h2>
-            <p>A little about who I am and what I do</p>
+        <div class="form-row full">
+            <div>
+                <label>Staff *</label>
+                <select id="markStaffSelect"><option value="">— Loading staff… —</option></select>
+            </div>
         </div>
 
-        <div class="about-grid">
-
-            <div class="about-card">
-
-                <h3>👨‍💻 Who I Am</h3>
-
-                <p>
-                    I am interested in software development,
-                    web technologies, accounting systems and
-                    practical digital solutions.
-                </p>
-
-                <p style="margin-top:12px;">
-                    I enjoy creating applications that are simple,
-                    useful and easy for people to use.
-                </p>
-
+        <div class="form-row">
+            <div><label>Date *</label><input id="markDate" type="date"></div>
+            <div>
+                <label>Status *</label>
+                <select id="markStatus">
+                    <option value="present">Present</option>
+                    <option value="absent">Absent</option>
+                    <option value="leave">Leave</option>
+                    <option value="week_off">Week Off</option>
+                </select>
             </div>
-
-            <div class="about-card">
-
-                <h3>💡 What I Do</h3>
-
-                <p>
-                    I work with HTML, CSS, JavaScript, VB6,
-                    databases and other technologies to create
-                    websites, business applications and
-                    educational tools.
-                </p>
-
-                <p style="margin-top:12px;">
-                    I also enjoy learning new technologies and
-                    turning ideas into working projects.
-                </p>
-
-            </div>
-
         </div>
 
+        <div class="form-row">
+            <div><label>Check In</label><input id="markCheckIn" type="time"></div>
+            <div><label>Check Out</label><input id="markCheckOut" type="time"></div>
+        </div>
+
+        <div class="form-row full">
+            <div>
+                <label>Working Hours (auto-calculated)</label>
+                <input id="markWorkingHours" readonly style="background:#f1f5f9;color:#1d4ed8;font-weight:600;">
+            </div>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-secondary" onclick="closeMarkModal()">Cancel</button>
+            <button class="primary-btn" onclick="saveAttendance()" id="markSaveBtn">🕒 Save Attendance</button>
+        </div>
     </div>
+</div>
 
-</section>
-
-
-<!-- SKILLS -->
-<section class="skills" id="skills">
-
-    <div class="section-container">
-
-        <div class="section-title">
-
-            <h2>My Skills</h2>
-
-            <p>
-                Technologies and areas I work with
-            </p>
-
+<!-- ================= FACE ENROLL MODAL ================= -->
+<div class="modal-backdrop" id="faceEnrollModal">
+    <div class="modal">
+        <h3 id="faceEnrollTitle">Enroll Face</h3>
+        <p class="modal-sub">Captures 5 quick samples of the face for attendance. Only numeric face data is stored, not photos. <span style="color:#94a3b8;">Build: face-v7 · table staff_face_descriptors</span></p>
+        <div class="enroll-cam"><video id="enrollVideo" playsinline muted autoplay></video></div>
+        <div class="enroll-status" id="enrollStatus">Preparing…</div>
+        <div class="enroll-progress"><div id="enrollBar"></div></div>
+        <div class="modal-actions">
+            <button class="btn-secondary" id="enrollRemoveBtn" style="display:none;" onclick="removeFaceData()">🗑️ Remove</button>
+            <button class="btn-secondary" onclick="closeFaceEnroll()">Close</button>
+            <button class="primary-btn" id="enrollStartBtn" onclick="startFaceCapture()" disabled>📸 Start Capture</button>
         </div>
-
-        <div class="skill-grid">
-
-            <div class="skill">
-                <div class="skill-icon">💻</div>
-                <h3>Visual Studo</h3>
-            </div>
-
-            <div class="skill">
-                <div class="skill-icon">🌐</div>
-                <h3>HTML / CSS</h3>
-            </div>
-
-            <div class="skill">
-                <div class="skill-icon">⚡</div>
-                <h3>JavaScript</h3>
-            </div>
-
-            <div class="skill">
-                <div class="skill-icon">🔥</div>
-                <h3>Database</h3>
-            </div>
-
-            <div class="skill">
-                <div class="skill-icon">🗄️</div>
-                <h3>MS Access</h3>
-            </div>
-
-            <div class="skill">
-                <div class="skill-icon">📊</div>
-                <h3>Accounting</h3>
-            </div>
-
-            <div class="skill">
-                <div class="skill-icon">🧾</div>
-                <h3>GST</h3>
-            </div>
-
-            <div class="skill">
-                <div class="skill-icon">🎨</div>
-                <h3>UI Design</h3>
-            </div>
-
-        </div>
-
     </div>
+</div>
 
-</section>
-
-
-<!-- PROJECTS -->
-<section id="projects">
-
-    <div class="section-container">
-
-        <div class="section-title">
-
-            <h2>My Projects</h2>
-
-            <p>
-                Some of the things I have created
-            </p>
-
+<!-- ================= FACE ATTENDANCE KIOSK ================= -->
+<div class="kiosk" id="faceKiosk">
+    <div class="kiosk-top">
+        <div>
+            <div class="kiosk-title">🙂 Face Attendance</div>
+            <div class="kiosk-clock" id="kioskClock"></div>
         </div>
-
-        <div class="project-grid">
-
-            <div class="project">
-
-                <div class="project-icon">🧾</div>
-
-                <h3>KCST GST Learn</h3>
-
-                <p>
-                    An educational project designed to help
-                    students understand GST registration,
-                    returns and GST portal procedures.
-                </p>
-
-                <a href="https://sayyidkcst.github.io/-KCST_GST_Learn/index.html">
-                    View Project →
-                </a>
-
-            </div>
-
-
-            <div class="project">
-
-                <div class="project-icon">💻</div>
-
-                <h3>KCST Code Bank</h3>
-
-                <p>
-                    A personal collection and management system
-                    for storing useful programming code snippets.
-                </p>
-
-                <a href="https://sayyidkcst.github.io/kcstcodebank/">
-                    View Project →
-                </a>
-
-            </div>
-
-
-            <div class="project">
-
-                <div class="project-icon">🔐</div>
-
-                <h3>KCST Vault</h3>
-
-                <p>
-                    A digital project focused on organizing and
-                    securely managing useful information.
-                </p>
-
-                <a href="https://sites.google.com/view/kcstfamily143/certificate">
-                    View Project →
-                </a>
-
-            </div>
-
-
-            <div class="project">
-
-                <div class="project-icon">📊</div>
-
-                <h3>More Downloads</h3>
-
-                <p>
-                    A business finance management concept with
-                    ledgers, payments, salary and accounting tools.
-                </p>
-
-                <a href="https://sites.google.com/view/kcst-service/downloads">
-                    View Project →
-                </a>
-
-            </div>
-
-
-            <div class="project">
-
-                <div class="project-icon">🧮</div>
-
-                <h3>KCST Job Portal</h3>
-
-                <p>
-                    Made for ease and fast job
-                </p>
-
-                <a href="https://sayyidkcst.github.io/kcst-job-tool/">
-                    View Project →
-                </a>
-
-            </div>
-
-
-            <div class="project">
-
-                <div class="project-icon">🎬</div>
-
-                <h3>Online Services</h3>
-
-                <p>
-	You can access public and government e-services in Kerala through the Portal
-	 for local administration, certificates, and welfare programs
-                </p>
-
-                <a href="https://sites.google.com/view/kcst-service/india">
-                    View Project →
-                </a>
-
-            </div>
-
+        <div class="kiosk-top-actions">
+            <label class="kiosk-toggle"><input type="checkbox" id="kioskBlinkToggle" checked> Blink check</label>
+            <button class="kiosk-exit" onclick="closeFaceKiosk()">✕ Exit</button>
         </div>
-
     </div>
-
-</section>
-
-
-<!-- JOURNEY -->
-<section class="journey">
-
-    <div class="section-container">
-
-        <div class="section-title">
-
-            <h2>My Journey</h2>
-
-            <p>
-                Learning, building and improving
-            </p>
-
-        </div>
-
-        <div class="timeline">
-
-            <div class="timeline-item">
-
-                <h3>💻 Software Development</h3>
-
-                <p>
-                    Started building practical desktop
-                    applications and business tools.
-                </p>
-
-            </div>
-
-            <div class="timeline-item">
-
-                <h3>🌐 Web Development</h3>
-
-                <p>
-                    Expanded into HTML, CSS and JavaScript
-                    to create modern responsive websites.
-                </p>
-
-            </div>
-
-            <div class="timeline-item">
-
-                <h3>📊 Accounting & GST</h3>
-
-                <p>
-                    Developed an interest in computerized
-                    accounting, GST and business applications.
-                </p>
-
-            </div>
-
-            <div class="timeline-item">
-
-                <h3>🚀 Building the Future</h3>
-
-                <p>
-                    Continuing to learn new technologies and
-                    turn new ideas into useful digital products.
-                </p>
-
-            </div>
-
-        </div>
-
+    <div class="kiosk-stage">
+        <div class="kiosk-ring idle" id="kioskRing"><video id="kioskVideo" playsinline muted autoplay></video></div>
+        <div class="kiosk-status" id="kioskStatus">Starting…</div>
+        <div class="kiosk-result" id="kioskResult"></div>
     </div>
+    <div class="kiosk-recent" id="kioskRecent"></div>
+</div>
 
-</section>
+<!-- ================= ADD STAFF MODAL ================= -->
+<div class="modal-backdrop" id="addStaffModal">
+    <div class="modal">
+        <h3>Add New Staff</h3>
+        <p class="modal-sub">Fill in the details below to add a new team member.</p>
 
-
-<!-- CONTACT -->
-<section id="contact">
-
-    <div class="section-container">
-
-        <div class="section-title">
-
-            <h2>Let's Connect</h2>
-
-            <p>
-                Have an idea, project or simply want to say hello?
-            </p>
-
-        </div>
-
-        <div class="contact-box">
-
-            <h2>SAYYID SHEREEF KC</h2>
-
-            <p>
-                Developer • Creator • Technology Enthusiast
-            </p>
-
-            <div class="contact-buttons">
-
-                <a href="mailto:your@email.com"
-                   class="btn btn-primary">
-                    ✉️ Email Me
-                </a>
-
-                <a href="https://sayyidshereef.blogspot.com/2020/06/welcome-to-sayyid-shereef-kc-call-line.html"
-                   class="btn btn-secondary">
-                    More Info
-                </a>
-
-                <a href="https://wa.me/919633315177"
-                   class="btn btn-secondary">
-                    🏠 Chat on WhatsApp
-                </a>
-
+        <div class="form-row full">
+            <div>
+                <label>Staff ID (auto-generated)</label>
+                <input id="addStaffCode" readonly style="background:#f1f5f9;color:#64748b;">
             </div>
-
+        </div>
+        <div class="form-row full">
+            <div><label>Full Name *</label><input id="addStaffName" placeholder="e.g. Arun Mathew"></div>
+        </div>
+        <div class="form-row">
+            <div><label>Role</label><input id="addStaffRole" placeholder="e.g. Senior Media Analyst"></div>
+            <div><label>Department</label><input id="addStaffDept" placeholder="e.g. Operations"></div>
+        </div>
+        <div class="form-row">
+            <div><label>Joined Date</label><input id="addStaffJoined" type="date"></div>
+            <div><label>Daily Rate (₹)</label><input id="addStaffRate" type="number" step="0.01" placeholder="e.g. 500"></div>
         </div>
 
+        <div class="modal-actions">
+            <button class="btn-secondary" onclick="closeAddModal()">Cancel</button>
+            <button class="primary-btn" onclick="saveNewStaff()" id="addStaffSaveBtn">➕ Add Staff</button>
+        </div>
     </div>
+</div>
 
-</section>
+<!-- ================= EDIT STAFF MODAL ================= -->
+<div class="modal-backdrop" id="editStaffModal">
+    <div class="modal">
+        <h3>Edit Staff</h3>
+        <p class="modal-sub">Update the details and save your changes.</p>
 
+        <input type="hidden" id="editStaffId">
+        <div class="form-row full">
+            <div><label>Staff ID</label><input id="editStaffCode" readonly style="background:#f1f5f9;color:#64748b;"></div>
+        </div>
+        <div class="form-row full">
+            <div><label>Full Name</label><input id="editStaffName" placeholder="e.g. Arun Mathew"></div>
+        </div>
+        <div class="form-row">
+            <div><label>Role</label><input id="editStaffRole" placeholder="e.g. Senior Media Analyst"></div>
+            <div><label>Department</label><input id="editStaffDept" placeholder="e.g. Operations"></div>
+        </div>
+        <div class="form-row">
+            <div><label>Joined Date</label><input id="editStaffJoined" type="date"></div>
+            <div><label>Daily Rate (₹)</label><input id="editStaffRate" type="number" step="0.01" placeholder="e.g. 500"></div>
+        </div>
+        <div class="form-row full">
+            <div><label>New rate applies from (earlier entries keep their old rate)</label><input id="editStaffRateFrom" type="date"></div>
+        </div>
 
-<!-- FOOTER -->
-<footer>
+        <div class="modal-actions">
+            <button class="btn-secondary" onclick="closeEditModal()">Cancel</button>
+            <button class="primary-btn" onclick="saveStaffEdit()">💾 Save Changes</button>
+        </div>
+    </div>
+</div>
 
-    © 2026
-    <strong>KCST Media Technology</strong>.
-    All Rights Reserved.
+<!-- ================= DELETE STAFF MODAL ================= -->
+<div class="modal-backdrop" id="deleteStaffModal">
+    <div class="modal" style="max-width: 420px;">
+        <h3>Delete Staff</h3>
+        <p class="modal-sub">
+            Are you sure you want to delete <strong id="deleteStaffName">this staff member</strong>?
+            This action cannot be undone.
+        </p>
+        <input type="hidden" id="deleteStaffId">
+        <div class="modal-actions">
+            <button class="btn-secondary" onclick="closeDeleteModal()">Cancel</button>
+            <button class="btn-danger" onclick="confirmDeleteStaff()">🗑 Delete</button>
+        </div>
+    </div>
+</div>
 
-</footer>
+<!-- ================= STAFF ATTENDANCE DETAIL MODAL ================= -->
+<div class="modal-backdrop" id="staffAttDetailModal">
+    <div class="modal" style="max-width:800px;">
+        <h3 id="staffDetailName">Staff Attendance</h3>
+        <p class="modal-sub" id="staffDetailMeta">—</p>
 
+        <div class="form-row full" style="margin-bottom:14px;">
+            <div>
+                <label>Month</label>
+                <input id="staffDetailMonth" type="month">
+            </div>
+        </div>
 
-<!-- SCROLL TOP -->
-<button class="top-btn" id="topBtn" onclick="goTop()">
-    ↑
-</button>
+        <div class="attendance-summary" style="margin-bottom:16px;grid-template-columns:repeat(6,1fr);gap:10px;">
+            <div class="attendance-box" style="padding:12px;"><p>Present</p><h2 id="staffDetailPresent" style="font-size:20px;">–</h2></div>
+            <div class="attendance-box" style="padding:12px;"><p>Absent</p><h2 id="staffDetailAbsent" style="font-size:20px;">–</h2></div>
+            <div class="attendance-box" style="padding:12px;"><p>Leave</p><h2 id="staffDetailLeave" style="font-size:20px;">–</h2></div>
+            <div class="attendance-box" style="padding:12px;"><p>Week Offs</p><h2 id="staffDetailWeekOff" style="font-size:20px;">–</h2></div>
+            <div class="attendance-box" style="padding:12px;background:#eff6ff;border-color:#bfdbfe;">
+                <p style="color:#1d4ed8;">Hours</p>
+                <h2 id="staffDetailHours" style="color:#1d4ed8;font-size:18px;">–</h2>
+            </div>
+            <div class="attendance-box" style="padding:12px;background:#ede9fe;border-color:#c4b5fd;">
+                <p style="color:#6d28d9;">Amount</p>
+                <h2 id="staffDetailTotal" style="color:#6d28d9;font-size:18px;">–</h2>
+            </div>
+        </div>
 
+        <div class="table-wrapper" style="max-height:340px;overflow-y:auto;border:1px solid #e5e7eb;border-radius:10px;">
+            <table>
+                <thead>
+                    <tr><th>Date</th><th>Check In</th><th>Check Out</th><th>Working Hours</th><th>Status</th><th style="text-align:right;">Actions</th></tr>
+                </thead>
+                <tbody id="staffDetailBody">
+                    <tr><td colspan="5" style="text-align:center;color:#94a3b8;">Loading…</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal-actions" style="justify-content:space-between;gap:8px;">
+            <button class="primary-btn" onclick="printTimeSheet()">🖨️ Print Time Sheet</button>
+            <button class="btn-secondary" onclick="printSalarySlip()">🧾 Salary Slip</button>
+            <button class="btn-secondary" onclick="closeStaffDetailModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= EDIT ATTENDANCE MODAL ================= -->
+<div class="modal-backdrop" id="editAttendanceModal">
+    <div class="modal">
+        <h3>Edit Attendance</h3>
+        <p class="modal-sub">Change the status or check-in / check-out time of this record.</p>
+        <input type="hidden" id="editAttId">
+        <input type="hidden" id="editAttStaffCode">
+
+        <div class="form-row">
+            <div><label>Staff</label><input id="editAttStaffName" readonly style="background:#f1f5f9;"></div>
+            <div><label>Date</label><input id="editAttDate" type="date" disabled style="background:#f1f5f9;"></div>
+        </div>
+
+        <div class="form-row full">
+            <div>
+                <label>Status *</label>
+                <select id="editAttStatus">
+                    <option value="present">Present</option>
+                    <option value="absent">Absent</option>
+                    <option value="leave">Leave</option>
+                    <option value="week_off">Week Off</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row" id="editAttTimeRow">
+            <div><label>Check In</label><input id="editAttCheckIn" type="time"></div>
+            <div><label>Check Out</label><input id="editAttCheckOut" type="time"></div>
+        </div>
+
+        <div class="form-row full">
+            <div>
+                <label>Working Hours (auto-calculated)</label>
+                <input id="editAttHours" readonly style="background:#f1f5f9;color:#1d4ed8;font-weight:600;">
+            </div>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-secondary" onclick="closeEditAttendanceModal()">Cancel</button>
+            <button class="primary-btn" onclick="saveEditAttendance()" id="editAttSaveBtn">💾 Save Changes</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= DELETE ATTENDANCE MODAL ================= -->
+<div class="modal-backdrop" id="deleteAttendanceModal">
+    <div class="modal" style="max-width: 440px;">
+        <h3>Delete Attendance Record</h3>
+        <p class="modal-sub">
+            Are you sure you want to delete the attendance record for
+            <strong id="deleteAttName">this staff</strong> on
+            <strong id="deleteAttDate">this date</strong>?
+            This action cannot be undone.
+        </p>
+        <input type="hidden" id="deleteAttId">
+        <div class="modal-actions">
+            <button class="btn-secondary" onclick="closeDeleteAttendanceModal()">Cancel</button>
+            <button class="btn-danger" onclick="confirmDeleteAttendance()">🗑 Delete</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= COLLECT SALARY MODAL ================= -->
+<div class="modal-backdrop" id="collectSalaryModal">
+    <div class="modal" style="max-width:520px;">
+        <h3 id="collectModalTitle">Collect Salary</h3>
+        <p class="modal-sub" id="collectSalarySub">Record a salary payment for this staff member.</p>
+
+        <input type="hidden" id="collectStaffCode">
+        <input type="hidden" id="collectSalaryMonth">
+        <input type="hidden" id="collectEditId">
+
+        <div class="form-row full">
+            <div>
+                <label>Staff</label>
+                <input id="collectStaffName" readonly style="background:#f1f5f9;color:#64748b;">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label>Total Salary (₹)</label>
+                <input id="collectPayable" readonly style="background:#f1f5f9;color:#64748b;">
+            </div>
+            <div>
+                <label>Previous Due (₹)</label>
+                <input id="collectPreviousDue" readonly style="background:#f1f5f9;color:#b45309;">
+            </div>
+        </div>
+
+        <div class="form-row full">
+            <div>
+                <label>Amount to Collect (₹) *</label>
+                <input id="collectAmount" type="number" step="0.01" placeholder="Enter amount" style="background:white;">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label>Date *</label>
+                <input id="collectDate" type="date">
+                <small id="collectDateHint" style="display:block;font-size:11px;color:#64748b;margin-top:4px;"></small>
+            </div>
+            <div>
+                <label>Time *</label>
+                <input id="collectTime" type="time">
+            </div>
+        </div>
+
+        <div class="form-row full">
+            <div>
+                <label>Paid By *</label>
+                <input id="collectPaidBy" placeholder="e.g. Cash, UPI, Bank Transfer, Cheque">
+            </div>
+        </div>
+
+        <div class="form-row full">
+            <div>
+                <label>Notes (optional)</label>
+                <input id="collectNotes" placeholder="Any additional reference">
+            </div>
+        </div>
+
+        <div id="collectSalaryMessage" style="display:none;padding:10px;border-radius:8px;font-size:13px;margin-bottom:10px;"></div>
+
+        <div class="modal-actions">
+            <button class="btn-secondary" onclick="closeCollectSalaryModal()">Cancel</button>
+            <button class="primary-btn" id="collectSalarySaveBtn" onclick="saveSalaryCollection()">✅ Save Collection</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= SALARY HISTORY MODAL (EDIT/DELETE + PRINT) ================= -->
+<div class="modal-backdrop" id="salaryHistoryModal">
+    <div class="modal" style="max-width:880px;">
+        <h3 id="historyStaffName">Payment History</h3>
+        <p class="modal-sub" id="historyStaffMeta">—</p>
+
+        <div class="history-summary" id="historySummary">
+            <div class="hbox"><p>Old Balance (Carried)</p><h3 id="historyPrevDue" style="color:#b45309;">–</h3></div>
+            <div class="hbox"><p>Other Income</p><h3 id="historyIncome" style="color:#16a34a;">–</h3></div>
+            <div class="hbox"><p>Deductions</p><h3 id="historyDeduction" style="color:#dc2626;">–</h3></div>
+            <div class="hbox"><p>Net Payable</p><h3 id="historyTotalPayable" style="color:#1e293b;">–</h3></div>
+            <div class="hbox"><p>Total Collected</p><h3 id="historyTotalCollected" style="color:#16a34a;">–</h3></div>
+            <div class="hbox"><p>Balance</p><h3 id="historyBalance" style="color:#dc2626;">–</h3></div>
+        </div>
+
+        <div class="table-wrapper" style="max-height:380px;overflow-y:auto;border:1px solid #e5e7eb;border-radius:10px;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Amount</th>
+                        <th>Paid By</th>
+                        <th>Notes</th>
+                        <th style="text-align:right;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTableBody">
+                    <tr><td colspan="6" style="text-align:center;color:#94a3b8;">Loading…</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 style="margin:18px 0 8px;font-size:14px;">Other Income &amp; Deductions</h4>
+        <div class="table-wrapper" style="max-height:220px;overflow-y:auto;border:1px solid #e5e7eb;border-radius:10px;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Title</th>
+                        <th>Amount</th>
+                        <th>Notes</th>
+                        <th style="text-align:right;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="historyAdjBody">
+                    <tr><td colspan="5" style="text-align:center;color:#94a3b8;">Loading…</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal-actions" style="justify-content:space-between;">
+            <button class="btn-print" onclick="printSalaryStatement()">🖨️ Print Statement</button>
+            <button class="btn-secondary" onclick="closeSalaryHistoryModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= OTHER INCOME / DEDUCTION MODAL ================= -->
+<div class="modal-backdrop" id="adjustModal">
+    <div class="modal" style="max-width:480px;">
+        <h3 id="adjModalTitle">Add Other Income</h3>
+        <p class="modal-sub" id="adjModalSub">—</p>
+
+        <input type="hidden" id="adjEditId">
+        <input type="hidden" id="adjStaffCode">
+        <input type="hidden" id="adjMonth">
+
+        <div class="form-row">
+            <div>
+                <label>Type *</label>
+                <select id="adjKind" onchange="updateAdjustLabels()">
+                    <option value="income">➕ Other Income</option>
+                    <option value="deduction">➖ Deduction</option>
+                </select>
+            </div>
+            <div>
+                <label>Amount (₹) *</label>
+                <input id="adjAmount" type="number" step="0.01" min="0" placeholder="Enter amount">
+            </div>
+        </div>
+
+        <div class="form-row full">
+            <div>
+                <label>Title *</label>
+                <input id="adjTitle" list="adjTitleList" placeholder="e.g. Bonus, Incentive, Advance, Fine">
+                <datalist id="adjTitleList">
+                    <option value="Bonus"><option value="Incentive"><option value="Overtime"><option value="Allowance">
+                    <option value="Advance"><option value="Fine"><option value="Loan Repayment"><option value="Other">
+                </datalist>
+            </div>
+        </div>
+
+        <div class="form-row full">
+            <div>
+                <label>Notes (optional)</label>
+                <input id="adjNotes" placeholder="Any additional reference">
+            </div>
+        </div>
+
+        <div id="adjMessage" style="display:none;padding:10px;border-radius:8px;font-size:13px;margin-bottom:10px;"></div>
+
+        <div class="modal-actions">
+            <button class="btn-secondary" onclick="closeAdjustModal()">Cancel</button>
+            <button class="primary-btn" id="adjSaveBtn" onclick="saveAdjustment()">✅ Save</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= DELETE SALARY COLLECTION MODAL ================= -->
+<div class="modal-backdrop" id="deleteSalaryModal">
+    <div class="modal" style="max-width:440px;">
+        <h3>Delete Salary Collection</h3>
+        <p class="modal-sub">
+            Are you sure you want to delete this salary payment of
+            <strong id="deleteSalaryAmount">—</strong>
+            collected on <strong id="deleteSalaryDate">—</strong>?
+            This action cannot be undone.
+        </p>
+        <input type="hidden" id="deleteSalaryId">
+        <div class="modal-actions">
+            <button class="btn-secondary" onclick="closeDeleteSalaryModal()">Cancel</button>
+            <button class="btn-danger" onclick="confirmDeleteSalary()">🗑 Delete</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= LOGOUT CONFIRMATION MODAL ================= -->
+<div class="modal-backdrop" id="logoutModal">
+    <div class="modal" style="max-width: 420px; text-align: center;">
+        <div style="
+            width: 70px; height: 70px; margin: 0 auto 15px;
+            border-radius: 50%;
+            background: #fee2e2; color: #dc2626;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 32px;
+        ">🚪</div>
+
+        <h3 style="font-size: 19px; margin-bottom: 8px;">Log Out?</h3>
+        <p class="modal-sub" style="margin-bottom: 5px;">
+            You're about to log out of <strong>KCST Staff Pro</strong>.
+        </p>
+        <p style="font-size: 12px; color: #94a3b8; margin-bottom: 5px;">
+            You'll need to sign in again to access the dashboard.
+        </p>
+
+        <div class="modal-actions" style="justify-content: center; gap: 12px; margin-top: 25px;">
+            <button class="btn-secondary" onclick="closeLogoutModal()" style="min-width: 110px;">
+                Cancel
+            </button>
+            <button class="btn-danger" onclick="confirmLogout()" id="logoutConfirmBtn" style="min-width: 110px;">
+                🚪 Yes, Log Out
+            </button>
+        </div>
+    </div>
+</div>
 
 <script>
+/* ================================================================
+   SUPABASE CONNECTION
+   ================================================================ */
+const SUPABASE_URL = 'https://rrtpnknbrrcwzmlqeyha.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_S8YKuWueI4Bs3IKXaYSNzg_pH5wCyYC';
 
-function toggleMenu(){
+const { createClient } = supabase;
+const _supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    document
-        .getElementById("navLinks")
-        .classList.toggle("active");
-
+/* ================================================================
+   GLOBAL HELPERS
+   ================================================================ */
+function showGlobalStatus(message, type = 'info') {
+    const el = document.getElementById('globalStatus');
+    el.textContent = message;
+    el.className = 'db-status ' + type;
+    el.style.display = 'flex';
+    clearTimeout(el._timeout);
+    el._timeout = setTimeout(() => { el.style.display = 'none'; }, 4000);
 }
 
-function closeMenu(){
-
-    document
-        .getElementById("navLinks")
-        .classList.remove("active");
-
+/* ================================================================
+   RATE HISTORY — keeps old entries on the rate that applied at that time
+   ================================================================ */
+let _rateHistoryCache = null;
+async function loadRateHistory(force) {
+    if (_rateHistoryCache && !force) return _rateHistoryCache;
+    const map = {};
+    try {
+        const { data, error } = await _supabase
+            .from('staff_rate_history')
+            .select('staff_id, daily_rate, effective_from')
+            .order('effective_from', { ascending: true });
+        if (error) throw error;
+        (data || []).forEach(r => {
+            (map[r.staff_id] = map[r.staff_id] || []).push({
+                rate: Number(r.daily_rate || 0),
+                from: String(r.effective_from).slice(0, 10)
+            });
+        });
+    } catch (err) {
+        console.warn('Rate history unavailable, using current rate:', err.message || err);
+    }
+    _rateHistoryCache = map;
+    return map;
+}
+function rateOnDate(history, staffId, date, currentRate) {
+    const list = history[staffId];
+    if (!list || !list.length) return Number(currentRate || 0);
+    const d = String(date).slice(0, 10);
+    let rate = list[0].rate;
+    for (const h of list) { if (h.from <= d) rate = h.rate; else break; }
+    return rate;
+}
+function isPaidStatus(raw) {
+    const st = normalizeStatus(raw);
+    return st === 'present' || st === 'week_off';
+}
+function sumPayable(history, staffId, records, currentRate) {
+    let total = 0;
+    (records || []).forEach(a => {
+        if (isPaidStatus(a.status)) total += rateOnDate(history, staffId, a.date, currentRate);
+    });
+    return total;
 }
 
+function normalizeStatus(raw) {
+    const s = (raw || '').toLowerCase().trim().replace(/\s+/g, '_');
+    if (s === 'present') return 'present';
+    if (s === 'absent') return 'absent';
+    if (s === 'leave') return 'leave';
+    if (s === 'week_off' || s === 'weekoff') return 'week_off';
+    return s;
+}
 
-// Show scroll button
-window.addEventListener("scroll", function(){
+/* ================================================================
+   OTHER INCOME / DEDUCTIONS + SETTLEMENT DATE HELPERS
+   ================================================================ */
+let adjustmentsTableWarned = false;
 
-    const btn = document.getElementById("topBtn");
+async function fetchAdjustments(months, staffId) {
+    try {
+        let q = _supabase.from('salary_adjustments').select('*').in('salary_month', months);
+        if (staffId) q = q.eq('staff_id', staffId);
+        const { data, error } = await q.order('created_at', { ascending: true });
+        if (error) throw error;
+        return data || [];
+    } catch (err) {
+        const msg = (err && err.message) || String(err);
+        const missing = err && (err.code === '42P01' || err.code === 'PGRST205' || /does not exist|schema cache/i.test(msg));
+        const denied = err && (err.code === '42501' || /row-level security|permission denied/i.test(msg));
+        if ((missing || denied) && !adjustmentsTableWarned) {
+            adjustmentsTableWarned = true;
+            showGlobalStatus(denied
+                ? 'Read access denied on salary_adjustments (RLS). Run salary_adjustments.sql in Supabase to add its policies.'
+                : 'Note: salary_adjustments table missing. Run salary_adjustments.sql in Supabase to enable Other Income / Deductions.',
+                denied ? 'error' : 'info');
+        }
+        console.warn('Adjustments lookup failed:', err);
+        return [];
+    }
+}
 
-    if(window.scrollY > 300){
+function sumAdjustments(rows, staffId, month) {
+    let income = 0, deduction = 0;
+    (rows || []).forEach(a => {
+        if (String(a.staff_id) !== String(staffId) || a.salary_month !== month) return;
+        const amt = Number(a.amount || 0);
+        if (a.kind === 'income') income += amt;
+        else if (a.kind === 'deduction') deduction += amt;
+    });
+    return { income, deduction };
+}
 
-        btn.style.display = "block";
+function netPayable(earned, income, deduction) {
+    return Math.max(0, Number(earned || 0) + Number(income || 0) - Number(deduction || 0));
+}
 
-    }else{
+// Salary for month X is settled on the salary day of month X+1 (default day 1).
+// e.g. October salary -> 01-November. Entry date is never used.
+function getSettlementDate(monthValue) {
+    const [y, m] = monthValue.split('-').map(Number);
+    const day = getSavedSalaryDay() || 1;
+    const lastDay = new Date(y, m + 1, 0).getDate();
+    const d = new Date(y, m, Math.min(day, lastDay));
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
 
-        btn.style.display = "none";
+function monthLabel(monthValue) {
+    const [y, m] = monthValue.split('-').map(Number);
+    return new Date(y, m - 1, 1).toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+}
 
+function formatCurrency(amount) {
+    if (amount === null || amount === undefined) return '₹0';
+    return '₹' + Number(amount).toLocaleString('en-IN', { maximumFractionDigits: 2 });
+}
+
+function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+/* ================================================================
+   EXPERIENCE CALCULATION HELPERS
+   ================================================================ */
+function calculateExperience(joinedDateStr) {
+    if (!joinedDateStr) return null;
+
+    let joined;
+    if (joinedDateStr.includes('-')) {
+        joined = new Date(joinedDateStr);
+    } else {
+        joined = new Date(joinedDateStr);
+    }
+    if (isNaN(joined.getTime())) return null;
+
+    const now = new Date();
+    if (joined > now) return null;
+
+    let years = now.getFullYear() - joined.getFullYear();
+    let months = now.getMonth() - joined.getMonth();
+    let days = now.getDate() - joined.getDate();
+
+    if (days < 0) {
+        months--;
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += prevMonth.getDate();
+    }
+    if (months < 0) {
+        years--;
+        months += 12;
     }
 
-});
+    const totalDays = Math.floor((now - joined) / (1000 * 60 * 60 * 24));
 
-
-// Go to top
-function goTop(){
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
+    return { years, months, days, totalDays };
 }
 
-</script>
+function formatExperience(exp) {
+    if (!exp) return '—';
+    const parts = [];
+    if (exp.years > 0) parts.push(exp.years + 'y');
+    if (exp.months > 0) parts.push(exp.months + 'm');
+    if (exp.days > 0) parts.push(exp.days + 'd');
+    if (parts.length === 0) return 'New';
+    return parts.join(' ');
+}
 
+function getExperienceClass(exp) {
+    if (!exp) return 'exp-badge new';
+    if (exp.totalDays < 30) return 'exp-badge new';
+    return 'exp-badge';
+}
+
+/* ================================================================
+   WORKING HOURS HELPERS
+   ================================================================ */
+function calculateWorkingHours(checkIn, checkOut) {
+    if (!checkIn || !checkOut) return null;
+    try {
+        const start = new Date(checkIn);
+        const end = new Date(checkOut);
+        const diffMs = end - start;
+        if (diffMs <= 0) return null;
+        return diffMs / (1000 * 60 * 60);
+    } catch (err) {
+        return null;
+    }
+}
+
+function formatHours(hours) {
+    if (hours === null || hours === undefined || isNaN(hours)) return '—';
+    if (hours <= 0) return '—';
+    const h = Math.floor(hours);
+    const m = Math.round((hours - h) * 60);
+    if (h === 0) return `${m}m`;
+    if (m === 0) return `${h}h`;
+    return `${h}h ${m}m`;
+}
+
+function getWorkingHoursClass(hours) {
+    if (hours === null || hours === undefined) return 'empty';
+    if (hours >= 9) return 'overtime';
+    if (hours >= 6) return '';
+    return 'low';
+}
+
+/* ================================================================
+   PROFESSIONAL PRINT HELPERS
+   ================================================================ */
+function getPrintStyles() {
+    return `
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        @page { size: A4; margin: 15mm 12mm; }
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #1e293b;
+            background: white;
+            padding: 20px;
+            line-height: 1.5;
+            font-size: 12px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* ============ LETTERHEAD ============ */
+        .letterhead {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 14px;
+            border-bottom: 3px double #1e293b;
+            margin-bottom: 22px;
+        }
+        .letterhead-left {
+            display: flex; align-items: center; gap: 15px;
+        }
+        .letterhead-logo {
+            width: 60px; height: 60px; border-radius: 12px;
+            background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 26px; font-weight: 700;
+            flex-shrink: 0;
+            letter-spacing: -1px;
+        }
+        .letterhead-company h1 {
+            font-size: 20px; color: #0f172a; font-weight: 700;
+            letter-spacing: 0.3px; line-height: 1.2;
+        }
+        .letterhead-company p {
+            font-size: 11px; color: #64748b; margin-top: 3px;
+        }
+        .letterhead-right {
+            text-align: right; font-size: 10px; color: #64748b;
+            line-height: 1.6;
+        }
+        .letterhead-right strong { color: #1e293b; }
+
+        /* ============ DOCUMENT TITLE ============ */
+        .doc-title {
+            text-align: center;
+            margin: 20px 0 22px;
+        }
+        .doc-title h2 {
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 8px 32px;
+            border-top: 2px solid #1e293b;
+            border-bottom: 2px solid #1e293b;
+        }
+        .doc-title p {
+            font-size: 11px; color: #64748b;
+            margin-top: 8px; letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ============ REFERENCE BAR ============ */
+        .ref-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f1f5f9;
+            border-left: 4px solid #1d4ed8;
+            padding: 10px 16px;
+            margin-bottom: 22px;
+            font-size: 11px;
+            border-radius: 0 6px 6px 0;
+        }
+        .ref-bar div { color: #475569; }
+        .ref-bar strong { color: #0f172a; font-weight: 600; }
+
+        /* ============ STAT SUMMARY ============ */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+        .stat-card {
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 12px 8px;
+            text-align: center;
+            background: white;
+        }
+        .stat-card .label {
+            font-size: 9px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .stat-card .value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .stat-card.accent { background: #eff6ff; border-color: #93c5fd; }
+        .stat-card.accent .value { color: #1d4ed8; }
+        .stat-card.success { background: #f0fdf4; border-color: #86efac; }
+        .stat-card.success .value { color: #15803d; }
+        .stat-card.warning { background: #fffbeb; border-color: #fcd34d; }
+        .stat-card.warning .value { color: #b45309; }
+        .stat-card.danger { background: #fef2f2; border-color: #fca5a5; }
+        .stat-card.danger .value { color: #b91c1c; }
+        .stat-card.purple { background: #f5f3ff; border-color: #c4b5fd; }
+        .stat-card.purple .value { color: #6d28d9; }
+
+        /* ============ SECTION HEADER ============ */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 24px 0 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #1e293b;
+        }
+        .section-header-icon {
+            width: 26px; height: 26px; border-radius: 6px;
+            background: #1e293b; color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; flex-shrink: 0;
+        }
+        .section-header h3 {
+            font-size: 13px; font-weight: 700; color: #0f172a;
+            text-transform: uppercase; letter-spacing: 1.2px;
+        }
+
+        /* ============ DATA TABLE ============ */
+        table.data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            margin-bottom: 18px;
+            border: 1px solid #cbd5e1;
+        }
+        table.data-table thead {
+            background: #1e293b;
+        }
+        table.data-table th {
+            padding: 9px 8px;
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            text-align: left;
+            border-right: 1px solid #334155;
+        }
+        table.data-table th:last-child { border-right: none; }
+        table.data-table th.center { text-align: center; }
+        table.data-table th.right { text-align: right; }
+        table.data-table td {
+            padding: 8px;
+            border-bottom: 1px solid #e2e8f0;
+            border-right: 1px solid #f1f5f9;
+            font-size: 11px;
+            vertical-align: middle;
+        }
+        table.data-table td:last-child { border-right: none; }
+        table.data-table tbody tr:nth-child(even) { background: #f8fafc; }
+        table.data-table tbody tr:last-child td { border-bottom: 1px solid #cbd5e1; }
+        table.data-table tfoot td {
+            padding: 10px 8px;
+            background: #f1f5f9;
+            font-weight: 700;
+            color: #0f172a;
+            border-top: 2px solid #1e293b;
+            border-bottom: none;
+            font-size: 11px;
+        }
+        td.center { text-align: center; }
+        td.right { text-align: right; }
+        td.mono {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============ SIGNATURES ============ */
+        .signatures {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 60px;
+            margin-bottom: 20px;
+        }
+        .sig-block {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #1e293b;
+        }
+`;
+}
+
+/* ================================================================
+   RESTORED CORE (login, session, navigation, staff list)
+   ================================================================ */
+const $ = id => document.getElementById(id);
+let _staffCache = [];
+
+function setLoggedIn(user) {
+    $('loginScreen').style.display = 'none';
+    const email = user && user.email ? user.email : '—';
+    $('dropdownAdminEmail').textContent = email;
+    loadCompany();
+    loadSalaryDay().then(() => loadStaff()).then(loadAttendance).then(loadSalaryData);
+}
+
+async function doAdminLogin() {
+    const email = $('loginEmail').value.trim();
+    const password = $('loginPassword').value;
+    const err = $('loginError'), btn = $('loginBtn');
+    err.style.display = 'none';
+    if (!email || !password) { err.textContent = 'Enter email and password.'; err.style.display = 'block'; return; }
+    btn.disabled = true; btn.textContent = 'Signing in…';
+    try {
+        const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        setLoggedIn(data.user);
+    } catch (e) {
+        err.textContent = e.message || 'Login failed.'; err.style.display = 'block';
+    } finally {
+        btn.disabled = false; btn.textContent = '🔓 Login';
+    }
+}
+
+function showSection(name) {
+    document.querySelectorAll('.section').forEach(s => s.classList.toggle('active', s.id === name));
+    document.querySelectorAll('.menu-item').forEach(m => m.classList.toggle('active', m.dataset.section === name));
+    const t = { dashboard:'Dashboard', company:'Company Info', staff:'Staff Details', attendance:'Attendance', salary:'Salary Collection', settings:'Settings' };
+    $('topTitle').textContent = t[name] || name;
+    $('sidebar').classList.remove('open'); $('overlay').classList.remove('show');
+}
+function dropdownGoto(n) { $('profileDropdown').classList.remove('show'); showSection(n); }
+function toggleProfileDropdown(e) { e.stopPropagation(); $('profileDropdown').classList.toggle('show'); $('profileTrigger').classList.toggle('open'); }
+function dropdownLogout() { $('profileDropdown').classList.remove('show'); $('logoutModal').classList.add('show'); }
+function closeLogoutModal() { $('logoutModal').classList.remove('show'); }
+async function confirmLogout() {
+    try { await _supabase.auth.signOut(); } catch (e) {}
+    location.reload();
+}
+function toggleSetting(el) { el.classList.toggle('active'); }
+function toggleDarkMode(el) {
+    el.classList.toggle('active');
+    const on = el.classList.contains('active');
+    document.body.classList.toggle('dark-mode', on);
+    try { localStorage.setItem('staffpro_dark_mode', on ? '1' : '0'); } catch (e) {}
+}
+
+async function loadStaff() {
+    const body = $('staffTableBody');
+    try {
+        const { data, error } = await _supabase.from('staff').select('*').order('id');
+        if (error) throw error;
+        _staffCache = data || [];
+        await loadFaceIds();
+        $('dashTotalStaff').textContent = _staffCache.length;
+        body.innerHTML = _staffCache.map(s => {
+            const joined = String(sf(s, 'joined')).slice(0, 10);
+            const exp = calculateExperience(joined);
+            return `<tr><td>${escapeHtml(staffCode(s))}</td><td>${escapeHtml(staffName(s))}</td>
+              <td>${escapeHtml(sf(s, 'role'))}</td><td>${escapeHtml(sf(s, 'dept'))}</td><td>${escapeHtml(joined)}</td>
+              <td>${exp ? escapeHtml(formatExperience(exp)) : '—'}</td><td>${formatCurrency(rateOf(s))}</td><td><div class="act-row">${actBtn('print','🖨️','Print staff profile',`printStaffProfile('${s.id}')`)}${actBtn('face' + (_faceIds.has(String(sidOf(s))) ? ' enrolled' : ''),'🙂','Face enrollment',`openFaceEnroll('${s.id}')`)}${actBtn('edit','✏️','Edit',`openEditStaff('${s.id}')`)}${actBtn('delete','🗑️','Delete',`openDeleteStaff('${s.id}')`)}</div></td></tr>`;
+        }).join('') || '<tr><td colspan="8" style="text-align:center;color:#94a3b8;">No staff yet.</td></tr>';
+    } catch (e) {
+        body.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#dc2626;">Could not load staff: ' + escapeHtml(e.message) + '</td></tr>';
+    }
+}
+
+/* ---------------- ATTENDANCE (restored) ---------------- */
+let _attCols = null, _attView = 'day';
+const ATT_COLORS = { present:'#16a34a', absent:'#dc2626', leave:'#d97706', week_off:'#64748b' };
+function attPill(st) {
+    const k = normalizeStatus(st);
+    if (!k) return '<span style="color:#94a3b8;">Not marked</span>';
+    return `<span style="padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;color:#fff;background:${ATT_COLORS[k] || '#64748b'};">${escapeHtml(k.replace('_',' '))}</span>`;
+}
+function attTime(v) {
+    if (!v) return '—';
+    if (/^\d{1,2}:\d{2}/.test(String(v))) return String(v).slice(0, 5);
+    const d = new Date(v);
+    return isNaN(d) ? escapeHtml(String(v)) : d.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
+}
+/* column-name tolerant helpers for the attendance table */
+/* which staff column attendance.staff_id points to, and the daily-rate column */
+let _linkKey = 'id';
+const sidOf = s => s[_linkKey] != null ? s[_linkKey] : s.id;
+const sameId = (a, b) => a != null && b != null && String(a) === String(b);
+const RATE_KEYS = ['daily_rate','rate','daily_wage','day_rate','per_day','daily_salary','wage','salary','salary_per_day'];
+function rateOf(s) { for (const k of RATE_KEYS) { const v = Number(s[k]); if (v > 0) return v; } return 0; }
+function resolveLink(rows) {
+    if (!rows.length || !_staffCache.length) return;
+    const ids = new Set(rows.map(r => String(r.staff_id)));
+    const keys = ['id', ...Object.keys(_staffCache[0]).filter(k => k !== 'id')];
+    for (const k of keys) { if (_staffCache.some(s => s[k] != null && ids.has(String(s[k])))) { _linkKey = k; return; } }
+}
+let _attKeys = [];
+const pickKey = (cands, keys) => cands.find(c => keys.includes(c));
+const IN_KEYS = ['check_in','check_in_time','in_time','checkin','time_in'], OUT_KEYS = ['check_out','check_out_time','out_time','checkout','time_out'];
+function attIn(r) { const k = pickKey(IN_KEYS, Object.keys(r)); return k ? r[k] : null; }
+function attOut(r) { const k = pickKey(OUT_KEYS, Object.keys(r)); return k ? r[k] : null; }
+function toMin(v) { if (!v) return null; const t = String(v); if (/^\d{1,2}:\d{2}/.test(t)) return parseInt(t.slice(0, 2), 10) * 60 + parseInt(t.slice(3, 5), 10); const d = new Date(v); return isNaN(d) ? null : d.getTime() / 60000; }
+function attHours(r) {
+    const a = toMin(attIn(r)), b = toMin(attOut(r));
+    return a != null && b != null && b > a ? (b - a) / 60 : null;
+}
+async function fetchAttendance() {
+    const { data, error } = await _supabase.from('attendance').select('*');
+    if (error) throw error;
+    const rows = data || [];
+    if (rows.length) _attKeys = Object.keys(rows[0]);
+    if (!_attCols && rows.length) {
+        const k = Object.keys(rows[0]);
+        _attCols = { date: ['date','attendance_date','att_date','work_date'].find(c => k.includes(c)) || 'date' };
+    }
+    const dc = (_attCols && _attCols.date) || 'date';
+    rows.forEach(r => { r._date = String(r[dc] || '').slice(0, 10); });
+    resolveLink(rows);
+    return rows;
+}
+const SK = {
+    code: ['staff_code','code','emp_code','employee_code','emp_id','employee_id','staff_no','staff_number','staff_id','id_no'],
+    name: ['name','full_name','staff_name','employee_name'],
+    role: ['role','designation','position','job_title'],
+    dept: ['department','dept'],
+    joined: ['joined_date','joined_on','join_date','joined','date_of_joining','doj','joining_date']
+};
+const sf = (s, f) => { const k = pickKey(SK[f], Object.keys(s)); return k && s[k] != null ? s[k] : ''; };
+function staffName(s) { return sf(s, 'name'); }
+function staffCode(s) { return sf(s, 'code') || s.id; }
+async function loadAttendance() {
+    const dayBody = $('attendanceTableBody'), dashBody = $('dashboardAttendanceBody');
+    try {
+        if (!_staffCache.length) await loadStaff();
+        const rows = await fetchAttendance();
+        const date = $('attendanceDate').value;
+        const byStaff = {};
+        rows.filter(r => r._date === date).forEach(r => { byStaff[String(r.staff_id)] = r; });
+        let pres = 0, abs = 0, lv = 0, dash = '';
+        dayBody.innerHTML = _staffCache.map(s => {
+            const r = byStaff[String(sidOf(s))], st = r ? normalizeStatus(r.status) : '';
+            if (st === 'present') pres++; else if (st === 'absent') abs++; else if (st === 'leave') lv++;
+            const hrs = r ? attHours(r) : null;
+            if (r) dash += `<tr><td>${escapeHtml(staffName(s))}</td><td>${attTime(attIn(r))}</td><td>${hrs ? formatHours(hrs) : '—'}</td><td>${attPill(r.status)}</td></tr>`;
+            return `<tr><td>${escapeHtml(staffCode(s))}</td><td>${escapeHtml(staffName(s))}</td><td>${attTime(r && attIn(r))}</td><td>${attTime(r && attOut(r))}</td><td>${hrs ? formatHours(hrs) : '—'}</td><td>${attPill(r && r.status)}</td><td></td></tr>`;
+        }).join('') || '<tr><td colspan="7" style="text-align:center;color:#94a3b8;">No staff.</td></tr>';
+        $('attPresentToday').textContent = pres; $('attAbsentToday').textContent = abs; $('attOnLeave').textContent = lv;
+        if (date === new Date().toISOString().slice(0, 10)) {
+            $('dashPresentToday').textContent = pres; $('dashAbsent').textContent = abs; $('dashOnLeave').textContent = lv;
+            dashBody.innerHTML = dash || '<tr><td colspan="4" style="text-align:center;color:#94a3b8;">No attendance marked today.</td></tr>';
+        }
+        renderAttendanceMonth(rows);
+    } catch (e) {
+        const msg = '<tr><td colspan="7" style="text-align:center;color:#dc2626;">Could not load attendance: ' + escapeHtml(e.message || String(e)) + '</td></tr>';
+        dayBody.innerHTML = msg; dashBody.innerHTML = msg;
+    }
+}
+function renderAttendanceMonth(rows) {
+    const m = $('attendanceMonth').value;
+    if (!m) return;
+    const mr = rows.filter(r => r._date.startsWith(m));
+    let tp = 0, ta = 0, th = 0; const days = {};
+    $('monthStaffBody').innerHTML = _staffCache.map(s => {
+        const c = { present:0, absent:0, leave:0, week_off:0, hrs:0, n:0 };
+        mr.filter(r => sameId(r.staff_id, sidOf(s))).forEach(r => {
+            const k = normalizeStatus(r.status); c.n++; if (c[k] !== undefined) c[k]++;
+            c.hrs += attHours(r) || 0;
+        });
+        tp += c.present; ta += c.absent; th += c.hrs;
+        return `<tr><td>${escapeHtml(staffCode(s))}</td><td>${escapeHtml(staffName(s))}</td><td>${c.present}</td><td>${c.absent}</td><td>${c.leave}</td><td>${c.week_off}</td><td>${formatHours(c.hrs)}</td><td>${c.n}</td><td><div class="act-row">${actBtn('','🔍','Monthly detail',`openStaffDetail('${s.id}')`)}</div></td></tr>`;
+    }).join('') || '<tr><td colspan="9" style="text-align:center;color:#94a3b8;">No staff.</td></tr>';
+    mr.forEach(r => {
+        const d = days[r._date] = days[r._date] || { p:0, a:0, l:0, h:0, n:0 }, k = normalizeStatus(r.status);
+        d.n++; d.h += attHours(r) || 0;
+        if (k === 'present') d.p++; else if (k === 'absent') d.a++; else if (k === 'leave') d.l++;
+    });
+    $('monthTotalPresent').textContent = tp; $('monthTotalAbsent').textContent = ta; $('monthTotalHours').textContent = formatHours(th);
+    $('monthDailyBody').innerHTML = Object.keys(days).sort().map(k => { const d = days[k];
+        return `<tr><td>${k}</td><td>${d.p}</td><td>${d.a}</td><td>${d.l}</td><td>${formatHours(d.h)}</td><td>${d.n}</td></tr>`; }).join('')
+        || '<tr><td colspan="6" style="text-align:center;color:#94a3b8;">No records this month.</td></tr>';
+}
+function switchAttendanceView(v) {
+    _attView = v;
+    $('attendanceDayView').style.display = v === 'day' ? '' : 'none';
+    $('attendanceMonthView').style.display = v === 'month' ? '' : 'none';
+    $('tabDay').classList.toggle('active', v === 'day'); $('tabMonth').classList.toggle('active', v === 'month');
+}
+(function () {
+    const t = new Date().toISOString().slice(0, 10);
+    $('attendanceDate').value = t; $('attendanceMonth').value = t.slice(0, 7);
+    $('attendanceDate').addEventListener('change', loadAttendance);
+    $('attendanceMonth').addEventListener('change', loadAttendance);
+})();
+
+/* ---------------- MARK ATTENDANCE (restored) ---------------- */
+async function markAttendance() {
+    if (!_staffCache.length) await loadStaff();
+    $('markStaffSelect').innerHTML = '<option value="">— Select staff —</option>' +
+        _staffCache.map(s => `<option value="${s.id}">${escapeHtml(staffCode(s))} · ${escapeHtml(staffName(s))}</option>`).join('');
+    $('markDate').value = $('attendanceDate').value || new Date().toISOString().slice(0, 10);
+    $('markStatus').value = 'present'; $('markCheckIn').value = ''; $('markCheckOut').value = ''; $('markWorkingHours').value = '';
+    $('markAttendanceModal').classList.add('show');
+}
+function closeMarkModal() { $('markAttendanceModal').classList.remove('show'); }
+function updateMarkHours() {
+    const d = $('markDate').value, a = $('markCheckIn').value, b = $('markCheckOut').value;
+    const h = a && b ? calculateWorkingHours(`${d}T${a}:00`, `${d}T${b}:00`) : null;
+    $('markWorkingHours').value = h ? formatHours(h) : '';
+}
+['markDate','markCheckIn','markCheckOut'].forEach(id => $(id).addEventListener('change', updateMarkHours));
+async function saveAttendance() {
+    const staffId = $('markStaffSelect').value, date = $('markDate').value, status = $('markStatus').value;
+    const a = $('markCheckIn').value, b = $('markCheckOut').value;
+    let box = $('markError');
+    if (!box) { box = document.createElement('div'); box.id = 'markError'; box.style.cssText = 'color:#dc2626;font-size:13px;margin:8px 0;';
+        $('markSaveBtn').parentNode.parentNode.insertBefore(box, $('markSaveBtn').parentNode); }
+    box.textContent = '';
+    if (!staffId || !date) { box.textContent = 'Select a staff member and a date.'; return; }
+    const st = _staffCache.find(x => String(x.id) === staffId), sid = sidOf(st);
+    const btn = $('markSaveBtn'); btn.disabled = true;
+    try {
+        const rows = await fetchAttendance();
+        const keys = _attKeys.length ? _attKeys : null;     // real column names, when the table already has rows
+        const has = k => !keys || keys.includes(k);
+        const kIn = (keys && pickKey(IN_KEYS, keys)) || 'check_in', kOut = (keys && pickKey(OUT_KEYS, keys)) || 'check_out';
+        const dKey = (_attCols && _attCols.date) || 'date';
+        const iso = t => t ? new Date(`${date}T${t}:00`).toISOString() : null;
+        const hrs = a && b ? (new Date(`${date}T${b}:00`) - new Date(`${date}T${a}:00`)) / 3600000 : null;
+        const mk = (inV, outV) => {
+            const rec = { staff_id: sid, [dKey]: date, status, [kIn]: inV, [kOut]: outV };
+            if (keys) {
+                ['working_hours','hours','work_hours'].forEach(k => { if (keys.includes(k)) rec[k] = hrs && hrs > 0 ? Math.round(hrs * 100) / 100 : null; });
+                if (keys.includes('staff_code')) rec.staff_code = staffCode(st);
+                if (keys.includes('staff_name')) rec.staff_name = staffName(st);
+            }
+            return rec;
+        };
+        const variants = [mk(iso(a), iso(b)), mk(a ? a + ':00' : null, b ? b + ':00' : null)];
+        const old = rows.find(r => sameId(r.staff_id, sid) && r._date === date);
+        const errs = [];
+        for (const rec of variants) {
+            const { error } = old ? await _supabase.from('attendance').update(rec).eq('id', old.id)
+                                  : await _supabase.from('attendance').insert(rec);
+            if (!error) { closeMarkModal(); showGlobalStatus('Attendance saved.', 'info'); loadAttendance(); return; }
+            if (!errs.includes(error.message)) errs.push(error.message);
+        }
+        const seen = [...new Set(rows.map(r => r.staff_id))].slice(0, 4).join(', ') || 'none yet';
+        box.textContent = 'Could not save: ' + errs.join(' | ') + (/foreign key/i.test(errs.join()) ? `  [staff_id sent: ${sid}; existing attendance uses: ${seen}; staff columns: ${Object.keys(st).join(', ')}]` : '');
+    } catch (e) { box.textContent = 'Could not save: ' + (e.message || e); }
+    finally { btn.disabled = false; }
+}
+
+/* ---------------- SALARY COLLECTION (restored) ---------------- */
+const money = n => formatCurrency(Math.round(Number(n || 0) * 100) / 100);
+let _collTable = null, _collRows = [], _adjRows = [], _salMonth = '', _salCalc = {};
+async function loadCollections() {
+    const names = _collTable ? [_collTable] : ['salary_collections','salary_collection','salary_payments','salary_paid','salary_transactions','staff_salary_payments','collections'];
+    for (const t of names) {
+        const r = await _supabase.from(t).select('*');
+        if (r.error) continue;
+        _collTable = t;
+        return (r.data || []).map(c => {
+            const k = Object.keys(c);
+            const mk = pickKey(['salary_month','month','for_month','pay_month'], k), ak = pickKey(['amount','paid_amount','collected_amount','paid','collected'], k);
+            const dk = pickKey(['collected_date','paid_date','payment_date','date','created_at'], k);
+            c._month = String((mk && c[mk]) || (dk && c[dk]) || '').slice(0, 7);
+            c._amt = Number((ak && c[ak]) || 0);
+            return c;
+        });
+    }
+    showGlobalStatus('Salary collection table not found (tried salary_collections, salary_payments, …). Tell me the real table name.', 'error');
+    return [];
+}
+async function loadSalaryData() {
+    const month = $('salaryMonth').value, body = $('salaryTableBody');
+    if (!month) return;
+    body.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#94a3b8;">Loading…</td></tr>';
+    try {
+        if (!_staffCache.length) await loadStaff();
+        const [att, hist] = await Promise.all([fetchAttendance(), loadRateHistory()]);
+        const months = [...new Set(att.map(r => r._date.slice(0, 7)).filter(m => m && m <= month).concat(month))].sort();
+        const adj = await fetchAdjustments(months, null);
+        const col = await loadCollections(); _collRows = col; _adjRows = adj; _salMonth = month;
+        const T = { pay:0, got:0, out:0, prev:0, inc:0, ded:0 };
+        body.innerHTML = _staffCache.map(s => {
+            const rate = rateOf(s);
+            let prevDue = 0, payable = 0, collected = 0, inc = 0, ded = 0; const det = [];
+            months.forEach(m => {
+                const recs = att.filter(r => sameId(r.staff_id, sidOf(s)) && r._date.startsWith(m)).map(r => ({ status: r.status, date: r._date }));
+                const ad = sumAdjustments(adj, sidOf(s), m);
+                const net = netPayable(sumPayable(hist, sidOf(s), recs, rate), ad.income, ad.deduction);
+                const got = col.filter(c => sameId(c.staff_id, sidOf(s)) && c._month === m).reduce((t, c) => t + c._amt, 0);
+                det.push({ m, net, got });
+                if (m < month) prevDue += net - got; else { payable = net; collected = got; inc = ad.income; ded = ad.deduction; }
+            });
+            const balance = prevDue + payable - collected;
+            _salCalc[String(s.id)] = { s, det, prevDue, payable, collected, balance, inc, ded };
+            T.pay += payable; T.got += collected; T.out += balance; T.prev += prevDue; T.inc += inc; T.ded += ded;
+            return `<tr><td>${escapeHtml(staffCode(s))}</td><td>${escapeHtml(staffName(s))}</td><td>${money(payable)}</td><td>${money(prevDue)}</td><td>${money(collected)}</td><td>${money(balance)}</td><td><div class="act-row">${actBtn('','💰','Collect salary',`openCollect('${s.id}')`)}${actBtn('','📋','Salary history',`openHistory('${s.id}')`)}</div></td></tr>`;
+        }).join('') || '<tr><td colspan="7" style="text-align:center;color:#94a3b8;">No staff.</td></tr>';
+        if (!T.pay && att.length && _staffCache.length) {
+            const s0 = _staffCache[0];
+            showGlobalStatus(`Payable is 0. Staff columns: ${Object.keys(s0).join(', ')}. Rate found: ${rateOf(s0)}. Attendance links via staff.${_linkKey}. Statuses seen: ${[...new Set(att.map(r => r.status))].slice(0, 5).join(', ')}`, 'error');
+        }
+        $('salaryTotalPayable').textContent = money(T.pay); $('salaryTotalCollected').textContent = money(T.got);
+        $('salaryTotalOutstanding').textContent = money(T.out); $('salaryCarriedForward').textContent = money(T.prev);
+        $('salaryTotalIncome').textContent = money(T.inc); $('salaryTotalDeduction').textContent = money(T.ded);
+        $('salaryStatusPill').textContent = monthLabel(month) + ' · settles ' + getSettlementDate(month);
+    } catch (e) {
+        body.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#dc2626;">Could not load salary: ' + escapeHtml(e.message || String(e)) + '</td></tr>';
+    }
+}
+$('salaryMonth').value = new Date().toISOString().slice(0, 7);
+
+/* ---------------- COMPANY INFO (restored) ---------------- */
+let _company = { table: null, row: null };
+const COMPANY_FIELDS = [
+    ['companyName', ['name','company_name'], 'name'], ['companyReg', ['registration_number','reg_no','registration_no','reg_number','registration'], 'registration_number'],
+    ['companyPhone', ['phone','phone_number','mobile'], 'phone'], ['companyEmail', ['email','email_address'], 'email'],
+    ['companyWebsite', ['website','web'], 'website'], ['companyGstin', ['gstin','gst','gst_number'], 'gstin'],
+    ['companyAddress', ['address','company_address'], 'address']
+];
+async function loadCompany() {
+    for (const t of ['company_info','company','companies','company_settings','company_details']) {
+        const r = await _supabase.from(t).select('*').limit(1);
+        if (r.error) continue;
+        _company = { table: t, row: (r.data && r.data[0]) || null };
+        const row = _company.row;
+        if (row) COMPANY_FIELDS.forEach(([id, keys]) => { const k = keys.find(k => k in row); if (k && row[k] != null) $(id).value = row[k]; });
+        if ($('companyName').value) $('companyLogoName').textContent = $('companyName').value;
+        return;
+    }
+    showGlobalStatus('Company info table not found (tried company_info, company, companies). Tell me the table name.', 'error');
+}
+async function saveCompany() {
+    const btn = document.querySelector('#company [onclick="saveCompany()"]');
+    let box = $('companyMsg');
+    if (!box) { box = document.createElement('div'); box.id = 'companyMsg'; box.style.cssText = 'margin-top:12px;font-size:13px;font-weight:600;'; btn.insertAdjacentElement('afterend', box); }
+    const say = (t, ok) => { box.style.color = ok ? '#16a34a' : '#dc2626'; box.textContent = t; };
+    say('Saving…', true); btn.disabled = true;
+    try {
+        if (!_company.table) await loadCompany();
+        if (!_company.table) throw new Error('Company table not found (tried company_info, company, companies, company_settings, company_details).');
+        const row = _company.row, t = _company.table;
+        const rec = {};
+        COMPANY_FIELDS.forEach(([id, keys, def]) => { const k = row ? keys.find(k => k in row) : def; if (k) rec[k] = $(id).value; });
+        const idKey = row ? pickKey(['id', 'company_id', 'uuid'], Object.keys(row)) : null;
+        let data = null, error = null;
+        for (let i = 0; i < 8; i++) {                       // drop columns the table doesn't have, then retry
+            if (!Object.keys(rec).length) { error = { message: 'None of the company fields match a column in table ' + t }; break; }
+            let q;
+            if (row) {
+                q = _supabase.from(t).update(rec);
+                q = idKey ? q.eq(idKey, row[idKey]) : q.not(Object.keys(row)[0], 'is', null);
+            } else q = _supabase.from(t).insert(rec);
+            ({ data, error } = await q.select());
+            const m = error && /Could not find the '([^']+)' column/.exec(error.message);
+            if (m && m[1] in rec) { delete rec[m[1]]; continue; }
+            break;
+        }
+        if (error) throw error;
+        if (row && (!data || !data.length)) throw new Error('Nothing was updated — the database blocked the change (permission / RLS policy on table ' + t + ').');
+        $('companyLogoName').textContent = $('companyName').value;
+        await loadCompany();
+        say('✅ Company info saved.', true); showGlobalStatus('Company info saved.', 'info');
+    } catch (e) { say('Could not save: ' + (e.message || e), false); }
+    finally { btn.disabled = false; }
+}
+
+/* ---------------- SALARY DATE + SETTLEMENT (restored) ---------------- */
+let _salaryDay = 0, _settingRows = [];
+function getSavedSalaryDay() { return _salaryDay || 0; }
+async function loadSalaryDay() {
+    try {
+        const r = await _supabase.from('app_settings').select('*');
+        if (r.error) throw r.error;
+        _settingRows = r.data || [];
+        const kv = _settingRows.find(x => (x.key || x.setting_key || x.name) === 'salary_day');
+        const v = kv ? (kv.value ?? kv.setting_value) : (_settingRows[0] && _settingRows[0].salary_day);
+        _salaryDay = parseInt(v, 10) || 0;
+    } catch (e) { _salaryDay = 0; }
+    if (!_salaryDay) { try { _salaryDay = parseInt(localStorage.getItem('staffpro_salary_day'), 10) || 0; } catch (e) {} }
+    $('salaryDayInput').value = _salaryDay || '';
+    renderSalaryCountdown(_salaryDay);
+}
+function renderSalaryCountdown(day) {
+    day = parseInt(day, 10) || 0;
+    document.querySelectorAll('.js-salary-countdown').forEach(el => {
+        const compact = el.dataset.compact === '1';
+        el.classList.remove('today', 'soon', 'unset');
+        if (!day || day < 1 || day > 31) {
+            el.classList.add('unset');
+            el.innerHTML = `<div class="sc-icon">💰</div><div class="sc-body"><div class="sc-label">Salary date</div><div class="sc-main">Not set</div></div><button class="sc-action" onclick="showSection('settings')">Set date</button>`;
+            return;
+        }
+        const now = new Date(); now.setHours(0, 0, 0, 0);
+        const pick = (y, m) => new Date(y, m, Math.min(day, new Date(y, m + 1, 0).getDate()));
+        let next = pick(now.getFullYear(), now.getMonth());
+        if (next < now) next = pick(now.getFullYear(), now.getMonth() + 1);
+        const days = Math.round((next - now) / 86400000);
+        el.classList.add(days === 0 ? 'today' : days <= 3 ? 'soon' : 'x'); 
+        el.classList.remove('x');
+        const when = next.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
+        el.innerHTML = `<div class="sc-icon">💰</div><div class="sc-body"><div class="sc-label">Next salary</div><div class="sc-main">${days === 0 ? 'Today' : days + (days === 1 ? ' day left' : ' days left')}</div><div class="sc-sub">${when}</div></div>`;
+    });
+}
+function previewSalaryCountdown() { renderSalaryCountdown($('salaryDayInput').value); }
+async function saveSettings() {
+    const day = parseInt($('salaryDayInput').value, 10);
+    if ($('salaryDayInput').value !== '' && !(day >= 1 && day <= 31)) { showGlobalStatus('Salary date must be between 1 and 31.', 'error'); return; }
+    _salaryDay = day || 0;
+    try { localStorage.setItem('staffpro_salary_day', String(_salaryDay)); } catch (e) {}
+    const kv = _settingRows.find(x => (x.key || x.setting_key || x.name) === 'salary_day');
+    let q;
+    if (kv) q = _supabase.from('app_settings').update({ value: String(_salaryDay) }).eq('id', kv.id);
+    else if (_settingRows[0] && 'salary_day' in _settingRows[0]) q = _supabase.from('app_settings').update({ salary_day: _salaryDay }).eq('id', _settingRows[0].id);
+    else q = _supabase.from('app_settings').insert({ key: 'salary_day', value: String(_salaryDay) });
+    const { error } = await q;
+    renderSalaryCountdown(_salaryDay);
+    if (error) showGlobalStatus('Saved in this browser only, database error: ' + error.message, 'error');
+    else { showGlobalStatus('Settings saved.', 'info'); loadSalaryDay(); }
+}
+
+/* ---------------- STAFF CRUD, MONTH DETAIL, COLLECT, HISTORY (restored) ---------------- */
+const actBtn = (cls, ic, tt, fn) => `<button class="action-btn ${cls}" title="${tt}" onclick="${fn}">${ic}</button>`;
+(function () { const st = document.createElement('style'); st.textContent = '.act-row{display:flex;gap:6px;justify-content:flex-end}'; document.head.appendChild(st); })();
+const fk = (row, cands, def) => (row && pickKey(cands, Object.keys(row))) || def;
+const findStaff = id => _staffCache.find(x => String(x.id) === String(id));
+function staffRec(prefix) {
+    const r = _staffCache[0], f = id => $(prefix + id).value.trim(), rec = {};
+    const put = (cands, def, val) => { const k = r ? pickKey(cands, Object.keys(r)) : def; if (k) rec[k] = val; };
+    put(SK.code, 'staff_code', f('Code')); put(SK.name, 'name', f('Name')); put(SK.role, 'role', f('Role'));
+    put(SK.dept, 'department', f('Dept')); put(SK.joined, 'joined_date', f('Joined') || null);
+    put(RATE_KEYS, 'daily_rate', Number(f('Rate') || 0));
+    return rec;
+}
+const staffErr = (what, e) => 'Could not ' + what + ': ' + (e.message || e) + (/column/i.test(e.message || '') && _staffCache[0] ? '  [staff columns: ' + Object.keys(_staffCache[0]).join(', ') + ']' : '');
+async function addRateHistory(staffId, rate, from) {
+    try { await _supabase.from('staff_rate_history').insert({ staff_id: staffId, daily_rate: rate, effective_from: from }); _rateHistoryCache = null; } catch (e) {}
+}
+function addStaff() { ['Code','Name','Role','Dept','Joined','Rate'].forEach(k => $('addStaff' + k).value = ''); $('addStaffJoined').value = new Date().toISOString().slice(0, 10); $('addStaffModal').classList.add('show'); }
+function closeAddModal() { $('addStaffModal').classList.remove('show'); }
+async function saveNewStaff() {
+    if (!$('addStaffName').value.trim()) { showGlobalStatus('Enter the staff name.', 'error'); return; }
+    const rec = staffRec('addStaff'), btn = $('addStaffSaveBtn'); btn.disabled = true;
+    try {
+        const { data, error } = await _supabase.from('staff').insert(rec).select();
+        if (error) throw error;
+        const row = data && data[0], rate = Number($('addStaffRate').value || 0);
+        if (row && rate) await addRateHistory(sidOf(row), rate, $('addStaffJoined').value || new Date().toISOString().slice(0, 10));
+        closeAddModal(); showGlobalStatus('Staff added.', 'info'); await loadStaff(); loadAttendance(); loadSalaryData();
+    } catch (e) { showGlobalStatus(staffErr('add staff', e), 'error'); }
+    finally { btn.disabled = false; }
+}
+function openEditStaff(id) {
+    const s = findStaff(id); if (!s) return;
+    $('editStaffId').value = s.id;
+    $('editStaffCode').value = sf(s, 'code'); $('editStaffName').value = staffName(s);
+    $('editStaffRole').value = sf(s, 'role'); $('editStaffDept').value = sf(s, 'dept');
+    $('editStaffJoined').value = String(sf(s, 'joined')).slice(0, 10);
+    $('editStaffRate').value = rateOf(s) || ''; $('editStaffRateFrom').value = new Date().toISOString().slice(0, 10);
+    $('editStaffModal').classList.add('show');
+}
+function closeEditModal() { $('editStaffModal').classList.remove('show'); }
+async function saveStaffEdit() {
+    const id = $('editStaffId').value, s = findStaff(id); if (!s) return;
+    const rec = staffRec('editStaff'), newRate = Number($('editStaffRate').value || 0), oldRate = rateOf(s);
+    try {
+        const { error } = await _supabase.from('staff').update(rec).eq('id', s.id);
+        if (error) throw error;
+        if (newRate !== oldRate) await addRateHistory(sidOf(s), newRate, $('editStaffRateFrom').value || new Date().toISOString().slice(0, 10));
+        closeEditModal(); showGlobalStatus('Staff updated.', 'info'); await loadStaff(); loadAttendance(); loadSalaryData();
+    } catch (e) { showGlobalStatus(staffErr('update staff', e), 'error'); }
+}
+function openDeleteStaff(id) { const s = findStaff(id); if (!s) return; $('deleteStaffId').value = s.id; $('deleteStaffName').textContent = staffName(s); $('deleteStaffModal').classList.add('show'); }
+function closeDeleteModal() { $('deleteStaffModal').classList.remove('show'); }
+async function confirmDeleteStaff() {
+    const { error } = await _supabase.from('staff').delete().eq('id', $('deleteStaffId').value);
+    closeDeleteModal();
+    if (error) { showGlobalStatus('Could not delete staff: ' + error.message + ' (delete their attendance first if it is linked)', 'error'); return; }
+    showGlobalStatus('Staff deleted.', 'info'); await loadStaff(); loadAttendance(); loadSalaryData();
+}
+
+async function openStaffDetail(id) {
+    const s = findStaff(id); if (!s) return;
+    const m = $('attendanceMonth').value, rows = (await fetchAttendance()).filter(r => sameId(r.staff_id, sidOf(s)) && r._date.startsWith(m));
+    const c = { present:0, absent:0, leave:0, week_off:0 }; let hrs = 0;
+    rows.sort((a, b) => a._date < b._date ? -1 : 1);
+    $('staffDetailBody').innerHTML = rows.map(r => {
+        const k = normalizeStatus(r.status), h = attHours(r); if (c[k] !== undefined) c[k]++; hrs += h || 0;
+        return `<tr><td>${r._date}</td><td>${attTime(attIn(r))}</td><td>${attTime(attOut(r))}</td><td>${h ? formatHours(h) : '—'}</td><td>${attPill(r.status)}</td><td></td></tr>`;
+    }).join('') || '<tr><td colspan="6" style="text-align:center;color:#94a3b8;">No records this month.</td></tr>';
+    $('staffDetailName').textContent = staffName(s); $('staffDetailMeta').textContent = `${staffCode(s)} · ${sf(s, 'role')}`;
+    $('staffDetailMonth').textContent = monthLabel(m);
+    $('staffDetailPresent').textContent = c.present; $('staffDetailAbsent').textContent = c.absent; $('staffDetailLeave').textContent = c.leave;
+    $('staffDetailWeekOff').textContent = c.week_off; $('staffDetailHours').textContent = formatHours(hrs); $('staffDetailTotal').textContent = money(sumPayable(await loadRateHistory(), sidOf(s), rows.map(r => ({ status: r.status, date: r._date })), rateOf(s)));
+    $('staffAttDetailModal').classList.add('show');
+}
+function closeStaffDetailModal() { $('staffAttDetailModal').classList.remove('show'); }
+
+const cf = (c, cands) => { const k = pickKey(cands, Object.keys(c)); return k ? c[k] : ''; };
+function openCollect(id) {
+    const d = _salCalc[String(id)]; if (!d) { showGlobalStatus('Load the salary data first.', 'error'); return; }
+    $('collectEditId').value = ''; $('collectModalTitle').textContent = 'Collect Salary';
+    $('collectStaffCode').value = staffCode(d.s); $('collectStaffName').value = staffName(d.s); $('collectSalaryMonth').value = _salMonth;
+    $('collectPayable').value = money(d.payable); $('collectPreviousDue').value = money(d.prevDue);
+    $('collectAmount').value = Math.max(0, d.balance) || '';
+    $('collectDate').value = new Date().toISOString().slice(0, 10); $('collectTime').value = new Date().toTimeString().slice(0, 5);
+    $('collectPaidBy').value = ''; $('collectNotes').value = ''; $('collectSalaryMessage').textContent = '';
+    $('collectSalaryModal').dataset.staff = String(id); $('collectSalaryModal').classList.add('show');
+}
+function closeCollectSalaryModal() { $('collectSalaryModal').classList.remove('show'); }
+async function saveSalaryCollection() {
+    const id = $('collectSalaryModal').dataset.staff, s = findStaff(id), msg = $('collectSalaryMessage'), amt = Number($('collectAmount').value);
+    if (!s || !(amt > 0)) { msg.style.color = '#dc2626'; msg.textContent = 'Enter an amount greater than 0.'; return; }
+    const r = _collRows[0], rec = {};
+    rec[fk(r, ['staff_id'], 'staff_id')] = sidOf(s);
+    rec[fk(r, ['salary_month','month','for_month','pay_month'], 'salary_month')] = _salMonth;
+    rec[fk(r, ['amount','paid_amount','collected_amount'], 'amount')] = amt;
+    rec[fk(r, ['collected_date','paid_date','payment_date','date'], 'collected_date')] = $('collectDate').value;
+    rec[fk(r, ['collected_time','paid_time','time'], 'collected_time')] = $('collectTime').value || null;
+    rec[fk(r, ['paid_by','payment_mode','mode','method'], 'paid_by')] = $('collectPaidBy').value;
+    rec[fk(r, ['notes','note','remarks'], 'notes')] = $('collectNotes').value;
+    const { error } = await _supabase.from(_collTable || 'salary_collections').insert(rec);
+    if (error) { msg.style.color = '#dc2626'; msg.textContent = 'Could not save: ' + error.message; return; }
+    closeCollectSalaryModal(); showGlobalStatus('Salary collection saved.', 'info'); loadSalaryData();
+}
+function openHistory(id) {
+    const d = _salCalc[String(id)]; if (!d) return;
+    const sid = sidOf(d.s), cols = _collRows.filter(c => sameId(c.staff_id, sid) && c._month === _salMonth);
+    $('historyStaffName').textContent = staffName(d.s); $('historyStaffMeta').textContent = `${staffCode(d.s)} · ${monthLabel(_salMonth)}`;
+    $('historyPrevDue').textContent = money(d.prevDue); $('historyIncome').textContent = money(d.inc); $('historyDeduction').textContent = money(d.ded);
+    $('historyTotalPayable').textContent = money(d.payable); $('historyTotalCollected').textContent = money(d.collected); $('historyBalance').textContent = money(d.balance);
+    $('historyTableBody').innerHTML = cols.map(c => `<tr><td>${escapeHtml(String(cf(c, ['collected_date','paid_date','payment_date','date','created_at'])).slice(0, 10))}</td><td>${escapeHtml(String(cf(c, ['collected_time','paid_time','time'])).slice(0, 5))}</td><td>${money(c._amt)}</td><td>${escapeHtml(cf(c, ['paid_by','payment_mode','mode','method']))}</td><td>${escapeHtml(cf(c, ['notes','note','remarks']))}</td><td></td></tr>`).join('')
+        || '<tr><td colspan="6" style="text-align:center;color:#94a3b8;">No collections this month.</td></tr>';
+    const adj = _adjRows.filter(a => sameId(a.staff_id, sid) && a.salary_month === _salMonth);
+    $('historyAdjBody').innerHTML = adj.map(a => `<tr><td>${escapeHtml(a.kind || '')}</td><td>${escapeHtml(a.title || '')}</td><td>${money(a.amount)}</td><td>${escapeHtml(a.notes || '')}</td><td></td></tr>`).join('')
+        || '<tr><td colspan="5" style="text-align:center;color:#94a3b8;">None.</td></tr>';
+    $('salaryHistoryModal').classList.add('show');
+}
+function closeSalaryHistoryModal() { $('salaryHistoryModal').classList.remove('show'); }
+
+/* ---------------- PRINT + FACE ENROLLMENT (restored) ---------------- */
+const PRINT_EXTRA = `
+  .profile-card{display:flex;align-items:center;gap:18px;border:1px solid #cbd5e1;border-radius:12px;padding:18px 20px;margin-bottom:20px;background:linear-gradient(135deg,#f8fafc,#eff6ff)}
+  .avatar{width:74px;height:74px;border-radius:50%;background:linear-gradient(135deg,#1d4ed8,#6d28d9);color:#fff;font-size:28px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .profile-card h3{font-size:20px;color:#0f172a;margin-bottom:3px}.profile-card .sub{font-size:12px;color:#475569}
+  .badge{display:inline-block;margin-top:8px;padding:3px 12px;border-radius:20px;background:#1e293b;color:#fff;font-size:10px;letter-spacing:1px;text-transform:uppercase}
+  .detail-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid #cbd5e1;border-radius:8px;overflow:hidden;margin-bottom:8px}
+  .detail-grid div{padding:10px 14px;border-bottom:1px solid #e2e8f0;font-size:12px}.detail-grid div:nth-child(odd){border-right:1px solid #e2e8f0}
+  .detail-grid span{display:block;font-size:9px;color:#64748b;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}.detail-grid b{color:#0f172a;font-size:13px}
+  .signatures{display:flex;justify-content:space-between;gap:30px;margin-top:70px}
+  .doc-foot{margin-top:28px;padding-top:8px;border-top:1px solid #cbd5e1;text-align:center;font-size:9px;color:#94a3b8;letter-spacing:.5px}
+  @media print{body{padding:0}}`;
+function openPrint(title, body, refNo, sigs) {
+    const v = id => escapeHtml($(id).value || ''), co = $('companyName').value || 'Company';
+    const contact = [v('companyPhone'), v('companyEmail'), v('companyWebsite')].filter(Boolean).join('<br>') + ($('companyGstin').value ? `<br><strong>GSTIN:</strong> ${v('companyGstin')}` : '');
+    const sig = (sigs || ['Employee', 'HR / Manager', 'Authorised Signatory']).map(n => `<div class="sig-block"><div class="sig-name">${n}</div></div>`).join('');
+    const html = (`<!DOCTYPE html><html><head><meta charset="utf-8"><title>${escapeHtml(title)}</title><style>${getPrintStyles()}${PRINT_EXTRA}</style></head><body>
+      <div class="letterhead"><div class="letterhead-left"><div class="letterhead-logo">${escapeHtml(co.trim().charAt(0).toUpperCase())}</div>
+        <div class="letterhead-company"><h1>${escapeHtml(co)}</h1><p>${v('companyAddress')}</p></div></div>
+        <div class="letterhead-right">${contact}</div></div>
+      <div class="doc-title"><h2>${escapeHtml(title)}</h2></div>
+      <div class="ref-bar"><div><strong>Ref:</strong> ${escapeHtml(refNo || '—')}</div><div><strong>Printed on:</strong> ${new Date().toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}</div></div>
+      ${body}<div class="signatures">${sig}</div>
+      <div class="doc-foot">This is a computer-generated document · ${escapeHtml(co)}</div>
+      </body></html>`);
+    showPrintView(title, html);
+}
+function showPrintView(title, html) {
+    closePrintView();
+    const ov = document.createElement('div'); ov.id = 'printView';
+    ov.style.cssText = 'position:fixed;inset:0;z-index:99999;background:#e2e8f0;display:flex;flex-direction:column;';
+    ov.innerHTML = `<div style="display:flex;align-items:center;gap:10px;padding:10px 16px;background:#1e293b;color:#fff;flex-shrink:0">
+        <button id="pvBack" style="padding:8px 16px;border:0;border-radius:8px;background:#475569;color:#fff;font-weight:600;cursor:pointer">← Back</button>
+        <div style="flex:1;font-weight:600;font-size:14px">${escapeHtml(title)}</div>
+        <button id="pvPrint" style="padding:8px 18px;border:0;border-radius:8px;background:#2563eb;color:#fff;font-weight:600;cursor:pointer">🖨️ Print</button>
+        <button id="pvClose" style="padding:8px 14px;border:0;border-radius:8px;background:#dc2626;color:#fff;font-weight:600;cursor:pointer">✕ Close</button></div>
+      <iframe id="pvFrame" style="flex:1;border:0;width:100%;background:#fff"></iframe>`;
+    document.body.appendChild(ov);
+    $('pvFrame').srcdoc = html;
+    $('pvBack').onclick = $('pvClose').onclick = closePrintView;
+    $('pvPrint').onclick = () => { const f = $('pvFrame').contentWindow; f.focus(); f.print(); };
+    document.addEventListener('keydown', pvEsc);
+}
+function pvEsc(e) { if (e.key === 'Escape') closePrintView(); }
+function closePrintView() { const o = $('printView'); if (o) o.remove(); document.removeEventListener('keydown', pvEsc); }
+function printStaffProfile(id) {
+    const s = findStaff(id); if (!s) return;
+    const joined = String(sf(s, 'joined')).slice(0, 10), exp = calculateExperience(joined), name = staffName(s) || '—';
+    const initials = name.split(/\s+/).map(x => x[0]).slice(0, 2).join('').toUpperCase();
+    const fmt = d => d ? new Date(d).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
+    const monthly = money(rateOf(s) * 30);
+    const cell = (k, v) => `<div><span>${k}</span><b>${escapeHtml(String(v || '—'))}</b></div>`;
+    openPrint('Staff Profile', `
+      <div class="profile-card"><div class="avatar">${escapeHtml(initials || '?')}</div>
+        <div><h3>${escapeHtml(name)}</h3><div class="sub">${escapeHtml(sf(s, 'role') || 'Staff')}${sf(s, 'dept') ? ' · ' + escapeHtml(sf(s, 'dept')) : ''}</div><span class="badge">ID ${escapeHtml(String(staffCode(s)))}</span></div></div>
+      <div class="stat-grid"><div class="stat-card accent"><div class="label">Monthly salary</div><div class="value">${monthly}</div></div>
+        <div class="stat-card purple"><div class="label">Experience</div><div class="value" style="font-size:14px">${exp ? escapeHtml(formatExperience(exp)) : '—'}</div></div>
+        <div class="stat-card"><div class="label">Joined</div><div class="value" style="font-size:14px">${escapeHtml(fmt(joined))}</div></div></div>
+      <div class="section-header"><div class="section-header-icon">👤</div><h3>Employment Details</h3></div>
+      <div class="detail-grid">${cell('Staff ID', staffCode(s))}${cell('Full name', name)}${cell('Designation', sf(s, 'role'))}${cell('Department', sf(s, 'dept'))}${cell('Date of joining', fmt(joined))}${cell('Monthly salary', monthly)}</div>`,
+      'SP-' + staffCode(s));
+}
+async function printHRReport() {
+    try {
+        if (!_staffCache.length) await loadStaff();
+        const m = $('attendanceMonth').value; if (!m) { showGlobalStatus('Select a month first.', 'error'); return; }
+        const rows = (await fetchAttendance()).filter(r => r._date.startsWith(m));
+        const T = { present:0, absent:0, leave:0, week_off:0, hrs:0 };
+        const body = _staffCache.map(st => {
+            const c = { present:0, absent:0, leave:0, week_off:0, hrs:0, n:0 };
+            rows.filter(r => sameId(r.staff_id, sidOf(st))).forEach(r => { const k = normalizeStatus(r.status); c.n++; if (c[k] !== undefined) c[k]++; c.hrs += attHours(r) || 0; });
+            Object.keys(T).forEach(k => T[k] += c[k]);
+            const pct = c.n ? Math.round((c.present + c.week_off) / c.n * 100) : 0;
+            return `<tr><td>${escapeHtml(String(staffCode(st)))}</td><td><b>${escapeHtml(staffName(st))}</b></td><td>${escapeHtml(sf(st, 'role'))}</td>
+              <td style="text-align:center">${c.present}</td><td style="text-align:center">${c.absent}</td><td style="text-align:center">${c.leave}</td><td style="text-align:center">${c.week_off}</td>
+              <td style="text-align:center">${formatHours(c.hrs)}</td><td style="text-align:center"><b>${c.n ? pct + '%' : '—'}</b></td></tr>`;
+        }).join('');
+        const avg = (T.present + T.absent + T.leave + T.week_off) ? Math.round((T.present + T.week_off) / (T.present + T.absent + T.leave + T.week_off) * 100) : 0;
+        openPrint('HR Attendance Report', `
+          <div class="stat-grid">
+            <div class="stat-card accent"><div class="label">Total staff</div><div class="value">${_staffCache.length}</div></div>
+            <div class="stat-card success"><div class="label">Present days</div><div class="value">${T.present}</div></div>
+            <div class="stat-card danger"><div class="label">Absent days</div><div class="value">${T.absent}</div></div>
+            <div class="stat-card warning"><div class="label">Leave days</div><div class="value">${T.leave}</div></div>
+            <div class="stat-card"><div class="label">Week off</div><div class="value">${T.week_off}</div></div>
+            <div class="stat-card purple"><div class="label">Total hours</div><div class="value" style="font-size:15px">${formatHours(T.hrs)}</div></div>
+            <div class="stat-card accent"><div class="label">Attendance</div><div class="value">${avg}%</div></div></div>
+          <div class="section-header"><div class="section-header-icon">📅</div><h3>Staff Attendance · ${escapeHtml(monthLabel(m))}</h3></div>
+          <table class="data-table"><thead><tr><th>ID</th><th>Name</th><th>Role</th><th class="center">Present</th><th class="center">Absent</th><th class="center">Leave</th><th class="center">Week off</th><th class="center">Hours</th><th class="center">Attendance</th></tr></thead>
+          <tbody>${body || '<tr><td colspan="9" style="text-align:center">No staff.</td></tr>'}</tbody></table>`,
+          'HR-' + m, ['Prepared by', 'HR Manager', 'Authorised Signatory']);
+    } catch (e) { showGlobalStatus('Could not create report: ' + (e.message || e), 'error'); }
+}
+function printHRStaffReport() {
+    const rows = _staffCache.map(s => { const j = String(sf(s, 'joined')).slice(0, 10), e = calculateExperience(j);
+        return `<tr><td>${escapeHtml(staffCode(s))}</td><td>${escapeHtml(staffName(s))}</td><td>${escapeHtml(sf(s, 'role'))}</td><td>${escapeHtml(sf(s, 'dept'))}</td><td>${j}</td><td>${e ? escapeHtml(formatExperience(e)) : ''}</td><td>${money(rateOf(s))}</td></tr>`; }).join('');
+    openPrint('HR Staff Report', `<div class="stat-grid"><div class="stat-card accent"><div class="label">Total staff</div><div class="value">${_staffCache.length}</div></div></div>
+      <table style="width:100%;border-collapse:collapse;font-size:12px"><thead><tr style="background:#f1f5f9;text-align:left"><th>ID</th><th>Name</th><th>Role</th><th>Department</th><th>Joined</th><th>Experience</th><th>Daily rate</th></tr></thead><tbody>${rows}</tbody></table>`);
+}
+
+let _faceIds = new Set(), _faceLibP = null, _faceStream = null, _enrollId = null;
+async function loadFaceIds() {
+    try { const r = await _supabase.from('staff_face_descriptors').select('staff_id'); _faceIds = new Set((r.data || []).map(x => String(x.staff_id))); } catch (e) {}
+}
+function loadFaceLib() {
+    if (window.faceapi) return Promise.resolve();
+    return _faceLibP = _faceLibP || new Promise((res, rej) => { const sc = document.createElement('script');
+        sc.src = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/dist/face-api.js'; sc.onload = res;
+        sc.onerror = () => { _faceLibP = null; rej(new Error('Could not load the face library (check internet).')); }; document.head.appendChild(sc); });
+}
+async function openFaceEnroll(id) {
+    const s = findStaff(id); if (!s) return; _enrollId = s;
+    $('faceEnrollTitle').textContent = 'Face enrollment · ' + staffName(s);
+    $('enrollStatus').textContent = 'Starting camera…'; $('enrollBar').style.width = '0%';
+    $('enrollRemoveBtn').style.display = _faceIds.has(String(sidOf(s))) ? '' : 'none'; $('enrollStartBtn').disabled = false;
+    $('faceEnrollModal').classList.add('show');
+    try { _faceStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } }); $('enrollVideo').srcObject = _faceStream; $('enrollVideo').play(); $('enrollStatus').textContent = 'Look at the camera, then press Start.'; }
+    catch (e) { $('enrollStatus').textContent = 'Camera not available: ' + (e.message || e); }
+}
+function closeFaceEnroll() { if (_faceStream) _faceStream.getTracks().forEach(t => t.stop()); _faceStream = null; $('faceEnrollModal').classList.remove('show'); }
+async function startFaceCapture() {
+    const s = _enrollId, st = $('enrollStatus'), btn = $('enrollStartBtn'); if (!s || !_faceStream) return;
+    btn.disabled = true;
+    try {
+        st.textContent = 'Loading face models…'; await loadFaceLib();
+        const M = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/model/';
+        await Promise.all([faceapi.nets.tinyFaceDetector.loadFromUri(M), faceapi.nets.faceLandmark68Net.loadFromUri(M), faceapi.nets.faceRecognitionNet.loadFromUri(M)]);
+        const samples = [];
+        for (let tries = 0; samples.length < 5 && tries < 40; tries++) {
+            const d = await faceapi.detectSingleFace($('enrollVideo'), new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptor();
+            if (d) { samples.push(Array.from(d.descriptor)); $('enrollBar').style.width = samples.length * 20 + '%'; st.textContent = `Captured ${samples.length} of 5…`; }
+            else st.textContent = 'No face found — look at the camera.';
+            await new Promise(r => setTimeout(r, 600));
+        }
+        if (samples.length < 5) throw new Error('Could not capture 5 clear samples. Try again with better light.');
+        await _supabase.from('staff_face_descriptors').delete().eq('staff_id', sidOf(s));
+        const { error } = await _supabase.from('staff_face_descriptors').insert(samples.map(d => ({ staff_id: sidOf(s), descriptor: d })));
+        if (error) throw error;
+        st.textContent = '✅ Face saved.'; await loadStaff();
+        $('enrollRemoveBtn').style.display = '';
+    } catch (e) { st.textContent = 'Error: ' + (e.message || e); }
+    finally { btn.disabled = false; }
+}
+async function removeFaceData() {
+    if (!_enrollId) return;
+    const { error } = await _supabase.from('staff_face_descriptors').delete().eq('staff_id', sidOf(_enrollId));
+    $('enrollStatus').textContent = error ? 'Error: ' + error.message : 'Face data removed.';
+    if (!error) { $('enrollRemoveBtn').style.display = 'none'; loadStaff(); }
+}
+
+/* Features whose original code was lost in the truncated file */
+['addStaff','backupData','closeAddModal','closeAdjustModal','closeCollectSalaryModal','closeDeleteAttendanceModal',
+ 'closeDeleteModal','closeEditAttendanceModal','closeEditModal','closeFaceEnroll','closeFaceKiosk','closeMarkModal',
+ 'closeSalaryHistoryModal','closeStaffDetailModal','confirmDeleteAttendance','confirmDeleteSalary','confirmDeleteStaff',
+ 'loadSalaryData','markAttendance','openFaceKiosk','previewSalaryCountdown','printHRReport','printHRStaffReport',
+ 'printSalarySlip','printSalaryStatement','printTimeSheet','removeFaceData','saveAdjustment','saveAttendance','saveCompany',
+ 'saveEditAttendance','saveNewStaff','saveSalaryCollection','saveSettings','saveStaffEdit','startFaceCapture',
+ 'updateAdjustLabels'
+].forEach(n => { if (typeof window[n] !== 'function') window[n] = () => showGlobalStatus('This feature needs to be restored (code was lost in the truncated file).', 'error'); });
+
+document.querySelectorAll('.menu-item').forEach(m => m.addEventListener('click', () => showSection(m.dataset.section)));
+$('mobileMenu').addEventListener('click', () => { $('sidebar').classList.toggle('open'); $('overlay').classList.toggle('show'); });
+$('overlay').addEventListener('click', () => { $('sidebar').classList.remove('open'); $('overlay').classList.remove('show'); });
+document.addEventListener('click', () => $('profileDropdown').classList.remove('show'));
+$('loginPassword').addEventListener('keydown', e => { if (e.key === 'Enter') doAdminLogin(); });
+
+(async () => {
+    try {
+        const { data } = await _supabase.auth.getSession();
+        if (data && data.session) setLoggedIn(data.session.user);
+    } catch (e) {}
+})();
+</script>
 </body>
 </html>
