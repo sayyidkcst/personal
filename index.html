@@ -1,293 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SAYYID SHEREEF KC</title>
-<meta name="color-scheme" content="light dark">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1020">
+<meta name="description" content="Sayyid Shereef KC — Accountant, software developer and founder of KCST Media Technology.">
+<title>Sayyid Shereef KC | Personal Portfolio</title>
 <style>
-:root{
-  --bg:#f7f5f0; --surface:#ffffff; --text:#1c1b22; --muted:#6a6878; --line:#e6e2d9;
-  --a1:#6d4aff; --a2:#ff7a59; --glow:rgba(109,74,255,.22);
-  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-  color-scheme:light dark;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){--bg:#0f0e17;--surface:#181726;--text:#f1eff8;--muted:#a09db4;--line:#2a2840;--glow:rgba(140,110,255,.3)}
-}
-:root[data-theme="dark"]{--bg:#0f0e17;--surface:#181726;--text:#f1eff8;--muted:#a09db4;--line:#2a2840;--glow:rgba(140,110,255,.3)}
-html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
-.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:1.25rem;letter-spacing:.04em;background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
-nav ul{display:flex;gap:22px;list-style:none;padding:0;align-items:center}
-nav a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;transition:.2s}
-nav a:hover{color:var(--text)}
-#themeBtn{border:1px solid var(--line);background:var(--surface);color:var(--text);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem}
-@media(max-width:640px){nav ul li.hide{display:none}nav ul{gap:14px}}
-.hero{position:relative;padding:72px 0 80px}
-.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(80px);z-index:-1}
-.hero::before{width:340px;height:340px;background:var(--glow);top:-60px;left:-80px}
-.hero::after{width:300px;height:300px;background:rgba(255,122,89,.18);right:-60px;bottom:0}
-.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
-@media(max-width:800px){.hero .wrap{grid-template-columns:1fr;text-align:center}.hero{padding-top:44px}.cta,.socials{justify-content:center}.photo-col{order:-1}}
-.hello{display:inline-block;padding:6px 14px;border:1px solid var(--line);background:var(--surface);border-radius:99px;font-size:.85rem;color:var(--muted);margin-bottom:18px}
-h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.3rem,6vw,4rem);line-height:1.08;font-weight:700}
-h1 span{background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.role{margin-top:14px;font-size:1.15rem;color:var(--muted);min-height:1.8em}
-.role b{color:var(--text);font-weight:600}
-.lead{margin-top:16px;color:var(--muted);max-width:520px}
-@media(max-width:800px){.lead{margin-inline:auto}}
-.cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
-.btn{display:inline-block;padding:12px 24px;border-radius:12px;font-weight:600;font-size:.95rem;text-decoration:none;transition:.25s}
-.btn.p{background:linear-gradient(90deg,var(--a1),var(--a2));color:#fff;box-shadow:0 10px 26px var(--glow)}
-.btn.p:hover{transform:translateY(-2px)}
-.btn.g{border:1px solid var(--line);background:var(--surface);color:var(--text)}
-.btn.g:hover{border-color:var(--a1)}
-.photo-col{display:flex;justify-content:center}
-.photo{position:relative;width:min(320px,78vw);aspect-ratio:1;border-radius:50%;padding:6px;background:linear-gradient(135deg,var(--a1),var(--a2));box-shadow:0 24px 60px var(--glow)}
-.photo .in{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--surface);display:grid;place-items:center}
-.photo img{width:100%;height:100%;object-fit:cover;display:none}
-.photo .ph{text-align:center;color:var(--muted);font-size:.9rem;padding:20px}
-.photo .ph big{display:block;font-size:2.6rem;margin-bottom:6px}
-.photo.has img{display:block}.photo.has .ph{display:none}
-.badge{position:absolute;right:-6px;bottom:30px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:8px 14px;font-size:.8rem;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,.12)}
-.socials{display:flex;gap:10px;margin-top:26px}
-.socials a{width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface);border-radius:12px;color:var(--text);text-decoration:none;font-size:.82rem;font-weight:600;transition:.2s}
-.socials a:hover{border-color:var(--a1);transform:translateY(-2px)}
-section{padding:72px 0}
-.eyebrow{color:var(--a1);font-weight:600;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase}
-h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.7rem,4vw,2.4rem);margin:8px 0 22px}
-.about{display:grid;grid-template-columns:1.3fr 1fr;gap:36px}
-@media(max-width:800px){.about{grid-template-columns:1fr}}
-.about p{color:var(--muted);margin-bottom:14px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}
-.stat b{display:block;font-family:'Playfair Display',Georgia,serif;font-size:2rem;background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat span{color:var(--muted);font-size:.85rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;transition:.25s}
-.card:hover{transform:translateY(-4px);border-color:var(--a1);box-shadow:0 16px 36px var(--glow)}
-.card .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:1.35rem;margin-bottom:14px;background:linear-gradient(135deg,var(--glow),rgba(255,122,89,.2))}
-.card h3{font-size:1.05rem;margin-bottom:6px}
-.card p{color:var(--muted);font-size:.92rem}
-.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
-.proj{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;transition:.25s;position:relative;overflow:hidden}
-.proj::before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:linear-gradient(90deg,var(--a1),var(--a2));opacity:.85}
-.proj:hover{transform:translateY(-4px);border-color:var(--a1);box-shadow:0 16px 36px var(--glow)}
-.proj .top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.proj .ic{width:44px;height:44px;flex:none;border-radius:12px;display:grid;place-items:center;font-size:1.3rem;background:linear-gradient(135deg,var(--glow),rgba(255,122,89,.2))}
-.proj h3{font-size:1.05rem;line-height:1.3}
-.proj p{color:var(--muted);font-size:.92rem;flex:1}
-.proj .tags{gap:6px;margin-top:16px}
-.proj .tags span{padding:4px 11px;font-size:.76rem;color:var(--muted)}
-.proj .visit{display:inline-block;margin-top:14px;color:var(--a1);font-weight:600;font-size:.9rem;text-decoration:none}
-.proj .visit.ml{margin-top:4px}
-.proj .visit[hidden]{display:none}
-.proj .visit:hover{text-decoration:underline}
-.proj .more{display:none;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
-.proj.open .more{display:block}
-.proj .more ul{padding-left:18px;color:var(--muted);font-size:.88rem}
-.proj .more li{margin-bottom:5px}
-.proj .vm{align-self:flex-start;margin-top:14px;border:1px solid var(--line);background:var(--bg);color:var(--text);padding:8px 16px;border-radius:10px;font:600 .85rem Inter,system-ui,sans-serif;cursor:pointer;transition:.2s}
-.proj .vm:hover{border-color:var(--a1);color:var(--a1)}
-.proj .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-.proj .acts .vm{margin-top:0}
-.proj .vbtn{display:inline-block;padding:8px 16px;border-radius:10px;font:600 .85rem Inter,system-ui,sans-serif;text-decoration:none;color:#fff;background:linear-gradient(90deg,var(--a1),var(--a2));transition:.2s}
-.proj .vbtn:hover{transform:translateY(-1px);box-shadow:0 8px 18px var(--glow)}
-.proj .vbtn.off{background:var(--bg);color:var(--muted);border:1px solid var(--line);pointer-events:none;cursor:default}
-.tags{display:flex;flex-wrap:wrap;gap:10px}
-.tags span{padding:8px 16px;border:1px solid var(--line);background:var(--surface);border-radius:99px;font-size:.9rem;font-weight:500}
-.contact{text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:56px 24px;position:relative;overflow:hidden}
-.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0,var(--glow),transparent 65%);pointer-events:none}
-.contact p{color:var(--muted);max-width:480px;margin:0 auto 26px;position:relative}
-.contact .cta{justify-content:center;position:relative}
-footer{padding:30px 0 40px;text-align:center;color:var(--muted);font-size:.85rem}
-.reveal{opacity:0;transform:translateY(22px);transition:.7s ease}
-.reveal.show{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+:root{--bg:#080d1a;--panel:#10182b;--panel2:#151f35;--text:#f4f7ff;--muted:#aab5cc;--accent:#69e0c1;--accent2:#7b8cff;--line:rgba(255,255,255,.1);--shadow:0 24px 70px rgba(0,0,0,.28)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(8,13,26,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.logo{font-size:1.1rem;font-weight:800;letter-spacing:.3px}.logo span{color:var(--accent)}
+.navlinks{display:flex;align-items:center;gap:27px;color:var(--muted);font-size:.92rem}
+.navlinks a:hover{color:var(--accent)}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.iconbtn,.menu-btn{width:42px;height:42px;border:1px solid var(--line);border-radius:13px;background:var(--panel);color:var(--text);cursor:pointer}
+.menu-btn{display:none}
+.hero{min-height:calc(90vh - 76px);display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:55px;padding:75px 0 95px;position:relative}
+.hero:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(105,224,193,.14),transparent 68%);right:4%;top:10%;pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--accent);font-size:.82rem;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.eyebrow:before{content:"";width:25px;height:2px;background:var(--accent)}
+h1{font-size:clamp(2.7rem,6vw,5.1rem);line-height:1.08;letter-spacing:-2.8px;margin:22px 0}
+.gradient{background:linear-gradient(100deg,var(--accent),#8ca3ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:1.08rem;color:var(--muted);max-width:620px}
+.buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 21px;border-radius:13px;font-weight:700;font-size:.93rem;transition:.25s;border:1px solid transparent}
+.btn:hover{transform:translateY(-3px)}
+.primary{background:var(--accent);color:#07131b;box-shadow:0 10px 30px rgba(105,224,193,.15)}
+.secondary{border-color:var(--line);background:var(--panel);color:var(--text)}
+.hero-card{position:relative;max-width:390px;width:100%;justify-self:center}
+.profile-art{aspect-ratio:1/1;border-radius:30px;background:linear-gradient(145deg,#172641,#101426);border:1px solid var(--line);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.profile-art:before,.profile-art:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(105,224,193,.2)}
+.profile-art:before{width:290px;height:290px}.profile-art:after{width:220px;height:220px}
+.initials{font-size:5.5rem;font-weight:900;letter-spacing:-8px;background:linear-gradient(140deg,#fff,var(--accent));-webkit-background-clip:text;color:transparent;z-index:1}
+.float-tag{position:absolute;background:var(--panel2);border:1px solid var(--line);padding:12px 15px;border-radius:15px;box-shadow:var(--shadow);font-size:.83rem}
+.float-tag strong{display:block;color:var(--accent);font-size:1rem}
+.tag-one{left:-24px;bottom:35px}.tag-two{right:-20px;top:35px}
+.section{padding:95px 0}
+.section-head{max-width:680px;margin-bottom:42px}
+.section-head h2{font-size:clamp(2rem,4vw,3rem);letter-spacing:-1.4px;margin:13px 0}
+.section-head p{color:var(--muted)}
+.grid{display:grid;gap:20px}
+.about-grid{grid-template-columns:1.05fr .95fr}
+.card{background:linear-gradient(145deg,var(--panel),rgba(16,24,43,.65));border:1px solid var(--line);border-radius:22px;padding:28px;transition:.25s}
+.card:hover{transform:translateY(-4px);border-color:rgba(105,224,193,.35)}
+.card h3{font-size:1.15rem;margin:12px 0}
+.card p{color:var(--muted)}
+.card-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(105,224,193,.1);color:var(--accent);font-size:1.3rem}
+.fact-list{display:grid;gap:13px;margin-top:22px}
+.fact{display:flex;justify-content:space-between;gap:15px;padding-bottom:12px;border-bottom:1px solid var(--line);font-size:.93rem}
+.fact span:first-child{color:var(--muted)}.fact span:last-child{text-align:right;font-weight:600}
+.skills{grid-template-columns:repeat(4,1fr)}
+.skill{padding:20px;border-radius:17px;background:var(--panel);border:1px solid var(--line)}
+.skill b{display:block;margin-bottom:5px}.skill small{color:var(--muted)}
+.projects{grid-template-columns:repeat(3,1fr)}
+.project-top{height:145px;border-radius:15px;margin-bottom:18px;background:linear-gradient(135deg,rgba(105,224,193,.2),rgba(123,140,255,.22));display:grid;place-items:center;font-size:2.6rem}
+.project-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}
+.project-tags span{font-size:.72rem;color:var(--accent);background:rgba(105,224,193,.08);padding:5px 9px;border-radius:8px}
+.experience{display:grid;grid-template-columns:180px 1fr;gap:25px;padding:26px 0;border-bottom:1px solid var(--line)}
+.experience .date{color:var(--accent);font-size:.85rem;font-weight:700}
+.experience h3{margin-bottom:6px}.experience p{color:var(--muted)}
+.contact-box{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;background:linear-gradient(135deg,#14243a,#12182b);border:1px solid var(--line);border-radius:28px;padding:42px}
+.contact-box h2{font-size:2.3rem;line-height:1.2;margin:14px 0}
+.contact-links{display:grid;gap:13px}
+.contact-links a{padding:14px 16px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.025);overflow-wrap:anywhere}
+.contact-links a:hover{border-color:var(--accent)}
+footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.reveal.show{opacity:1;transform:none}
+@media(max-width:850px){.hero{grid-template-columns:1fr;text-align:center;padding-top:65px}.hero p{margin:auto}.hero .eyebrow{justify-content:center}.buttons{justify-content:center}.hero-card{max-width:310px;margin-top:20px}.about-grid,.contact-box{grid-template-columns:1fr}.skills{grid-template-columns:repeat(2,1fr)}.projects{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.nav{height:68px}.menu-btn{display:block}.navlinks{display:none;position:absolute;top:68px;left:0;right:0;padding:20px 5%;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:18px}.navlinks.open{display:flex}.hero{min-height:auto;padding:65px 0 75px}h1{letter-spacing:-1.5px}.section{padding:70px 0}.skills,.projects{grid-template-columns:1fr}.experience{grid-template-columns:1fr;gap:8px}.contact-box{padding:27px}.tag-one{left:-8px}.tag-two{right:-8px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<nav><div class="wrap">
-  <div class="logo">SSKC</div>
-  <ul>
-    <li class="hide"><a href="#about">About</a></li>
-    <li class="hide"><a href="#work">What I do</a></li>
-    <li class="hide"><a href="#projects">Projects</a></li>
-    <li class="hide"><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><button id="themeBtn" aria-label="Toggle theme">◐</button></li>
-  </ul>
-</div></nav>
-
-<header class="hero"><div class="wrap">
-  <div>
-    <span class="hello">👋 Welcome to my corner of the web</span>
-    <h1>Hi, I’m <span>SAYYID SHEREEF KC</span></h1>
-    <p class="role">I’m a <b id="typed"></b><span id="caret">|</span></p>
-    <p class="lead">I love turning ideas into clean, useful web pages and tools — simple to use, pleasant to look at, and built to help people get things done.</p>
-    <div class="cta">
-      <a class="btn p" href="#contact">Get in touch</a>
-      <a class="btn g" href="#work">See what I do</a>
-    </div>
-    <div class="socials">
-      <a href="#" aria-label="WhatsApp" title="WhatsApp">WA</a>
-      <a href="#" aria-label="Instagram" title="Instagram">IG</a>
-      <a href="#" aria-label="LinkedIn" title="LinkedIn">in</a>
-      <a href="#" aria-label="GitHub" title="GitHub">GH</a>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">SAYYID <span>SHEREEF</span></a>
+    <nav class="navlinks" id="navlinks">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="iconbtn" id="themeBtn" aria-label="Toggle theme" title="Toggle theme">☼</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
     </div>
   </div>
-  <div class="photo-col">
-    <div class="photo" id="photo">
-      <div class="in">
-        <img id="img" alt="Portrait of SAYYID SHEREEF KC">
-        <div class="ph"><big>📷</big>Photo coming soon</div>
+</header>
+
+<main>
+<section class="container hero" id="home">
+  <div class="hero-content reveal">
+    <div class="eyebrow">Personal Portfolio</div>
+    <h1>Hello, I'm<br><span class="gradient">Sayyid Shereef KC</span></h1>
+    <p>Accountant, technology enthusiast and software developer passionate about turning ideas into practical digital solutions.</p>
+    <div class="buttons">
+      <a class="btn primary" href="#projects">Explore My Work ↗</a>
+      <a class="btn secondary" href="#contact">Let's Connect</a>
+    </div>
+  </div>
+  <div class="hero-card reveal">
+    <div class="profile-art"><div class="initials">SKC</div></div>
+    <div class="float-tag tag-one"><strong>KCST</strong>Digital Solutions</div>
+    <div class="float-tag tag-two"><strong>Accounts</strong>& Technology</div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-head reveal"><div class="eyebrow">A little about me</div><h2>Building a bridge between <span class="gradient">business & technology</span></h2><p>I enjoy combining accounting knowledge with technology to simplify everyday business tasks and create useful tools.</p></div>
+    <div class="grid about-grid">
+      <article class="card reveal"><div class="card-icon">✦</div><h3>My Journey</h3><p>With a background in computerized accounting and hands-on business experience, I continue to explore software development, automation and digital product creation. My goal is to make technology accessible and valuable for businesses.</p></article>
+      <article class="card reveal"><div class="card-icon">⌘</div><h3>Quick Profile</h3><div class="fact-list"><div class="fact"><span>Profession</span><span>Accountant</span></div><div class="fact"><span>Qualification</span><span>DCPCA</span></div><div class="fact"><span>Location</span><span>Kerala, India</span></div><div class="fact"><span>Creative identity</span><span>KCST Media Technology</span></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="container">
+    <div class="section-head reveal"><div class="eyebrow">What I work with</div><h2>Skills & <span class="gradient">interests</span></h2><p>A growing blend of finance, productivity tools and development technologies.</p></div>
+    <div class="grid skills">
+      <div class="skill reveal"><b>Accounting</b><small>Computerized Accounting · Tally</small></div>
+      <div class="skill reveal"><b>Excel & Office</b><small>Reports · Data · Productivity</small></div>
+      <div class="skill reveal"><b>Web Development</b><small>HTML · CSS · JavaScript</small></div>
+      <div class="skill reveal"><b>Desktop Apps</b><small>VB6 · Database Applications</small></div>
+      <div class="skill reveal"><b>Database</b><small>MS Access · SQL · Supabase</small></div>
+      <div class="skill reveal"><b>Business Systems</b><small>Inventory · Staff · Accounts</small></div>
+      <div class="skill reveal"><b>Digital Design</b><small>Branding · Posters · UI</small></div>
+      <div class="skill reveal"><b>Learning</b><small>Automation · AI · Cloud</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-head reveal"><div class="eyebrow">Selected work</div><h2>Ideas made <span class="gradient">digital</span></h2><p>Personal and business-focused projects that reflect my interest in practical software and digital experiences.</p></div>
+    <div class="grid projects">
+      <article class="card reveal"><div class="project-top">▦</div><h3>KCST Business Solutions</h3><p>Digital tools and software concepts designed to support small businesses and everyday workflows.</p><div class="project-tags"><span>Business</span><span>Software</span></div></article>
+      <article class="card reveal"><div class="project-top">⌁</div><h3>Accounting Tools</h3><p>Accounting, reporting and data-management ideas built around reliable and organized business records.</p><div class="project-tags"><span>Accounting</span><span>Excel</span><span>VB6</span></div></article>
+      <article class="card reveal"><div class="project-top">✧</div><h3>Web & Digital Projects</h3><p>Responsive web pages, calculators, learning resources and branded digital experiences.</p><div class="project-tags"><span>HTML</span><span>JavaScript</span><span>UI Design</span></div></article>
+    </div>
+    <p style="color:var(--muted);font-size:.85rem;margin-top:18px">Project descriptions are introductory examples. Add your live project links and screenshots when ready.</p>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="container">
+    <div class="section-head reveal"><div class="eyebrow">Professional journey</div><h2>Experience & <span class="gradient">education</span></h2></div>
+    <div class="experience reveal"><div class="date">Current</div><div><h3>Accountant · KEMKA FOOD PARK LLP</h3><p>Accounting and business-support responsibilities in a manufacturing environment.</p></div></div>
+    <div class="experience reveal"><div class="date">Education</div><div><h3>DCPCA — Diploma in Certified Professional Computerized Accounting</h3><p>Golden Wings, Areekode · 2026</p></div></div>
+    <div class="experience reveal"><div class="date">Earlier Experience</div><div><h3>Retail & Office Support</h3><p>Customer assistance, billing, sales support and office-related tasks.</p></div></div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-box reveal">
+      <div><div class="eyebrow">Get in touch</div><h2>Let's create something <span class="gradient">meaningful.</span></h2><p style="color:var(--muted)">For professional enquiries, collaboration or digital projects, feel free to contact me.</p><div class="buttons"><a class="btn primary" href="mailto:sayyidshereef99@gmail.com">Send an Email ↗</a></div></div>
+      <div class="contact-links">
+        <a href="mailto:sayyidshereef99@gmail.com">✉ &nbsp; sayyidshereef99@gmail.com</a>
+        <a href="tel:+919633315177">☎ &nbsp; +91 96333 15177</a>
+        <a href="https://sayyidkcst.github.io/personal/" target="_blank" rel="noopener">↗ &nbsp; Personal Website</a>
+        <a href="https://github.com/sayyidkcst" target="_blank" rel="noopener">⌘ &nbsp; GitHub · sayyidkcst</a>
       </div>
-      <div class="badge">✨ Open to ideas</div>
-    </div>
-      </div>
-</div></header>
-
-<section id="about"><div class="wrap about reveal">
-  <div>
-    <div class="eyebrow">About me</div>
-    <h2>A little about who I am</h2>
-    <p>I’m Sayyid, a curious builder who enjoys software, IT and creating tools that make everyday work easier. I like taking a rough idea and shaping it into something polished that people actually enjoy using.</p>
-    <p>When I’m not building, I’m learning something new, sharing what I know, and looking for the next thing to make better.</p>
-  </div>
-  <div class="stats">
-    <div class="stat"><b>10+</b><span>Projects built</span></div>
-    <div class="stat"><b>100%</b><span>Passion</span></div>
-    <div class="stat"><b>24/7</b><span>Curiosity</span></div>
-    <div class="stat"><b>∞</b><span>Ideas</span></div>
-  </div>
-</div></section>
-
-<section id="work"><div class="wrap reveal">
-  <div class="eyebrow">What I do</div>
-  <h2>Things I enjoy creating</h2>
-  <div class="grid">
-    <div class="card"><div class="ic">🌐</div><h3>Web pages</h3><p>Fast, responsive, good-looking pages and web apps that work on every screen.</p></div>
-    <div class="card"><div class="ic">🛠️</div><h3>Business tools</h3><p>Practical dashboards, billing, staff and finance tools tailored to real needs.</p></div>
-    <div class="card"><div class="ic">💻</div><h3>IT &amp; software</h3><p>Setting up systems, solving problems and keeping technology running smoothly.</p></div>
-    <div class="card"><div class="ic">🎨</div><h3>Design</h3><p>Clean layouts, thoughtful colour and details that make things feel polished.</p></div>
-  </div>
-</div></section>
-
-<section id="projects"><div class="wrap reveal">
-  <div class="eyebrow">Projects</div>
-  <h2>Some of my work</h2>
-  <div class="pgrid">
-    <article class="proj"><div class="top"><div class="ic">🧰</div><h3>Business Tools Launcher</h3></div><p>A single dashboard for KCST Media Technology that links the ERP, bus orders, salary, finance and desktop apps, with editable, password-protected settings saved online.</p><div class="more"><ul><li>Cards for the ERP dashboard, bus orders, KCST Windows, staff salary and finance apps</li><li>Settings panel to rename cards, change links and reorder them</li><li>Settings saved online and protected by a password</li><li>Built for KCST Media Technology</li></ul></div><div class="acts"><button class="vm" type="button" aria-expanded="false">View more</button><a class="vbtn" target="_blank" rel="noopener">Visit ↗</a></div><div class="tags"><span>HTML</span><span>JavaScript</span><span>Supabase</span></div></article>
-    <article class="proj"><div class="top"><div class="ic">🖥️</div><h3>KCST Skylight Pro</h3></div><p>A desktop-style web app with draggable windows, taskbar and start menu, Windows XP / 7 / 98 themes, reminders, contacts, a trip sheet and user login.</p><div class="more"><ul><li>Reminders and contacts windows with popup add/edit and a photo grid</li><li>Windows XP, 7 and 98 themes, saved per user</li><li>Glass-style taskbar and start menu, auto-hide taskbar, calendar popup</li><li>Daily trip sheet window, user login and an admin panel</li></ul></div><div class="acts"><button class="vm" type="button" aria-expanded="false">View more</button><a class="vbtn" target="_blank" rel="noopener">Visit ↗</a></div><div class="tags"><span>JavaScript</span><span>UI Design</span><span>Supabase</span></div></article>
-    <article class="proj"><div class="top"><div class="ic">💰</div><h3>Blue Light Finance Pro</h3></div><p>Accounting for cash and bank expenses with ledgers, monthly and daily expense reports and print-ready output.</p><div class="more"><ul><li>Cash and bank expense entry</li><li>Ledgers for every account</li><li>Monthly expense report with delete for refunded entries</li><li>Printable daily expense report</li></ul></div><div class="acts"><button class="vm" type="button" aria-expanded="false">View more</button><a class="vbtn" target="_blank" rel="noopener">Visit ↗</a></div><div class="tags"><span>Accounting</span><span>Reports</span><span>JavaScript</span></div></article>
-    <article class="proj"><div class="top"><div class="ic">👥</div><h3>StaffPro: Staff &amp; Salary</h3></div><p>Staff management and salary collection with a salary-date setting, days-left countdown on the dashboard and month-wise paid tracking.</p><div class="more"><ul><li>Salary date setting saved in the database</li><li>Days-left-until-next-salary counter on the dashboard banner</li><li>Salary collection that tracks fully paid months correctly</li><li>Cloud database backend</li></ul></div><div class="acts"><button class="vm" type="button" aria-expanded="false">View more</button><a class="vbtn" target="_blank" rel="noopener">Visit ↗</a></div><div class="tags"><span>Dashboard</span><span>Supabase</span><span>HTML</span></div></article>
-    <article class="proj"><div class="top"><div class="ic">🧼</div><h3>Ayurgra Order &amp; Accounts System</h3></div><p>Order, collection and stock system for a herbal soap brand: GST invoices, loading slips, route calendar, sales returns, profit &amp; loss, balance sheet, multi-company and role-based users, plus delivery and customer ordering pages.</p><div class="more"><ul><li>Orders with status colours, edit, multi-status change and searchable customer/item lists</li><li>GST tax invoices in A4/A5 print layouts, loading slips and sales returns</li><li>Collections, expenses, purchases, stock, profit &amp; loss and balance sheet</li><li>Multi-company setup with roles: Staff, Admin and Owner</li><li>Route calendar, history log and a separate customer ordering page</li></ul></div><div class="acts"><button class="vm" type="button" aria-expanded="false">View more</button><a class="vbtn" target="_blank" rel="noopener">Visit ↗</a></div><div class="tags"><span>ERP</span><span>GST invoicing</span><span>Multi-company</span></div></article>
-    <article class="proj"><div class="top"><div class="ic">🌿</div><h3>PM Handmade Cosmetics Store</h3></div><p>A mobile-app-style online store with cart, customer accounts and order history, WhatsApp + UPI checkout and a separate staff panel for orders and products.</p><div class="more"><ul><li>Mobile-app look on phones and a normal website on computers</li><li>Customer accounts with order history and a saved address</li><li>Checkout sends a WhatsApp order message, then opens the UPI app</li><li>Staff panel with staff logins, product images and order notifications</li></ul></div><div class="acts"><button class="vm" type="button" aria-expanded="false">View more</button><a class="vbtn" target="_blank" rel="noopener">Visit ↗</a></div><div class="tags"><span>E-commerce</span><span>WhatsApp</span><span>UPI</span></div></article>
-    <article class="proj"><div class="top"><div class="ic">⌚</div><h3>Chrono Hand Watch Store</h3></div><p>A premium watch storefront with cart, checkout over WhatsApp and a hidden admin area, backed by a database so updates persist.</p><div class="more"><ul><li>Product catalogue with cart and checkout</li><li>Orders sent over WhatsApp</li><li>Hidden admin area to manage products</li><li>Data stored in a database so changes persist</li></ul></div><div class="acts"><button class="vm" type="button" aria-expanded="false">View more</button><a class="vbtn" target="_blank" rel="noopener">Visit ↗</a></div><div class="tags"><span>E-commerce</span><span>Admin panel</span><span>Supabase</span></div></article>
-    <article class="proj"><div class="top"><div class="ic">📍</div><h3>Nearby Services Finder</h3></div><p>Search shops, transport, hospitals, ambulances, police and bus timings near you, with listings, photos, ratings, comments and mobile login.</p><div class="more"><ul><li>Shops, transport, hospitals, police, ambulance and bus timings near you</li><li>Add listings with photos; edit and delete inside My listings</li><li>Star ratings, comments, and call, WhatsApp and directions buttons</li><li>Mobile number login, themes and profile settings</li></ul></div><div class="acts"><button class="vm" type="button" aria-expanded="false">View more</button><a class="vbtn" target="_blank" rel="noopener">Visit ↗</a></div><div class="tags"><span>Geolocation</span><span>Community data</span><span>Supabase</span></div></article>
-    <article class="proj"><div class="top"><div class="ic">🐝</div><h3>Vybee</h3></div><p>A mobile-first social feed with uploads, follows, hashtags, search and chat, with its own bee-themed brand identity.</p><div class="more"><ul><li>Short-video style feed with uploads and a circular progress indicator</li><li>Follow users, search, hashtags and chat</li><li>Profile settings and mobile number login</li><li>Own bee-themed logo and brand</li></ul></div><div class="acts"><button class="vm" type="button" aria-expanded="false">View more</button><a class="vbtn" target="_blank" rel="noopener">Visit ↗</a></div><div class="tags"><span>Social</span><span>Mobile UI</span><span>Supabase</span></div></article>
-    <article class="proj"><div class="top"><div class="ic">📚</div><h3>KCST Code Bank</h3></div><p>A shared knowledge base for the Golden Wings Student Association covering Tally, Excel, Zoho Books, VB6, JavaScript, HTML and Word, open to contributions with admin-gated editing.</p><div class="more"><ul><li>Tutorials on Tally, Excel, Zoho Books, VB6, JavaScript, HTML and Word</li><li>Anyone can contribute; admins control editing and deletion</li><li>Made for the Golden Wings Student Association</li></ul></div><div class="acts"><button class="vm" type="button" aria-expanded="false">View more</button><a class="vbtn" target="_blank" rel="noopener">Visit ↗</a></div><div class="tags"><span>Knowledge base</span><span>Community</span></div></article>
-    <article class="proj"><div class="top"><div class="ic">🏢</div><h3>CRM &amp; ERP Platform</h3></div><p>A large-scale CRM and ERP with 30+ modules: double-entry accounting, payroll, multi-company and multi-branch, multi-currency, RBAC and an API layer.</p><div class="more"><ul><li>Double-entry accounting and payroll</li><li>Multi-company, multi-branch and multi-currency</li><li>Role-based access control and an API layer</li><li>Multi-language support, planned in phases</li></ul></div><div class="acts"><button class="vm" type="button" aria-expanded="false">View more</button><a class="vbtn" target="_blank" rel="noopener">Visit ↗</a></div><div class="tags"><span>Laravel</span><span>Livewire</span><span>PHP</span></div></article>
-  </div>
-</div></section>
-
-<section id="skills"><div class="wrap reveal">
-  <div class="eyebrow">Skills</div>
-  <h2>Tools &amp; technologies</h2>
-  <div class="tags">
-    <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Supabase</span><span>PHP / Laravel</span><span>UI Design</span><span>Databases</span><span>Problem solving</span>
-  </div>
-</div></section>
-
-<section id="contact"><div class="wrap reveal">
-  <div class="contact">
-    <div class="eyebrow">Contact</div>
-    <h2>Let’s build something together</h2>
-    <p>Have an idea, a project or just want to say hello? I’d love to hear from you.</p>
-    <div class="cta">
-      <a class="btn p" href="https://wa.me/" target="_blank" rel="noopener">Message on WhatsApp</a>
-      <a class="btn g" href="mailto:">Send an email</a>
-      <a class="btn g" id="moreInfo" href="#about">More info</a>
     </div>
   </div>
-</div></section>
+</section>
+</main>
 
-<footer>© <span id="yr"></span> SAYYID SHEREEF KC · Made with care</footer>
-
+<footer><div class="container footer-inner"><span>© <span id="year"></span> Sayyid Shereef KC. All rights reserved.</span><span>Designed with care · KCST Media Technology</span></div></footer>
 <script>
-(function(){
-  var root=document.documentElement;
-  document.getElementById('yr').textContent=new Date().getFullYear();
-
-  // ====== EDIT YOUR URLS HERE (change any time) ======
-  var CONFIG={
-    photo:'',                          // your photo URL (https://...)
-    visitDefault:'#contact',           // Visit button goes here when a project has no URL yet
-    moreInfo:'#about',                 // Contact "More info" button URL
-    projects:{                         // each project's "Visit" button URL ('' = uses visitDefault)
-      'Business Tools Launcher':'',
-      'KCST Skylight Pro':'',
-      'Blue Light Finance Pro':'',
-      'StaffPro: Staff & Salary':'',
-      'Ayurgra Order & Accounts System':'',
-      'PM Handmade Cosmetics Store':'',
-      'Chrono Hand Watch Store':'',
-      'Nearby Services Finder':'',
-      'Vybee':'',
-      'KCST Code Bank':'https://sayyidkcst.github.io/kcstcodebank/',
-      'CRM & ERP Platform':''
-    }
-  };
-
-  // Photo from URL
-  var photo=document.getElementById('photo'),img=document.getElementById('img');
-  if(CONFIG.photo){img.onload=function(){photo.classList.add('has')};img.src=CONFIG.photo}
-
-  // Contact "More info" URL
-  var mi=document.getElementById('moreInfo');
-  if(CONFIG.moreInfo){mi.href=CONFIG.moreInfo;if(/^https?:/i.test(CONFIG.moreInfo)){mi.target='_blank';mi.rel='noopener'}}
-
-  // Theme toggle
-  try{var t=localStorage.getItem('sskc_theme');if(t)root.setAttribute('data-theme',t)}catch(e){}
-  document.getElementById('themeBtn').addEventListener('click',function(){
-    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
-    var n=dark?'light':'dark';root.setAttribute('data-theme',n);
-    try{localStorage.setItem('sskc_theme',n)}catch(e){}
-  });
-
-  // Typing effect
-  var words=['web developer','problem solver','tech enthusiast','creative builder'],wi=0,ci=0,del=false,el=document.getElementById('typed');
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=words[0];document.getElementById('caret').style.display='none'}
-  else (function tick(){
-    var w=words[wi];
-    el.textContent=w.slice(0,del?--ci:++ci);
-    var d=del?45:90;
-    if(!del&&ci===w.length){del=true;d=1400}
-    else if(del&&ci===0){del=false;wi=(wi+1)%words.length;d=350}
-    setTimeout(tick,d);
-  })();
-
-  // Projects: "View more" expands details; "Visit" opens the project URL
-  document.querySelectorAll('.proj').forEach(function(c){
-    var u=CONFIG.projects[c.querySelector('h3').textContent.trim()],b=c.querySelector('.vm'),v=c.querySelector('.vbtn');
-    if(!u){u=CONFIG.visitDefault}
-    v.href=u;if(!/^https?:/i.test(u)){v.removeAttribute('target')}
-    b.addEventListener('click',function(){
-      var o=c.classList.toggle('open');
-      b.textContent=o?'View less':'View more';b.setAttribute('aria-expanded',o);
-    });
-  });
-
-  // Scroll reveal
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(function(n){io.observe(n)});
-})();
+const menuBtn=document.getElementById('menuBtn'),nav=document.getElementById('navlinks');
+menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+document.getElementById('year').textContent=new Date().getFullYear();
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');observer.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+let light=false;
+document.getElementById('themeBtn').addEventListener('click',()=>{
+ light=!light;
+ const root=document.documentElement;
+ if(light){root.style.setProperty('--bg','#f5f7fb');root.style.setProperty('--panel','#ffffff');root.style.setProperty('--panel2','#eef2f8');root.style.setProperty('--text','#172033');root.style.setProperty('--muted','#5f6b80');root.style.setProperty('--line','rgba(20,35,60,.12)');root.style.setProperty('--shadow','0 24px 70px rgba(30,50,80,.12)');document.querySelector('header').style.background='rgba(245,247,251,.88)';}
+ else{root.style.setProperty('--bg','#080d1a');root.style.setProperty('--panel','#10182b');root.style.setProperty('--panel2','#151f35');root.style.setProperty('--text','#f4f7ff');root.style.setProperty('--muted','#aab5cc');root.style.setProperty('--line','rgba(255,255,255,.1)');root.style.setProperty('--shadow','0 24px 70px rgba(0,0,0,.28)');document.querySelector('header').style.background='rgba(8,13,26,.82)';}
+});
 </script>
 </body>
 </html>
